@@ -1,0 +1,51 @@
+.backgroundheader
+{
+    background-color: azure;
+}
+
+section
+{
+    background-image: url(../images/mike-dennler-T9CktnMI8TQ-unsplash.jpg);
+    height:1200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+nav
+{
+    background: rgb(255, 255, 255);
+    font-size: 20px;
+}
+.underNav
+{
+    background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(240,244,245) 100%);
+}
+
+.responsiveInscription
+{
+ height: 450px;
+}
+
+@media screen and (max-width: 545px) {
+    .nav-link {
+      font-size: 15px;
+    }
+    .headertext
+    {
+        font-size: 23px;
+    }
+  }
+
+  @media screen and (max-width: 730px) {
+    .responsiveInscription{
+        height: 550px;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .responsiveEquipement{
+        font-size: 11px;
+    }
+  }
