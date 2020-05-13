@@ -28,6 +28,11 @@ nav
  height: 450px;
 }
 
+#add
+{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 545px) {
     .nav-link {
       font-size: 15px;

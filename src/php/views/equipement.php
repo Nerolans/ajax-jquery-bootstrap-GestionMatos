@@ -53,12 +53,12 @@
             $categories= $MainModel->getAllCategories();
             ?>
             <div style="height:25px" class="col-2"></div>
-            <div class="containe rounded bg-light p-0 float-left ml-4 position-sticky" id="indique" style="height:75%; width:260px; top:80px;">
+            <div class="rounded bg-light p-0 float-left ml-4 position-sticky" id="indique" style="width:260px; top:80px;">
                 <a href="#demo" class="btn btn-secondary" data-toggle="collapse" id="typeTitle" style="width:100%;">Type d'équipement ▸</a>
                 <?php
                     foreach ($categories as $element)
                     {
-                        ?><div id="demo" class="collapse p-0" onclick="TypeClick('<?php echo $element['catName']?>');"><a id="<?php echo $element['catName']?>" class="btn btn-outline-dark p-1" collapse" style="width:100%;"><?php echo $element['catName']?></a></div><?php
+                        ?><div id="demo" class="collapse p-0"><a id="<?php echo $element['catName']?>" onclick="typeClick(this.id)" class="btn btn-outline-dark p-1" collapse" style="width:100%;"><?php echo $element['catName']?></a></div><?php
                     }
                 ?>
             </div>
@@ -246,7 +246,6 @@
 </body>
     <script>
             $(document).ready(function(){
-
                 $("#addType").click(function(){
                     $('#myModal').modal('toggle')
                     $('#myModal2').modal('toggle')
