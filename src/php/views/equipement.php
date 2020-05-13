@@ -52,8 +52,21 @@
 
             $categories= $MainModel->getAllCategories();
             ?>
-            <div style="height:25px" class="col-2"></div>
-            <div class="rounded bg-light p-0 float-left ml-4 position-sticky" id="indique" style="width:260px; top:80px;">
+            <div style="height:25px" class="col-12"></div>
+            <div class="rounded bg-light p-0 float-left ml-4 position-sticky" style="width:260px; top:80px; left:20px;">
+                <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
+            </div>
+
+            <div class="dropdown position-sticky float-left" style="top:80px; width:100px;">
+                <button type="button" class="btn btn-primary dropdown-toggle ml-4" data-toggle="dropdown">Trier par</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Link 1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                    <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+            </div>
+
+            <div class="rounded bg-light p-0 float-right ml-4 position-sticky" style="width:260px; top:80px; right:20px;">
                 <a href="#demo" class="btn btn-secondary" data-toggle="collapse" id="typeTitle" style="width:100%;">Type d'équipement ▸</a>
                 <?php
                     foreach ($categories as $element)
@@ -65,22 +78,7 @@
 
 
 
-
-
-
-
             <img class="fixed-bottom m-4" id ="add" data-toggle="modal" data-target="#myModal" src="../../../ressources/images/add.png">
-
-
-
-
-
-
-
-
-
-
-
 
 
 
