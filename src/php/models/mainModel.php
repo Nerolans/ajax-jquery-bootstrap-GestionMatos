@@ -119,8 +119,15 @@ class mainModel
         $this->executeRequestSQL($query);
     }
 
-    public function addEquipment($matModal, $matprice, $matSerialNumber, $matSerialPerso, $matFabricationDate, $matBoughtDate, $matUseDate, $matEndLifeDate, $matRebus, $matEPI, $matLost, $matLinkImage, $matMore, $matNumber ,$idUser, $idCategory)
+    public function addEquipment($matModal, $matNumber, $matprice, $matSerialNumber, $matSerialPerso, $matFabricationDate, $matBoughtDate, $matUseDate, $matEndLifeDate, $matRebus, $matEPI, $matLost, $matLinkImage, $matMore,$idUser, $idCategory)
     {
 
+    }
+
+    public function getIdCat($toSearch)
+    {
+        $query = 'SELECT `idCategory` FROM `t_category` WHERE `catName` = "'.$toSearch.'"';
+        $result = $this->executeGetRequestSQL($query);
+        return $result[0];
     }
 }

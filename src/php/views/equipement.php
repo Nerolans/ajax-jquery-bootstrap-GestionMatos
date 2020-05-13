@@ -49,21 +49,12 @@
         {
             include '../Models/mainModel.php';
             $MainModel = new mainModel();
-
             $categories= $MainModel->getAllCategories();
             ?>
+
             <div style="height:25px" class="col-12"></div>
             <div class="rounded bg-light p-0 float-left ml-4 position-sticky" style="width:260px; top:80px; left:20px;">
                 <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
-            </div>
-
-            <div class="dropdown position-sticky float-left" style="top:80px; width:100px;">
-                <button type="button" class="btn btn-primary dropdown-toggle ml-4" data-toggle="dropdown">Trier par</button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
             </div>
 
             <div class="rounded bg-light p-0 float-right ml-4 position-sticky" style="width:260px; top:80px; right:20px;">
@@ -166,11 +157,6 @@
                                     <label class="checkbox-inline p-0 pt-1"><input type="checkbox" name="Rebus" value="">Rebus</label>
                                     <label class="checkbox-inline p-0 pt-1"><input type="checkbox" name="Perdu" value="">Perdu</label>
                                     </div>
-                                </div>
-
-                                <div class="container col-12 mt-5 p-0" style="height:36px;">
-                                <label class="col-6 float-left text-right p-0 pt-1 pr-2">Image (photo)</label>
-                                <input class="col-2 float-left form-control-file p-0 pt-1" id="file" type="file" name="uploadedImage">
                                 </div>
 
                                 <div class="container col-12 mt-5 p-0" style="height:100%;">

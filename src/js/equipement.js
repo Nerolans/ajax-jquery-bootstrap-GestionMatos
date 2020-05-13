@@ -42,13 +42,12 @@ $(document).ready(function(){
         });
     });
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////CHECKED
 
     $("#buttonADD2").click(function(){
         var $form = $("#formADD2");
         var $inputs = $form.find("input");
         var serializedData = $form.serialize();
-        alert(serializedData[0]);
         $inputs.prop("disabled", true);
 
         $.ajax({
@@ -60,6 +59,7 @@ $(document).ready(function(){
 
                 if(response == "Success")
                 {
+                    $("#getChangeError2").text("");
                     $("#getChangeSuccess2").text("Le type à bien été ajouté à la liste"); 
 
                     window.setTimeout(function(){
