@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
 
-    <!--
-  Auteur: Thomas Stegmann
-  Date: 03.05.2018
-  Déscription: Redirection vers Page Accueil.html
+  <!--
+  Auteur: Guiullaume Hyvert
+  Date: beggining of 2020
+  Déscription: Redirection vers Page Accueil.php
   -->
 
     <meta charset="UTF-8">

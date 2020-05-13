@@ -70,6 +70,8 @@ $(document).ready(function(){
                         });
                         $("#getChangeSuccess2").text("");
                     }, 1150);
+
+                    $("#formADD").reload();
                 }
                 else
                 {

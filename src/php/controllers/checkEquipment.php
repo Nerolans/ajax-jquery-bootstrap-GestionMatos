@@ -1,10 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: stegmannth
- * Date: 08.04.2019
- * Time: 08:56
- * Description: Vérifie la validité des informations entrées lors de l'ajout d'une recette.
+ * Author: Guillaume Hyvert
+ * Date: beggining of 2020
+ * Description: Check the validity of the equipment before adding ot to the BD
  */
 exit();
 # Vérifie que toute les box contiennent quelque chose
