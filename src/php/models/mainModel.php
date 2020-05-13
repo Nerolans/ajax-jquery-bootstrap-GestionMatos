@@ -119,9 +119,11 @@ class mainModel
         $this->executeRequestSQL($query);
     }
 
-    public function addEquipment($matModal, $matNumber, $matprice, $matSerialNumber, $matSerialPerso, $matFabricationDate, $matBoughtDate, $matUseDate, $matEndLifeDate, $matRebus, $matEPI, $matLost, $matLinkImage, $matMore,$idUser, $idCategory)
+    #Finish Here
+    public function addEquipment($matType, $matModal, $matNumber, $matprice, $matSerialNumber, $matSerialPerso, $matFabricationDate, $matBoughtDate, $matUseDate, $matEndLifeDate, $matEPI, $matRebus, $matLost, $matMore, $idUser)
     {
-
+        $query = 'INSERT INTO t_matos (matCatName,matModal,matNumber,matPrice,matSerialNumber,matSerialPerso,matFabricationDate,matBoughtdate,matUseDate,$matEndLifeDate, $matEPI, $matRebus,$matLost,$matMore,$idUser,$idCategory) VALUES ("'.$matType.'","'.$matModal.'","'.$matNumber.'","'.$matprice.'","'.$matSerialNumber.'","'.$matSerialPerso.'","'.$matFabricationDate.'","'.$matBoughtDate.'","'.$matUseDate.'","'.$matEndLifeDate.'","'.$matEPI.'","'.$matRebus.'","'.$matLost.'","'.$matMore.'","'.$idUser.'",1)';
+        $this->executeRequestSQL($query);
     }
 
     public function getIdCat($toSearch)

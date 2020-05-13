@@ -26,8 +26,7 @@ if (!empty($_POST['modele']) && $_POST['type'] != "void" && !empty($_POST['numbe
                     {   
                         include '../Models/mainModel.php';
                         $MainModel = new mainModel;
-                        $idcat = $MainModel ->getIdCat($_POST['type'])["idCategory"];
-                        var_dump($idcat);
+                        $MainModel ->addEquipment
                         #$MainModel ->addEquipment($_POST['modele'], $_SESSION["idUser"][0]["idUser"]);
                         echo "Success";
                         exit();
