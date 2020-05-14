@@ -24,10 +24,22 @@ if (!empty($_POST['modele']) && $_POST['type'] != "void" && !empty($_POST['numbe
                     
                     if(strlen($_POST['description']) < 500)
                     {   
+                        $EPI;
+                        $Rebus;
+                        $Perdu;
+
+                        if(isset($_POST['EPI']) && $_POST['EPI'] == '1') 
+                        {$EPI = 1;}else{$EPI = 0;}
+
+                        if(isset($_POST['Rebus']) && $_POST['Rebus'] == '1') 
+                        {$Rebus = 1;}else{$Rebus = 0;}
+
+                        if(isset($_POST['Perdu']) && $_POST['Perdu'] == '1') 
+                        {$Perdu = 1;}else{$Perdu = 0;}
+
                         include '../Models/mainModel.php';
                         $MainModel = new mainModel;
-                        $MainModel ->addEquipment
-                        #$MainModel ->addEquipment($_POST['modele'], $_SESSION["idUser"][0]["idUser"]);
+                        $MainModel ->addEquipment($_POST['type'], $_POST['modele'], $_POST['number'], $_POST['prix'], $_POST['serieFabriquant'], $_POST['seriePerso'], $_POST['dateFabrication'], $_POST['dateAchat'], $_POST['dateUtilisation'], $_POST['dateFinVie'], $EPI, $Rebus, $Perdu, $_POST['description'], $_SESSION["idUser"][0]["idUser"]);
                         echo "Success";
                         exit();
                     }

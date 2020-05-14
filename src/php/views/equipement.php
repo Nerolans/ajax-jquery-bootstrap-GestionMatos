@@ -153,9 +153,9 @@
 
                                 <div class="container col-12 p-0 mt-4" style="height:36px;">
                                     <div class="container col-6 p-0 mx-auto text-center" style="height:36px;">
-                                    <label class="checkbox-inline p-0 pt-1"><input type="checkbox" name="EPI" value="">Matériel EPI</label>
-                                    <label class="checkbox-inline p-0 pt-1"><input type="checkbox" name="Rebus" value="">Rebus</label>
-                                    <label class="checkbox-inline p-0 pt-1"><input type="checkbox" name="Perdu" value="">Perdu</label>
+                                    <label class="checkbox-inline p-0 pt-1"><input type="checkbox" name="EPI" value="1">Matériel EPI</label>
+                                    <label class="checkbox-inline p-0 pt-1"><input type="checkbox" name="Rebus" value="1">Rebus</label>
+                                    <label class="checkbox-inline p-0 pt-1"><input type="checkbox" name="Perdu" value="1">Perdu</label>
                                     </div>
                                 </div>
 

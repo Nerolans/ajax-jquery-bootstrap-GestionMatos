@@ -122,7 +122,7 @@ class mainModel
     #Finish Here
     public function addEquipment($matType, $matModal, $matNumber, $matprice, $matSerialNumber, $matSerialPerso, $matFabricationDate, $matBoughtDate, $matUseDate, $matEndLifeDate, $matEPI, $matRebus, $matLost, $matMore, $idUser)
     {
-        $query = 'INSERT INTO t_matos (matCatName,matModal,matNumber,matPrice,matSerialNumber,matSerialPerso,matFabricationDate,matBoughtdate,matUseDate,$matEndLifeDate, $matEPI, $matRebus,$matLost,$matMore,$idUser,$idCategory) VALUES ("'.$matType.'","'.$matModal.'","'.$matNumber.'","'.$matprice.'","'.$matSerialNumber.'","'.$matSerialPerso.'","'.$matFabricationDate.'","'.$matBoughtDate.'","'.$matUseDate.'","'.$matEndLifeDate.'","'.$matEPI.'","'.$matRebus.'","'.$matLost.'","'.$matMore.'","'.$idUser.'",1)';
+        $query = 'INSERT INTO t_matos (matCatName,matModal,matNumber,matPrice,matSerialNumber,matSerialPerso,matFabricationDate,matBoughtdate,matUseDate,matEndLifeDate, matEPI, matRebus,matLost,matMore,idUser,idCategory) VALUES ("'.$matType.'","'.$matModal.'","'.$matNumber.'","'.$matprice.'","'.$matSerialNumber.'","'.$matSerialPerso.'","'.$matFabricationDate.'","'.$matBoughtDate.'","'.$matUseDate.'","'.$matEndLifeDate.'","'.$matEPI.'","'.$matRebus.'","'.$matLost.'","'.$matMore.'","'.$idUser.'",1)';
         $this->executeRequestSQL($query);
     }
 
