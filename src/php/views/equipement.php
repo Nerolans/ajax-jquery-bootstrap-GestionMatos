@@ -51,21 +51,67 @@
             $MainModel = new mainModel();
             $categories= $MainModel->getAllCategories();
             ?>
+            <div style="height:90px; top:55px;" id="searchOptions" class="col-12 container px-0 border-bottom border-dark position-sticky">
+                <div style="height:25px" class="col-12"></div>
+                <div class="rounded bg-light p-0 float-left ml-4 position-sticky" style="width:260px; top:80px; left:20px;">
+                    <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
+                </div>
 
-            <div style="height:25px" class="col-12"></div>
-            <div class="rounded bg-light p-0 float-left ml-4 position-sticky" style="width:260px; top:80px; left:20px;">
-                <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
+                <div class="rounded bg-light p-0 float-right ml-4 position-sticky" style="width:260px; top:80px; right:20px;">
+                    <a href="#demo" class="btn btn-secondary" data-toggle="collapse" id="typeTitle" style="width:100%;">Type d'équipement ▸</a>
+                    <?php
+                        foreach ($categories as $element)
+                        {
+                            ?><div id="demo" class="collapse p-0"><a id="<?php echo $element['catName']?>" onclick="typeClick(this.id)" class="btn btn-outline-dark p-1" collapse" style="width:100%;"><?php echo $element['catName']?></a></div><?php
+                        }
+                    ?>
+                </div>
+
+                <script>
+                    $(document).ready(function(){
+                    $("#myInput").on("keyup", function() {
+                        var value = $(this).val().toLowerCase();
+                        $("#tableMain tbody tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
+                    });
+                </script>
+
             </div>
 
-            <div class="rounded bg-light p-0 float-right ml-4 position-sticky" style="width:260px; top:80px; right:20px;">
-                <a href="#demo" class="btn btn-secondary" data-toggle="collapse" id="typeTitle" style="width:100%;">Type d'équipement ▸</a>
-                <?php
-                    foreach ($categories as $element)
-                    {
-                        ?><div id="demo" class="collapse p-0"><a id="<?php echo $element['catName']?>" onclick="typeClick(this.id)" class="btn btn-outline-dark p-1" collapse" style="width:100%;"><?php echo $element['catName']?></a></div><?php
-                    }
-                ?>
-            </div>
+            <div class="container px-0 mt-4 opacityGrid">            
+                <table id="tableMain" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Catégorie</th>
+                        <th>Modèle</th>
+                        <th>N° Série Perso</th>
+                        <th>Prix</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            $infos= $MainModel->getbasicInfos();
+
+                            foreach ($infos as $element)
+                            {
+                                ?>
+                                <tr>
+                                    <td><?php echo $element["matCatName"]?></td>
+                                    <td><?php echo $element["matModal"]?></td>
+                                    <td><?php echo $element["matSerialPerso"]?></td>
+                                    <td><?php echo $element["matPrice"] . " CHF" ?></td>
+                                </tr>
+                                <?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
+                </div>
+
+
+
 
 
 

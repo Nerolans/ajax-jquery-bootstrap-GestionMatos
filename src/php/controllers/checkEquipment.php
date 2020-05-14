@@ -40,7 +40,7 @@ if (!empty($_POST['modele']) && $_POST['type'] != "void" && !empty($_POST['numbe
                         include '../Models/mainModel.php';
                         $MainModel = new mainModel;
                         $MainModel ->addEquipment($_POST['type'], $_POST['modele'], $_POST['number'], $_POST['prix'], $_POST['serieFabriquant'], $_POST['seriePerso'], $_POST['dateFabrication'], $_POST['dateAchat'], $_POST['dateUtilisation'], $_POST['dateFinVie'], $EPI, $Rebus, $Perdu, $_POST['description'], $_SESSION["idUser"][0]["idUser"]);
-                        echo "Success";
+                        echo "Success-"."<tr><td>".$_POST['type']."</td><td>".$_POST['modele']."</td><td>".$_POST['seriePerso']."</td><td>".$_POST['prix']." CHF"."</td></tr>";
                         exit();
                     }
                     else

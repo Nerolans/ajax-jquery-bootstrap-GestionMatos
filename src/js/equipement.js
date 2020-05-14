@@ -13,7 +13,7 @@ $(document).ready(function(){
 
             success:function (response){
 
-                if(response == "Success")
+                if (response.indexOf("Success") >= 0)
                 {
                     $("#getChangeSuccess").text("L'équipement a bien été ajouté"); 
 
@@ -24,6 +24,7 @@ $(document).ready(function(){
                             $('#myModal').modal('toggle');
                         });
                         $("#getChangeSuccess").text("");
+                        $('#tableMain').append(response.split("-")[1]);
                     }, 1500);
                 }
                 else
@@ -96,4 +97,6 @@ function typeClick(name)
 {
     alert(name);//to finish here
 };
+
+
 
