@@ -66,18 +66,6 @@
                         }
                     ?>
                 </div>
-
-                <script>
-                    $(document).ready(function(){
-                    $("#myInput").on("keyup", function() {
-                        var value = $(this).val().toLowerCase();
-                        $("#tableMain tbody tr").filter(function() {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                        });
-                    });
-                    });
-                </script>
-
             </div>
 
             <div class="container px-0 mt-4 opacityGrid">            
@@ -88,6 +76,7 @@
                         <th>Modèle</th>
                         <th>N° Série Perso</th>
                         <th>Prix</th>
+                        <th>Nombre</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -102,6 +91,8 @@
                                     <td><?php echo $element["matModal"]?></td>
                                     <td><?php echo $element["matSerialPerso"]?></td>
                                     <td><?php echo $element["matPrice"] . " CHF" ?></td>
+                                    <td><?php echo  "x" . $element["matNumber"]?></td>
+                                    <td><img class="" id =<?php echo $element["idMatos"]?> onclick="fillModal()" src="../../../ressources/images/edit.png">
                                 </tr>
                                 <?php
                             }
@@ -226,7 +217,9 @@
                     </div>
                 </div>
             </div>
+
         <!----------------------------------------------------------------------------------------------------------------------------->
+
             <div class="modal" id="myModal2">
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
@@ -254,6 +247,33 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" id="buttonADD2">Ajouter</button>      
                         <button type="button" id="dismissType" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!----------------------------------------------------------------------------------------------------------------------------->
+
+            <div class="modal" id="myModalEdit">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Éditer un équipement</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    
+                    <!-- Modal body Edit-->
+                    <div class="modal-body" id="bodyEdit">
+                        
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" id="buttonADD">Enregistrer</button>      
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
                     </div>
 
                     </div>

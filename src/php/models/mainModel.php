@@ -135,7 +135,7 @@ class mainModel
 
     public function getBasicInfos()
     {
-        $query = 'SELECT `matCatName`,`matModal`,`matSerialPerso`,`matPrice` FROM `t_matos`';
+        $query = 'SELECT * FROM `t_matos`';
         $result = $this->executeGetRequestSQL($query);
         return $result;
     }

@@ -89,13 +89,43 @@ $(document).ready(function(){
             
         });
     });
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#tableMain tbody tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
 }); 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function typeClick(name)
 {
-    alert(name);//to finish here
+    alert(name); //to finish here
+};
+
+function fillModal()
+{
+    $(document).ready(function(){
+        $.ajax({
+            url: "getInfos.php",
+            type: "POST",
+            data: serializedData,
+
+            success:function(response){
+                $('#myModalEdit').modal('show'); 
+
+            },
+
+            error:function (resultat, statut, erreur){
+
+                console.log(resultat, statut, erreur );
+            }
+            
+        });
+    });
 };
 
 
