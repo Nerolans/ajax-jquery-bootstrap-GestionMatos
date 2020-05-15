@@ -106,17 +106,17 @@ function typeClick(name)
     alert(name); //to finish here
 };
 
-function fillModal()
+function fillModal(id)
 {
     $(document).ready(function(){
         $.ajax({
             url: "getInfos.php",
             type: "POST",
-            data: serializedData,
+            data: id,
 
             success:function(response){
-                $('#myModalEdit').modal('show'); 
-
+                $('#bodyEdit').html(response);
+                $('#myModalEdit').modal('show');
             },
 
             error:function (resultat, statut, erreur){

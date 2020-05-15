@@ -92,7 +92,7 @@
                                     <td><?php echo $element["matSerialPerso"]?></td>
                                     <td><?php echo $element["matPrice"] . " CHF" ?></td>
                                     <td><?php echo  "x" . $element["matNumber"]?></td>
-                                    <td><img class="" id =<?php echo $element["idMatos"]?> onclick="fillModal()" src="../../../ressources/images/edit.png">
+                                    <td><img class="" id = <?php echo $element["idMatos"]?> onclick="fillModal(this.id)" src="../../../ressources/images/edit.png">
                                 </tr>
                                 <?php
                             }

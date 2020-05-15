@@ -5,41 +5,34 @@
  * Description: Check the validity of the equipment before adding ot to the BD
  */
 session_start();
+include '../Models/mainModel.php';
 $MainModel = new mainModel;
-$infos = $MainModel->getbasicInfos();
-?>
-    <form method="post" id="formADD" enctype="multipart/form-data">
-        <div class="container col p-0">
-            <div class="container col-12 p-2" style="height:50px;">
-                <label class="col-6 float-left text-right p-0 pt-1 pr-4">Type de matériel</label>
-                <select id="type" name="type" class="col-3 float-left browser-default custom-select" required>
-                    <option value="void" id="void" name="void"></option>
-                    <div id="refresh">
-                        <?php
-                            $categories= $MainModel->getAllCategories();
-                            foreach ($categories as $element){
-                                ?><option value="<?php echo $element['catName']?>" id="BD" name="BD"><?php echo $element['catName'];?></option><?php
-                            }
-                        ?>
-                    </div>
-                </select>
-                <img id ="addType" class="pt-1 pl-2" src="../../../ressources/images/addPlus.png">
-            </div>
+$id = "25";
+$response = "";
 
-            <div class="container col-12 p-0" style="height:36px;">
-            <label class="col-6 float-left text-right p-0 pt-1 pr-4">Modele</label>
-            <input class="col-3 float-left" type="text" name="modele" value="<?php echo $info['catModal'] ?>"  required>
-            </div>
+$infos = $MainModel->getInfosID($id);
+$categories= $MainModel->getAllCategories();
+print_r($_POST);
 
 
+
+
+
+
+$response .= '<form method="post" id="formADD" enctype="multipart/form-data"><div class="container col p-0"><div class="container col-12 p-2" style="height:50px;"><label class="col-6 float-left text-right p-0 pt-1 pr-4">Type de matériel</label><select id="type" name="type" class="col-3 float-left browser-default custom-select" required><option value="void" id="void" name="void"></option><div id="refresh">';
+foreach ($categories as $element){
+    $response .= '<option value="'.$element["catName"].'" id="BD" name="BD">'.$element["catName"].'</option>;';
+}
+$response .= '</div></select></div><div class="container col-12 p-0" style="height:36px;"><label class="col-6 float-left text-right p-0 pt-1 pr-4">Modele</label>';
+$response .= '<input class="col-3 float-left" type="text" name="modele" value="<?php echo $info[\'catModal\'] ?>" required></div>
             <div class="container col-12 p-0 mt-4" style="height:36px;">
             <label class="col-6 float-left text-right p-0 pt-1 pr-4">Nombre (unités)</label>
-            <input class="col-3 float-left" type="number" name="number" value="1" max='100' min="1" required>
+            <input class="col-3 float-left" type="number" name="number" value="1" max=\'100\' min="1" required>
             </div>
 
             <div class="container col-12 p-0" style="height:36px;">
-            <label class="col-6 float-left text-right p-0 pt-1 pr-4">Prix d'achat</label>
-            <input class="col-3 float-left" type="number" name="prix" value="0" max='100000' min="0" required>
+            <label class="col-6 float-left text-right p-0 pt-1 pr-4">Prix d\'achat</label>
+            <input class="col-3 float-left" type="number" name="prix" value="0" max=\'100000\' min="0" required>
             </div>
 
 
@@ -60,12 +53,12 @@ $infos = $MainModel->getbasicInfos();
             </div>
 
             <div class="container col-12 p-0" style="height:36px;">
-            <label class="col-6 float-left text-right p-0 pt-1 pr-4">Date d'achat</label>
+            <label class="col-6 float-left text-right p-0 pt-1 pr-4">Date d\'achat</label>
             <input class="col-3 float-left" type="date" name="dateAchat" required>
             </div>
 
             <div class="container col-12 p-0" style="height:36px;">
-            <label class="col-6 float-left text-right p-0 pt-1 pr-4">Date d'utilisation</label>
+            <label class="col-6 float-left text-right p-0 pt-1 pr-4">Date d\'utilisation</label>
             <input class="col-3 float-left" type="date" name="dateUtilisation" required>
             </div>
 
@@ -91,6 +84,9 @@ $infos = $MainModel->getbasicInfos();
     <div class="container text-center col-5 float-center p-0 mt-3" style="height:100%">
         <label class="text-danger p-0" id="getChangeError"></label>
         <label class="text-success p-0" id="getChangeSuccess"></label>
-    </div>
-<?php
-    echo 'Success';
+    </div>';
+    
+    echo $response;
+
+
+            

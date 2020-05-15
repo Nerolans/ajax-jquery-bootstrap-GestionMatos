@@ -139,4 +139,11 @@ class mainModel
         $result = $this->executeGetRequestSQL($query);
         return $result;
     }
+
+    public function getInfosID($toSearch)
+    {
+        $query = 'SELECT * FROM `t_matos` WHERE `idMatos` = "'.$toSearch.'"';
+        $result = $this->executeGetRequestSQL($query);
+        return $result;
+    }
 }
