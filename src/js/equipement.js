@@ -112,7 +112,7 @@ function fillModal(id)
         $.ajax({
             url: "getInfos.php",
             type: "POST",
-            data: id,
+            data: id.serialize(),
 
             success:function(response){
                 $('#bodyEdit').html(response);

@@ -10,14 +10,9 @@ $MainModel = new mainModel;
 $id = "25";
 $response = "";
 
-$infos = $MainModel->getInfosID($id);
+$infos = $MainModel->getInfosID($_POST);
 $categories= $MainModel->getAllCategories();
 print_r($_POST);
-
-
-
-
-
 
 $response .= '<form method="post" id="formADD" enctype="multipart/form-data"><div class="container col p-0"><div class="container col-12 p-2" style="height:50px;"><label class="col-6 float-left text-right p-0 pt-1 pr-4">Type de matériel</label><select id="type" name="type" class="col-3 float-left browser-default custom-select" required><option value="void" id="void" name="void"></option><div id="refresh">';
 foreach ($categories as $element){
@@ -85,8 +80,6 @@ $response .= '<input class="col-3 float-left" type="text" name="modele" value="<
         <label class="text-danger p-0" id="getChangeError"></label>
         <label class="text-success p-0" id="getChangeSuccess"></label>
     </div>';
-    
-    echo $response;
 
 
             
