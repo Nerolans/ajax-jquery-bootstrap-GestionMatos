@@ -133,9 +133,9 @@ class mainModel
         return $result[0];
     }
 
-    public function getBasicInfos()
+    public function getBasicInfos($idUser)
     {
-        $query = 'SELECT * FROM `t_matos`';
+        $query = 'SELECT * FROM `t_matos` WHERE `idUser` = "'.$idUser.'"';
         $result = $this->executeGetRequestSQL($query);
         return $result;
     }

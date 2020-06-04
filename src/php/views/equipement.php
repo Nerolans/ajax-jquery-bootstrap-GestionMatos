@@ -69,7 +69,7 @@
             </div>
 
             <div class="container px-0 mt-4 opacityGrid">            
-                <table id="tableMain" class="table table-striped">
+                <table id="tableMain" class="mb-0 table table-striped">
                     <thead>
                     <tr>
                         <th>Catégorie</th>
@@ -81,7 +81,7 @@
                     </thead>
                     <tbody>
                         <?php 
-                            $infos= $MainModel->getbasicInfos();
+                            $infos= $MainModel->getbasicInfos($_SESSION["idUser"][0]["idUser"]);
 
                             foreach ($infos as $element)
                             {

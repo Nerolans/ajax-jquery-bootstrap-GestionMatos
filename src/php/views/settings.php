@@ -65,7 +65,7 @@
             <div class="container col-12 float-center text-center mt-4 p-0">
                 <!--Formulaire permettant de s'inscrire-->
                 <?php
-                    include '../Models/mainModel.php';
+                    include '../models/mainModel.php';
                     $MainModel = new mainModel();
                     $recipes = $MainModel->GetUserInfo($_SESSION["idUser"][0]["idUser"]);
                 ?>
@@ -90,7 +90,7 @@
                                 <input type="submit" class="btn btn-primary" value="Modifier">
                             </div>
                             <p class="text-danger p-3"><?php if(isset($_SESSION['error'])){echo $_SESSION["error"];}; ?></p>
-                            <p class="text-success p-3"><?php if(isset($_SESSION['validation'])){echo "Les infomations ont bien été modifiées";} ?></p>
+                            <p class="text-success p-3"><?php if(isset($_SESSION['validation'])){echo "Les informations ont bien été modifiées";} ?></p>
                             <?php unset($_SESSION['validation']) ?>
                         </form>
                     </div>

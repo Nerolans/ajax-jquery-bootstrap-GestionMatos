@@ -7,7 +7,7 @@ session_start();
             include '../models/mainModel.php';
             $MainModel = new mainModel;
             $MainModel ->addPersoType($_POST['addType'], $_SESSION["idUser"][0]["idUser"]);
-            echo "Success";
+            echo "Success-"."<option value='".$_POST['addType']."' id='BD' name='BD'>".$_POST['addType']."</option>";
             exit();
         }
         else

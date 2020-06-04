@@ -58,7 +58,7 @@ $(document).ready(function(){
 
             success:function (response){
 
-                if(response == "Success")
+                if(response.indexOf("Success") >= 0)
                 {
                     $("#getChangeError2").text("");
                     $("#getChangeSuccess2").text("Le type à bien été ajouté à la liste"); 
@@ -70,6 +70,7 @@ $(document).ready(function(){
                             $('#myModal2').modal('toggle');
                         });
                         $("#getChangeSuccess2").text("");
+                        $('#type').append(response.split("-")[1]);
                     }, 1150);
 
                     $("#formADD").reload();
