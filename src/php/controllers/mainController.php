@@ -22,7 +22,7 @@ switch ($view)
         break;
     
     case "Inscription":
-        include '../views/Inscription.php';
+        include '../views/inscription.php';
         break;
 
     case "Settings":
