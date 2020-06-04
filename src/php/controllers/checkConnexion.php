@@ -1,7 +1,7 @@
 <?php
 $toCheck = "";
 $_SESSION["error"] == "";
-include '../Models/mainModel.php';
+include '../models/mainModel.php';
 $MainModel = new mainModel;
 
 if(empty($MainModel->GetIdByMail($_POST['inputConnexionLogin'])))

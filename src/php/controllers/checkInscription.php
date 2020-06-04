@@ -9,7 +9,7 @@
 $_SESSION["error"] = "";
 $check = true;
 
-include '../Models/mainModel.php';
+include '../models/mainModel.php';
 $MainModel = new mainModel;
 
 # Vérifie qu'aucun champ soit vide

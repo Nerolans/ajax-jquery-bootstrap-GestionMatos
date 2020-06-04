@@ -9,10 +9,10 @@
 <head>
 
 <meta charset="UTF-8">
-    <link href="../../../Ressources/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../ressources/css/style.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="icon" href="../../../Ressources/images/favicon.png" />
+    <link rel="icon" href="../../../ressources/images/favicon.png" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Paramètres</title>
 
@@ -46,7 +46,7 @@
 
         <div class="container rounded col-8 float-center bg-light" style="opacity:75%; height:45px;">
             <p class="col-6 float-left text-left p-0 pt-2 ">Paramètres</p>
-            <a href="../../php/Controllers/mainController.php?view=Destroy"><img src="../../../ressources/images/deco.png" id="quit" class="img-fluid d-block pt-2 mr-1 float-right" alt="image to connect"></a>
+            <a href="../../php/controllers/mainController.php?view=Destroy"><img src="../../../ressources/images/deco.png" id="quit" class="img-fluid d-block pt-2 mr-1 float-right" alt="image to connect"></a>
         </div>
 
         <script>

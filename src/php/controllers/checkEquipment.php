@@ -37,7 +37,7 @@ if (!empty($_POST['modele']) && $_POST['type'] != "void" && !empty($_POST['numbe
                         if(isset($_POST['Perdu']) && $_POST['Perdu'] == '1') 
                         {$Perdu = 1;}else{$Perdu = 0;}
 
-                        include '../Models/mainModel.php';
+                        include '../models/mainModel.php';
                         $MainModel = new mainModel;
                         $MainModel ->addEquipment($_POST['type'], $_POST['modele'], $_POST['number'], $_POST['prix'], $_POST['serieFabriquant'], $_POST['seriePerso'], $_POST['dateFabrication'], $_POST['dateAchat'], $_POST['dateUtilisation'], $_POST['dateFinVie'], $EPI, $Rebus, $Perdu, $_POST['description'], $_SESSION["idUser"][0]["idUser"]);
                         echo "Success-"."<tr><td>".$_POST['type']."</td><td>".$_POST['modele']."</td><td>".$_POST['seriePerso']."</td><td>".$_POST['prix']." CHF"."</td></tr>";

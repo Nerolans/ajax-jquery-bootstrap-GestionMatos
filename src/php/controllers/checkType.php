@@ -4,7 +4,7 @@ session_start();
     {
         if (preg_match("@^[A-Z0-9a-zéèàê -]{1,50}$@",$_POST['addType']))
         {
-            include '../Models/mainModel.php';
+            include '../models/mainModel.php';
             $MainModel = new mainModel;
             $MainModel ->addPersoType($_POST['addType'], $_SESSION["idUser"][0]["idUser"]);
             echo "Success";

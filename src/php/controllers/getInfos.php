@@ -5,7 +5,7 @@
  * Description: Check the validity of the equipment before adding ot to the BD
  */
 session_start();
-include '../Models/mainModel.php';
+include '../models/mainModel.php';
 $MainModel = new mainModel;
 $id = "25";
 $response = "";
