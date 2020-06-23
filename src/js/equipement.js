@@ -1,22 +1,29 @@
 $(document).ready(function(){
+    //adding equipment
     $("#buttonADD").click(function(){
+        //getting the form
         var $form = $("#formADD");
         var $inputs = $form.find("input, select, textarea");
         var serializedData = $form.serialize();
 
         $inputs.prop("disabled", true);
 
+        //ajax query (sending the post answer of the form) to checkequipment.php
         $.ajax({
             url: "checkEquipment.php",
             type: "POST",
             data: serializedData,
 
+            //if an answer is received (an echo somewhere)
             success:function (response){
 
+                //if the text received is "Success"
                 if (response.indexOf("Success") >= 0)
                 {
+                    //validation for the user
                     $("#getChangeSuccess").text("L'équipement a bien été ajouté"); 
 
+                    //adding the equipment to the main table 
                     window.setTimeout(function(){
                         $('#formADD')[0].reset();
                         $inputs.prop("disabled", false);
@@ -27,6 +34,7 @@ $(document).ready(function(){
                         $('#tableMain').append(response.split("-")[1]);
                     }, 1500);
                 }
+                //if the text received is different from "Success" = an error
                 else
                 {
                     $inputs.prop("disabled", false);
@@ -34,7 +42,7 @@ $(document).ready(function(){
                 }
 
             },
-
+            //logging any error into the console
             error:function (resultat, statut, erreur){
 
                 console.log(resultat, statut, erreur );
@@ -45,6 +53,7 @@ $(document).ready(function(){
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////CHECKED
 
+    //same than above but for adding a new type
     $("#buttonADD2").click(function(){
         var $form = $("#formADD2");
         var $inputs = $form.find("input");
@@ -92,6 +101,7 @@ $(document).ready(function(){
     });
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //search bar
     $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#tableMain tbody tr").filter(function() {

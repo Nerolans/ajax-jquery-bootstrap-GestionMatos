@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: hyvertgu
- * Date: 22.03.2019
- * Time: 11:39
+ * Descriprion: page where infos gat to communicate with the DB
  */
 class mainModel
 {
@@ -11,11 +8,13 @@ class mainModel
 
     //CONNECT / UNCONNECT / EXECUTESQL/////////////
 
+    //connect to DB
     private function dbConnect()
     {
         $this->connector = new PDO('mysql:host=localhost:8889;dbname=p_matos','root','root');
     }
 
+    //execute the query and getting the result
     private function executeGetRequestSQL($query)
     {
         $this->dbConnect();
@@ -24,6 +23,7 @@ class mainModel
         return $req;
     }
 
+    //execute the query
     private function executeRequestSQL($query)
     {
         $this->dbConnect();
@@ -31,6 +31,7 @@ class mainModel
         $this->dbUnconnect();
     }
 
+    //deconnect from the DB
     private function dbUnconnect()
     {
         unset($this->connector);

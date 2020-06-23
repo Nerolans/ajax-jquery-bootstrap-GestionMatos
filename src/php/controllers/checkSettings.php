@@ -8,10 +8,10 @@ $check = true;
 include '../models/mainModel.php';
 $MainModel = new mainModel;
 
-# Vérifie qu'aucun champ soit vide
+// Vérifie qu'aucun champ soit vide
 if (!empty($_POST['inputInscriptionNickname']) && !empty($_POST['inputInscriptionPassword']))
 {   
-    # Vérifie la validité du pseudo
+    // Vérifie la validité du pseudo
     if (preg_match("@^(.){1,20}$@",$_POST['inputInscriptionNickname']))
     {
         var_dump($_SESSION["idUser"][0]["idUser"]);
@@ -28,13 +28,13 @@ if (!empty($_POST['inputInscriptionNickname']) && !empty($_POST['inputInscriptio
             $_SESSION["error"] = "Mauvais mot de passe";
         }
     }
-    # Si le pseudo n'est pas valide
+    // Si le pseudo n'est pas valide
     else
     {
         $_SESSION["error"] = "Le pseudo entré n'est pas valide (de 1 à 20 caractères, tout accepté)";
     }
 }
-#Si tous les champs ne sont pas remplis
+//Si tous les champs ne sont pas remplis
 else
 {
     $_SESSION["error"] = "Certaines informations n'ont pas été complétés";

@@ -1,7 +1,6 @@
 <?php
 /**
- * Create by Guillaume Hyvert
- * Date: 15.11.2019
+ * Desciption: redirect to the correct pages 
  */
 $view =$_GET['view'];
 session_start();

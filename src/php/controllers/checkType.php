@@ -1,7 +1,11 @@
 <?php
+/**
+ * Description: check type before adding it in DB
+ */
 session_start();
     if(!empty($_POST['addType']))
     {
+        //just a quick regex verification and then adding the type
         if (preg_match("@^[A-Z0-9a-zéèàê -]{1,50}$@",$_POST['addType']))
         {
             include '../models/mainModel.php';

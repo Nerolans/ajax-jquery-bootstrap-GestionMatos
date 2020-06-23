@@ -1,8 +1,6 @@
 <?php
 /**
- * Author: Guillaume Hyvert
- * Date: beggining of 2020
- * Description: Check the validity of the equipment before adding ot to the BD
+ * Description: is showing the page for an equipment without refreshing the page (ongoing)
  */
 session_start();
 include '../models/mainModel.php';
