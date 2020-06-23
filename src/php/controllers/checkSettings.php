@@ -1,10 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: hyvertgu
- * Date: 18.03.2019
- * Time: 08:56
- * Description: Vérifie la validité des informations entrées lors de l'inscription.
+ * Description: check new name in settings before changing it in DB
  */
 $_SESSION["error"] = "";
 $check = true;

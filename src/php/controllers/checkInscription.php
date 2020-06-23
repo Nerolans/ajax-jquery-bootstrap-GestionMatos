@@ -1,10 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: hyvertgu
- * Date: 18.03.2019
- * Time: 08:56
- * Description: Vérifie la validité des informations entrées lors de l'inscription.
+ * Description: Check validity of the inputts before adding the user into the DB
  */
 $_SESSION["error"] = "";
 $check = true;
@@ -12,21 +8,19 @@ $check = true;
 include '../models/mainModel.php';
 $MainModel = new mainModel;
 
-# Vérifie qu'aucun champ soit vide
+// verif no empty
 if (!empty($_POST['inputInscriptionNickname']) && !empty($_POST['inputInscriptionPassword']) && !empty($_POST['inputInscriptionEmail']))
 {   
-    # Vérifie la validité du pseudo
+    // regex check the inputs
     if (preg_match("@^(.){1,20}$@",$_POST['inputInscriptionNickname']))
     {
-        # Vérifie la validité du mot de passe
         if (preg_match("@^[A-Za-z.$!?'éè:;^£<>*#%&()=~0123456789-]{8,40}$@",$_POST['inputInscriptionPassword']))
         {
-            # Vérifie la validité de l'email
             if (filter_var($_POST['inputInscriptionEmail'],FILTER_VALIDATE_EMAIL))
             {
-                # Vérifie que l'email entrée ne soit pas déjà utilisée
                 if(!empty($MainModel->checkMail($_POST['inputInscriptionEmail'])))
                 {
+                    // exemple of returning an error
                     $_SESSION["error"] = "L'adresse mail entré est déjà utilisé pour un autre compte";
                     $check = false;
                 }
@@ -37,7 +31,7 @@ if (!empty($_POST['inputInscriptionNickname']) && !empty($_POST['inputInscriptio
                     $check = false;
                 }
 
-                # Crée les variables de sessions si le pseudo et l'email entré ne sont pas déjà utiliser
+                // adding infos into the DB aand getting the userID and putting it into a session variable for futur uses
                 if($check == true)
                 {                 
                     $MainModel ->addUser($_POST["inputInscriptionNickname"],$_POST["inputInscriptionEmail"],password_hash($_POST["inputInscriptionPassword"], PASSWORD_DEFAULT));
@@ -46,36 +40,34 @@ if (!empty($_POST['inputInscriptionNickname']) && !empty($_POST['inputInscriptio
                     $_SESSION['connected'] = true;
 
                     $_SESSION["error"] = "";
+
+                    // going back to the main page
                     header('Location:../controllers/mainController.php?view=Accueil');
                     exit();
                 }
             }
-            # Si l'email n'est pas valide
             else
             {
                 $_SESSION["error"] = "L'adresse mail entré n'est pas valide";
 
             }
         }
-        # Si le mot de passe n'est pas valide
         else
         {
             $_SESSION["error"] = "Le MDP entré n'est pas valide (8-40 caractères, carctères admis: . $ ! ? ' é è : ; ^ £ < > * # % & ( ) = ~ 0 1 2 3 4 5 6 7 8 9 - )";
         }
     }
-    # Si le pseudo n'est pas valide
     else
     {
         $_SESSION["error"] = "Le pseudo entré n'est pas valide (de 1 à 20 caractères, tout accepté)";
     }
 }
-#Si tous les champs ne sont pas remplis
 else
 {
     $_SESSION["error"] = "Certaines informations n'ont pas été complétés";
 }
 
-//regarde si tout à bien été validé
+// refreshing the page if no success
 if($_SESSION["error"] !== "")
 {
     header("location:../controllers/mainController.php?view=Inscription");

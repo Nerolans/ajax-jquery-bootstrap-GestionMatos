@@ -1,12 +1,16 @@
 
-section
+body
 {
     background-image: url(../images/mike-dennler-T9CktnMI8TQ-unsplash.jpg);
-    height:100vh;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+}
+
+header
+{
+    background: rgb(255, 255, 255);
 }
 
 nav
@@ -53,14 +57,14 @@ nav
     }
   }
 
-  @media screen and (max-width: 730px) {
+@media screen and (max-width: 730px) {
     .responsiveInscription{
         height: 550px;
     }
-  }
+}
 
-  @media screen and (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
     .responsiveEquipement{
         font-size: 11px;
     }
-  }
+}
