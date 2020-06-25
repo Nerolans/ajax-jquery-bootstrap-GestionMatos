@@ -99,7 +99,7 @@
                                     <td><?php echo $element["matSerialPerso"]?></td>
                                     <td><?php echo $element["matPrice"] . " CHF" ?></td>
                                     <td><?php echo  "x" . $element["matNumber"]?></td>
-                                    <td><img class="" id = <?php echo $element["idMatos"]?> onclick="fillModal(this.id)" src="../../../ressources/images/edit.png">
+                                    <td><img class="parameters" id = <?php echo $element["idMatos"]?> src="../../../ressources/images/edit.png">
                                 </tr>
                                 <?php
                             }
@@ -273,13 +273,12 @@
                     </div>
                     
                     <!-- Modal body Edit-->
-                    <div class="modal-body" id="bodyEdit">
-                        
+                    <div class="modal-body" id="bodyEdit">    
                     </div>
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" id="buttonADD">Enregistrer</button>      
+                        <button type="button" class="btn btn-success buttonEdit" id="">Enregistrer</button>      
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
                     </div>
 
@@ -307,13 +306,17 @@
                     $('#myModal').modal('toggle')
                     $('#myModal2').modal('toggle')
                 });
-
+            
                 $("#dismissType").click(function(){
                     $('#myModal').modal('toggle')
                     $('#myModal').css('overflow-y', 'auto');
                 });
 
                 jQuery('#indique').css("overflow-y", "scroll");
+            });
+            $(document).on("click", "#addTypeEdit", function (){
+                $('#myModalEdit').modal('toggle')
+                $('#myModal2').modal('toggle')
             });
     </script>
 </html>

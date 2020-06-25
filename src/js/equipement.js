@@ -161,27 +161,51 @@ function changeType(typeName)
     });
 }
 
-function fillModal(id)
-{
-    $(document).ready(function(){
-        $.ajax({
-            url: "getInfos.php",
-            type: "POST",
-            data: id.serialize(),
+$(document).on("click", ".parameters", function(){
+    $.ajax({
+        url: "getInfos.php",
+        type: "POST",
+        data: {info:$(this).attr('id')},
 
-            success:function(response){
-                $('#bodyEdit').html(response);
-                $('#myModalEdit').modal('show');
-            },
+        success:function(response){
+            $('#bodyEdit').html(response);
+            $('#myModalEdit').modal('show');
+        },
 
-            error:function (resultat, statut, erreur){
+        error:function (resultat, statut, erreur){
 
-                console.log(resultat, statut, erreur );
-            }
-            
-        });
+            console.log(resultat, statut, erreur );
+        }
     });
-};
+    $(".buttonEdit").prop('id', $(this).attr('id'));
+});
 
 
 
+
+$(document).on("click", ".buttonEdit", function(){
+    var $form = $("#formEdit");
+    var $inputs = $form.find("input");
+    var serializedData = $form.serialize();
+    $inputs.prop("disabled", true);
+    var info = new Array({info:$(this).attr('id')});
+
+    var data = {};
+    data.serializedData = serializedData;
+    data.serializedData.push(info);
+
+    $.ajax({
+        url: "editInfos.php",
+        type: "POST",
+        data: data,
+
+        success:function(response){
+            alert(response);
+        },
+
+        error:function (resultat, statut, erreur){
+
+            console.log(resultat, statut, erreur );
+        }
+    });
+});

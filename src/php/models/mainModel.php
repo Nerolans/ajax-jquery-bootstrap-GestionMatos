@@ -127,6 +127,21 @@ class mainModel
         $this->executeRequestSQL($query);
     }
 
+    public function modifEquipment($matType, $matModal, $matNumber, $matprice, $matSerialNumber, $matSerialPerso, $matFabricationDate, $matBoughtDate, $matUseDate, $matEndLifeDate, $matEPI, $matRebus, $matLost, $matMore, $idUser)
+    {
+        $query = 'UPDATE t_matos SET (matCatName,matModal,matNumber,matPrice,matSerialNumber,matSerialPerso,matFabricationDate,matBoughtdate,matUseDate,matEndLifeDate, matEPI, matRebus,matLost,matMore,idUser,idCategory) VALUES ("'.$matType.'","'.$matModal.'","'.$matNumber.'","'.$matprice.'","'.$matSerialNumber.'","'.$matSerialPerso.'","'.$matFabricationDate.'","'.$matBoughtDate.'","'.$matUseDate.'","'.$matEndLifeDate.'","'.$matEPI.'","'.$matRebus.'","'.$matLost.'","'.$matMore.'","'.$idUser.'",1)';
+        $this->executeRequestSQL($query);
+    }
+
+
+
+
+
+
+
+
+
+
     public function getIdCat($toSearch)
     {
         $query = 'SELECT `idCategory` FROM `t_category` WHERE `catName` = "'.$toSearch.'"';
@@ -143,6 +158,7 @@ class mainModel
 
     public function getInfosID($toSearch)
     {
+        
         $query = 'SELECT * FROM `t_matos` WHERE `idMatos` = "'.$toSearch.'"';
         $result = $this->executeGetRequestSQL($query);
         return $result;

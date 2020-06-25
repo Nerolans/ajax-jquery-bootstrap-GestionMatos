@@ -20,7 +20,7 @@ else
                         <td>'.$inception["matSerialPerso"].'</td>
                         <td>'.$inception["matPrice"].' CHF</td>
                         <td>x'.$inception["matNumber"].'</td>
-                        <td><img class="" id ='.$inception["idMatos"].'onclick="fillModal(this.id)" src="../../../ressources/images/edit.png">
+                        <td><img class="parameters" id ='.$inception["idMatos"].' src="../../../ressources/images/edit.png">
                     </tr>
                     ';
         }
