@@ -147,4 +147,15 @@ class mainModel
         $result = $this->executeGetRequestSQL($query);
         return $result;
     }
+
+    public function getInfoByType($allTypes, $idUser)
+    {
+        $result = [];
+
+        foreach ($allTypes as $value){
+            $query = 'SELECT * FROM `t_matos` WHERE `idUser` = "'.$idUser.'" AND `matCatName` = "'.$value.'"';
+            array_push($result, $this->executeGetRequestSQL($query));
+        }
+        return $result;
+    }
 }

@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
     //adding equipment
     $("#buttonADD").click(function(){
@@ -112,10 +114,52 @@ $(document).ready(function(){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function typeClick(name)
+function changeType(typeName)
 {
-    alert(name); //to finish here
-};
+    var toSearchFor = [];
+
+    $(document).ready(function(){
+        if($('#'+typeName).hasClass("active"))
+        {
+            $('#'+typeName).removeClass("active")
+        }
+        else
+        {
+            $('#'+typeName).addClass("active");
+        }
+
+        $('.ddMenu a').each(function(){
+            if($(this).hasClass("active"))
+            {
+                toSearchFor.push($(this).text());
+            }
+        });
+
+        $.ajax({
+            url: "typeChange.php",
+            type: "POST",
+            data: {info:toSearchFor},
+
+            success:function(response){
+                if(response.length == 0)
+                {
+                    location.reload(true);
+                }
+                else
+                {
+                    $('table tbody tr').remove();
+                    $('table tbody').append(response);
+                }
+            },
+            error:function (resultat, statut, erreur){
+
+                console.log(resultat, statut, erreur );
+            }            
+        });
+
+
+    });
+}
 
 function fillModal(id)
 {
