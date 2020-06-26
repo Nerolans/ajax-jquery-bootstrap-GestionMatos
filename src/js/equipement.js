@@ -212,7 +212,6 @@ $(document).on("click", ".buttonEdit", function(){
                             $('#myModalEdit').modal('toggle');
                         });
                         $("#getChangeSuccessEdit").text("");
-                        alert(response.split("-")[1])
                         //HEREHEREHEREHERE
                         $("tr#tr"+$idid).replaceWith(response.split("-")[1]);
                     }, 1500);
