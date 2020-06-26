@@ -1,6 +1,6 @@
 <?php
 /**
- * Description: is showing the page for an equipment without refreshing the page (ongoing)
+ * Description: is showing the page for an equipment without refreshing the page
  */
 session_start();
 include '../models/mainModel.php';
@@ -10,10 +10,12 @@ $responseOptions = "";
 $infos = $MainModel->getInfosID($_POST["info"])[0];
 $categories= $MainModel->getAllCategories();
 
+//get all the categories
 foreach ($categories as $element){
     $responseOptions .= '<option value="'.$element["catName"].'" id="BD" name="BD">'.$element["catName"].'</option>';
 }
 
+//adding html to answer so i can append it with jquery
 $response .= 
 '
     <form method="post" id="formEdit" enctype="multipart/form-data">
