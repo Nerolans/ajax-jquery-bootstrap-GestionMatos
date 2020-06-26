@@ -21,7 +21,7 @@ $response .=
             <div class="container col-12 p-2" style="height:50px;">
                 <label class="col-6 float-left text-right p-0 pt-1 pr-4">Type de matériel</label>
                 <select id="type" name="type" class="col-3 float-left browser-default custom-select" required>
-                    <option value="void" id="void" name="void"></option>
+                    <option value="'.$infos["matCatName"].'" id="BD" name="BD">'.$infos["matCatName"].'</option>
                     <div id="refresh">
                         '
                         .$responseOptions.
@@ -103,8 +103,8 @@ $response .=
         </div>
     </form>
     <div class="container text-center col-5 float-center p-0 mt-3" style="height:100%">
-        <label class="text-danger p-0" id="getChangeError"></label>
-        <label class="text-success p-0" id="getChangeSuccess"></label>
+        <label class="text-danger p-0" id="getChangeErrorEdit"></label>
+        <label class="text-success p-0" id="getChangeSuccessEdit"></label>
     </div>
 ';
 

@@ -23,6 +23,7 @@ $(document).ready(function(){
                 if (response.indexOf("Success") >= 0)
                 {
                     //validation for the user
+                    $("#getChangeError").text("");
                     $("#getChangeSuccess").text("L'équipement a bien été ajouté"); 
 
                     //adding the equipment to the main table 
@@ -186,21 +187,42 @@ $(document).on("click", ".parameters", function(){
 $(document).on("click", ".buttonEdit", function(){
     var $form = $("#formEdit");
     var $inputs = $form.find("input");
-    var serializedData = $form.serialize();
+    var serializedData = $form.serializeArray();
+    var $idid = $(this).attr('id');
     $inputs.prop("disabled", true);
-    var info = new Array({info:$(this).attr('id')});
-
-    var data = {};
-    data.serializedData = serializedData;
-    data.serializedData.push(info);
-
+    serializedData.push({name:"info",value:$(this).attr('id')})
     $.ajax({
         url: "editInfos.php",
         type: "POST",
-        data: data,
-
+        data: serializedData,
+    
         success:function(response){
-            alert(response);
+
+            if (response.indexOf("Success") >= 0)
+                {
+                    $("#getChangeErrorEdit").text("");
+                    //validation for the user
+                    $("#getChangeSuccessEdit").text("L'équipement a bien été modifié"); 
+
+                    //adding the equipment to the main table 
+                    window.setTimeout(function(){
+                        $('#formEdit')[0].reset();
+                        $inputs.prop("disabled", false);
+                        $(function () {
+                            $('#myModalEdit').modal('toggle');
+                        });
+                        $("#getChangeSuccessEdit").text("");
+                        alert(response.split("-")[1])
+                        //HEREHEREHEREHERE
+                        $("tr#tr"+$idid).replaceWith(response.split("-")[1]);
+                    }, 1500);
+                }
+                //if the text received is different from "Success" = an error
+                else
+                {
+                    $inputs.prop("disabled", false);
+                    $("#getChangeErrorEdit").text(response);
+                }
         },
 
         error:function (resultat, statut, erreur){

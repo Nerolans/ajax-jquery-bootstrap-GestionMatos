@@ -93,13 +93,13 @@
                             foreach ($infos as $element)
                             {
                                 ?>
-                                <tr>
+                                <tr id='tr<?php echo $element["idMatos"]?>'>
                                     <td><?php echo $element["matCatName"]?></td>
                                     <td><?php echo $element["matModal"]?></td>
                                     <td><?php echo $element["matSerialPerso"]?></td>
                                     <td><?php echo $element["matPrice"] . " CHF" ?></td>
                                     <td><?php echo  "x" . $element["matNumber"]?></td>
-                                    <td><img class="parameters" id = <?php echo $element["idMatos"]?> src="../../../ressources/images/edit.png">
+                                    <td><img class="parameters" id = <?php echo $element["idMatos"]?> src="../../../ressources/images/edit.png"></td>
                                 </tr>
                                 <?php
                             }

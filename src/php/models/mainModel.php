@@ -127,9 +127,9 @@ class mainModel
         $this->executeRequestSQL($query);
     }
 
-    public function modifEquipment($matType, $matModal, $matNumber, $matprice, $matSerialNumber, $matSerialPerso, $matFabricationDate, $matBoughtDate, $matUseDate, $matEndLifeDate, $matEPI, $matRebus, $matLost, $matMore, $idUser)
+    public function modifEquipment($matType, $matModal, $matNumber, $matprice, $matSerialNumber, $matSerialPerso, $matFabricationDate, $matBoughtDate, $matUseDate, $matEndLifeDate, $matEPI, $matRebus, $matLost, $matMore, $idMatos, $idUser)
     {
-        $query = 'UPDATE t_matos SET (matCatName,matModal,matNumber,matPrice,matSerialNumber,matSerialPerso,matFabricationDate,matBoughtdate,matUseDate,matEndLifeDate, matEPI, matRebus,matLost,matMore,idUser,idCategory) VALUES ("'.$matType.'","'.$matModal.'","'.$matNumber.'","'.$matprice.'","'.$matSerialNumber.'","'.$matSerialPerso.'","'.$matFabricationDate.'","'.$matBoughtDate.'","'.$matUseDate.'","'.$matEndLifeDate.'","'.$matEPI.'","'.$matRebus.'","'.$matLost.'","'.$matMore.'","'.$idUser.'",1)';
+        $query = 'UPDATE t_matos SET matcatName="'.$matType.'", matModal="'.$matModal.'", matNumber="'.$matNumber.'", matPrice="'.$matprice.'", matSerialNumber="'.$matSerialNumber.'", matSerialPerso="'.$matSerialPerso.'", matFabricationDate="'.$matFabricationDate.'", matBoughtDate="'.$matBoughtDate.'", matUseDate="'.$matUseDate.'", matEndLifeDate="'.$matEndLifeDate.'", matEPI="'.$matEPI.'", matRebus="'.$matRebus.'", matLost="'.$matLost.'", matMore="'.$matMore.'" WHERE idMatos= "'.$idMatos.'" AND idUser="'.$idUser.'"';
         $this->executeRequestSQL($query);
     }
 
