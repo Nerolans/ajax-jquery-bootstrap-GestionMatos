@@ -11,11 +11,14 @@
     <meta charset="UTF-8">
     <link href="../../../ressources/css/style.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../../js/tableHTMLExport.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="icon" href="../../../ressources/images/favicon.png" />
     <script src="../../js/equipement.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.5/jspdf.plugin.autotable.min.js"></script>
     <title>Equipement</title>
 
 </head>
@@ -58,7 +61,7 @@
                     <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
                 </div>
 
-                <div class="dropdown float-right ml-4 position-sticky" style="width:200px; top:80px; right:0px;">
+                <div class="dropdown float-right ml-4 position-sticky" style="width:200px;">
                     <button class="btn btn-secondary dropdown-toggle" style="width:170px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Catégories
                     </button>
@@ -72,7 +75,10 @@
                     </div>
                 </div>
 
-            
+                <button type="button" class="btn btn-success float-right" data-toggle="tooltip" data-placement="top" title="Ce bouton va télécharger le tableau ci-dessous comme il est affiché">
+                    Télécharger
+                </button>
+                <a class="h2 ml-4 mb-0">Total: </a>
             </div>
 
             <div class="container px-0 mt-4 opacityGrid">            
@@ -82,7 +88,7 @@
                         <th>Catégorie</th>
                         <th>Modèle</th>
                         <th>N° Série Perso</th>
-                        <th>Prix</th>
+                        <th>Prix (unité)</th>
                         <th>Nombre</th>
                     </tr>
                     </thead>
@@ -313,6 +319,10 @@
                 });
 
                 jQuery('#indique').css("overflow-y", "scroll");
+
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
             });
             $(document).on("click", "#addTypeEdit", function (){
                 $('#myModalEdit').modal('toggle')
