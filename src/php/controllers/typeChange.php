@@ -21,7 +21,7 @@ else
     foreach ($result as $element){
         foreach($element as $inception){
             $final .= '
-                    <tr>
+                    <tr id = "tr'.$inception["idMatos"].'">
                         <td>'.$inception["matCatName"].'</td>
                         <td>'.$inception["matModal"].'</td>
                         <td>'.$inception["matSerialPerso"].'</td>
