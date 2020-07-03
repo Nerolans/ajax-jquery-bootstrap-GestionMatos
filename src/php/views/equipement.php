@@ -57,9 +57,11 @@
             ?>
             <div style="height:90px; top:55px;" id="searchOptions" class="col-12 container px-0 border-bottom border-dark position-sticky">
                 <div style="height:25px" class="col-12"></div>
-                <div class="rounded bg-light p-0 float-left ml-4 position-sticky" style="width:260px; top:80px; left:20px;">
+                <div class="rounded bg-light p-0 float-left ml-4 mr-3 position-sticky" style="width:260px;">
                     <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
                 </div>
+
+                <a class="h3 ml-1 mb-0">Total: <label id = "totalText" class="h3 text-success">0 CHF</label></a>
 
                 <div class="dropdown float-right ml-4 position-sticky" style="width:200px;">
                     <button class="btn btn-secondary dropdown-toggle" style="width:170px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,10 +77,9 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-success float-right" data-toggle="tooltip" data-placement="top" title="Ce bouton va télécharger le tableau ci-dessous comme il est affiché">
+                <button type="button" class="btn btn-success float-right" data-toggle="tooltip" data-placement="top" title="Ce bouton va télécharger le tableau ci-dessous comme il est affiché (pdf), ou bien toutes les données (csv)">
                     Télécharger
                 </button>
-                <a class="h2 ml-4 mb-0">Total: </a>
             </div>
 
             <div class="container px-0 mt-4 opacityGrid">            
@@ -103,8 +104,8 @@
                                     <td><?php echo $element["matCatName"]?></td>
                                     <td><?php echo $element["matModal"]?></td>
                                     <td><?php echo $element["matSerialPerso"]?></td>
-                                    <td><?php echo $element["matPrice"] . " CHF" ?></td>
-                                    <td><?php echo  "x" . $element["matNumber"]?></td>
+                                    <td id="price"><?php echo $element["matPrice"] . " CHF" ?></td>
+                                    <td id="number"><?php echo  "x" . $element["matNumber"]?></td>
                                     <td><img class="parameters" id = <?php echo $element["idMatos"]?> src="../../../ressources/images/edit.png"></td>
                                 </tr>
                                 <?php

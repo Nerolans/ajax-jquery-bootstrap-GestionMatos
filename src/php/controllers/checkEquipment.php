@@ -47,7 +47,7 @@ if($_POST['type'] != "void")
                         // adding the quipment
                         $MainModel ->addEquipment($_POST['type'], $_POST['modele'], $_POST['number'], $_POST['prix'], $_POST['serieFabriquant'], $_POST['seriePerso'], $_POST['dateFabrication'], $_POST['dateAchat'], $_POST['dateUtilisation'], $_POST['dateFinVie'], $EPI, $Rebus, $Perdu, $_POST['description'], $_SESSION["idUser"][0]["idUser"]);
                         // returning the success and the line to add to the Equipment page
-                        echo "Success-"."<tr><td>".$_POST['type']."</td><td>".$_POST['modele']."</td><td>".$_POST['seriePerso']."</td><td>".$_POST['prix']." CHF"."</td><td>x".$_POST['number']."</td><td></td></tr>";
+                        echo "Success-"."<tr><td>".$_POST['type']."</td><td>".$_POST['modele']."</td><td>".$_POST['seriePerso']."</td><td id=\"price\">".$_POST['prix']." CHF"."</td><td id=\"number\">x".$_POST['number']."</td><td></td></tr>";
                         exit();
                     }
                     else

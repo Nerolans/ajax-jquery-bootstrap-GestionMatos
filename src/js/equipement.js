@@ -1,7 +1,9 @@
 
+//ADDING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function(){
     //adding equipment
+    makeTotal();
     $("#buttonADD").click(function(){
         //getting the form
         var $form = $("#formADD");
@@ -35,6 +37,7 @@ $(document).ready(function(){
                         });
                         $("#getChangeSuccess").text("");
                         $('#tableMain').append(response.split("-")[1]);
+                        makeTotal();
                     }, 1500);
                 }
                 //if the text received is different from "Success" = an error
@@ -54,7 +57,7 @@ $(document).ready(function(){
         });
     });
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////CHECKED
+//ADD TYPE///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////CHECKED
 
     //same than above but for adding a new type
     $("#buttonADD2").click(function(){
@@ -102,7 +105,8 @@ $(document).ready(function(){
             
         });
     });
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//SEARCH BAR // TOTAL///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //search bar
     $("#myInput").on("keyup", function() {
@@ -110,10 +114,30 @@ $(document).ready(function(){
         $("#tableMain tbody tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
+        makeTotal();
     });
 }); 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function makeTotal(){
+    $(document).ready(function(){
+        var $total = 0;
+        $('#tableMain tr').each(function(index, tr){
+            $trHere = $(this);
+            if($(this).is(":visible")){
+                $(this).find('td').each (function() {
+                    if($(this).attr("id") == "price"){
+                        $number = ($trHere).find('#number').html().split("x")[1];
+                        $total += (parseInt($(this).html()) * parseInt($number));
+                        $("#totalText").html($total+" CHF");
+                    }
+                }); 
+            }
+        });
+    }); 
+}
+
+//SORTING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function changeType(typeName)
 {
@@ -151,6 +175,7 @@ function changeType(typeName)
                     $('table tbody tr').remove();
                     $('table tbody').append(response);
                 }
+                makeTotal();
             },
             error:function (resultat, statut, erreur){
 
@@ -161,6 +186,8 @@ function changeType(typeName)
 
     });
 }
+
+//EDITING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $(document).on("click", ".parameters", function(){
     $.ajax({
@@ -214,6 +241,7 @@ $(document).on("click", ".buttonEdit", function(){
                         $("#getChangeSuccessEdit").text("");
                         //HEREHEREHEREHERE
                         $("tr#tr"+$idid).replaceWith(response.split("-")[1]);
+                        makeTotal();
                     }, 1500);
                 }
                 //if the text received is different from "Success" = an error
@@ -230,3 +258,5 @@ $(document).on("click", ".buttonEdit", function(){
         }
     });
 });
+
+//DELETING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

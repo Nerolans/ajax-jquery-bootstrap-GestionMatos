@@ -25,8 +25,8 @@ else
                         <td>'.$inception["matCatName"].'</td>
                         <td>'.$inception["matModal"].'</td>
                         <td>'.$inception["matSerialPerso"].'</td>
-                        <td>'.$inception["matPrice"].' CHF</td>
-                        <td>x'.$inception["matNumber"].'</td>
+                        <td id="price">'.$inception["matPrice"].' CHF</td>
+                        <td id="number">x'.$inception["matNumber"].'</td>
                         <td><img class="parameters" id ='.$inception["idMatos"].' src="../../../ressources/images/edit.png">
                     </tr>
                     ';
