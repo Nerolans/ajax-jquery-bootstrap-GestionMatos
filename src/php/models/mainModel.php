@@ -174,4 +174,10 @@ class mainModel
         }
         return $result;
     }
+
+    public function deleteEquipment($idUser, $idMatos)
+    {
+        $query = 'DELETE FROM t_matos WHERE `idUser` = "'.$idUser.'" AND `idMatos` = "'.$idMatos.'"';
+        $this->executeRequestSQL($query);
+    }
 }

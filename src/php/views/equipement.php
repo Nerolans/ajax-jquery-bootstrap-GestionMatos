@@ -285,8 +285,11 @@
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success buttonEdit" id="">Enregistrer</button>      
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                        <div class="w-100">
+                            <button type="button" class="btn btn-danger float-left buttonDelete" data-dismiss="modal">Supprimer</button>
+                            <button type="button" class="btn btn-dark float-right" data-dismiss="modal">Fermer</button>
+                            <button type="button" class="btn btn-success float-right mr-2 buttonEdit">Enregistrer</button>      
+                        </div>
                     </div>
 
                     </div>

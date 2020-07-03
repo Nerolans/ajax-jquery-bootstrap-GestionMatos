@@ -206,6 +206,7 @@ $(document).on("click", ".parameters", function(){
         }
     });
     $(".buttonEdit").prop('id', $(this).attr('id'));
+    $(".buttonDelete").prop('id', $(this).attr('id'));
 });
 
 
@@ -260,3 +261,25 @@ $(document).on("click", ".buttonEdit", function(){
 });
 
 //DELETING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$(document).on("click", ".buttonDelete", function(){
+    $id = $(this).attr('id');
+    $.ajax({
+        url: "deleteEquipment.php",
+        type: "POST",
+        data: {info:$(this).attr('id')},
+
+        success:function(response){
+            if(response == "success"){
+                $('#tr'+ $id).empty();
+                makeTotal();
+            }
+        },
+
+        error:function (resultat, statut, erreur){
+
+            console.log(resultat, statut, erreur );
+        }
+    });
+    $(".buttonEdit").prop('id', $(this).attr('id'));
+});
