@@ -123,7 +123,7 @@
             <img class="fixed-bottom m-4" id ="add" data-toggle="modal" data-target="#myModal" src="../../../ressources/images/add.png">
 
 
-
+<!--========================================MODAL ADD EQUIPMENT=====================================-->
             <div class="modal" id="myModal">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
@@ -232,7 +232,7 @@
                 </div>
             </div>
 
-        <!----------------------------------------------------------------------------------------------------------------------------->
+        <!--========================================MODAL ADD TYPE=====================================-->
 
             <div class="modal" id="myModal2">
                 <div class="modal-dialog modal-md">
@@ -267,7 +267,7 @@
                 </div>
             </div>
 
-            <!----------------------------------------------------------------------------------------------------------------------------->
+            <!--========================================MODAL EDIT=====================================-->
 
             <div class="modal" id="myModalEdit">
                 <div class="modal-dialog modal-xl">
@@ -295,6 +295,30 @@
                     </div>
                 </div>
             </div>
+
+            <!--========================================MODAL CONFIRMATION DELETE=====================================-->
+            <div class="modal" id="myModalConfirmation">
+                <div class="modal-dialog modal-s">
+                    <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Voulez-vous vraiment supprimer cet equipement?</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <div class="w-100">
+                            <button type="button" class="btn btn-danger float-left buttonConfirmation" data-dismiss="modal">Confirmer</button>
+                            <button type="button" class="btn btn-dark float-right" data-dismiss="modal">Fermer</button>    
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+
             <?php
         }
         else
@@ -328,6 +352,7 @@
                     $('[data-toggle="tooltip"]').tooltip()
                 })
             });
+
             $(document).on("click", "#addTypeEdit", function (){
                 $('#myModalEdit').modal('toggle')
                 $('#myModal2').modal('toggle')

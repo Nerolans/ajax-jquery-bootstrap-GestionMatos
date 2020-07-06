@@ -264,22 +264,25 @@ $(document).on("click", ".buttonEdit", function(){
 
 $(document).on("click", ".buttonDelete", function(){
     $id = $(this).attr('id');
-    $.ajax({
-        url: "deleteEquipment.php",
-        type: "POST",
-        data: {info:$(this).attr('id')},
-
-        success:function(response){
-            if(response == "success"){
-                $('#tr'+ $id).empty();
-                makeTotal();
+    $('#myModalConfirmation').modal('toggle') 
+    $( ".buttonConfirmation" ).click( function() {
+        $.ajax({
+            url: "deleteEquipment.php",
+            type: "POST",
+            data: {info:$id},
+    
+            success:function(response){
+                if(response == "success"){
+                    $('#tr'+ $id).empty();
+                    makeTotal();
+                }
+            },
+    
+            error:function (resultat, statut, erreur){
+    
+                console.log(resultat, statut, erreur );
             }
-        },
-
-        error:function (resultat, statut, erreur){
-
-            console.log(resultat, statut, erreur );
-        }
+        });
+        $(".buttonEdit").prop('id', $id);
     });
-    $(".buttonEdit").prop('id', $(this).attr('id'));
 });

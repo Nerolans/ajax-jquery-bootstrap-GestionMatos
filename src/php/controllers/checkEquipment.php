@@ -45,9 +45,9 @@ if($_POST['type'] != "void")
                         $MainModel = new mainModel;
 
                         // adding the quipment
-                        $MainModel ->addEquipment($_POST['type'], $_POST['modele'], $_POST['number'], $_POST['prix'], $_POST['serieFabriquant'], $_POST['seriePerso'], $_POST['dateFabrication'], $_POST['dateAchat'], $_POST['dateUtilisation'], $_POST['dateFinVie'], $EPI, $Rebus, $Perdu, $_POST['description'], $_SESSION["idUser"][0]["idUser"]);
+                        $equipmentID = $MainModel ->addEquipment($_POST['type'], $_POST['modele'], $_POST['number'], $_POST['prix'], $_POST['serieFabriquant'], $_POST['seriePerso'], $_POST['dateFabrication'], $_POST['dateAchat'], $_POST['dateUtilisation'], $_POST['dateFinVie'], $EPI, $Rebus, $Perdu, $_POST['description'], $_SESSION["idUser"][0]["idUser"]);
                         // returning the success and the line to add to the Equipment page
-                        echo "Success-"."<tr><td>".$_POST['type']."</td><td>".$_POST['modele']."</td><td>".$_POST['seriePerso']."</td><td id=\"price\">".$_POST['prix']." CHF"."</td><td id=\"number\">x".$_POST['number']."</td><td></td></tr>";
+                        echo "Success-"."<tr id='tr".$equipmentID[0]['idMatos']."'><td>".$_POST['type']."</td><td>".$_POST['modele']."</td><td>".$_POST['seriePerso']."</td><td id=\"price\">".$_POST['prix']." CHF"."</td><td id=\"number\">x".$_POST['number']."</td><td><img class='parameters' id = '".$equipmentID[0]['idMatos']."' src='../../../ressources/images/edit.png'></td></tr>";
                         exit();
                     }
                     else
