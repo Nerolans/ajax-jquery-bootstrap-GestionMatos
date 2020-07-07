@@ -45,7 +45,7 @@
     <section>
 
         <div class="col-12" style="height: 60px"></div>
-        <div class="container rounded col-8 float-center pt-3 bg-light p-0" style="opacity:75%;height:350px">
+        <div class="container rounded col-8 float-center pt-3 bg-light p-0" style="opacity:75%;height:380px">
             <h4 class="pl-5 pt-2 text-muted">Connexion</h4>
             <div class="container col-12 float-center text-center mt-3 p-0">
                 <div style="height:60px;">
@@ -60,6 +60,9 @@
                         <div class="container col-12 p-0" style="height:50px;">
                             <label class="col-6 float-left text-right p-0 pt-1 pr-4">Mot de passe</label>
                             <input class="col-2 float-left" type="password" name="inputConnexionPassword">
+                        </div>
+                        <div style="height:20px;">
+                            <p><a href="../controllers/mainController.php?view=forgotPassword" class="text-secondary">J'ai oublié mon mot de passe</a></p>
                         </div>
                         <div class="container col-12 p-0 pt-3">
                             <input type="submit" class="btn btn-primary" value="Connexion">

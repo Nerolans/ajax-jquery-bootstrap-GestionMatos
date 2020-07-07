@@ -23,7 +23,7 @@ $response .=
             <div class="container col-12 p-2" style="height:50px;">
                 <label class="col-6 float-left text-right p-0 pt-1 pr-4">Type de matériel</label>
                 <select id="type" name="type" class="col-3 float-left browser-default custom-select" required>
-                    <option value="'.$infos["matCatName"].'" id="BD" name="BD">'.$infos["matCatName"].'</option>
+                    <option value="'.$infos["matCatName"].'" id="'.$infos["matCatName"].'" name="BD">'.$infos["matCatName"].'</option>
                     <div id="refresh">
                         '
                         .$responseOptions.
@@ -31,6 +31,7 @@ $response .=
                     </div>
                 </select>
                 <img id ="addTypeEdit" class="pt-1 pl-2" src="../../../ressources/images/addPlus.png">
+                <img id ="deleteTypeADDEdit" class="pt-1 pl-2" src="../../../ressources/images/cross.png">
             </div>
 
             <div class="container col-12 p-0" style="height:36px;">

@@ -79,16 +79,14 @@ $(document).ready(function(){
                     $("#getChangeSuccess2").text("Le type à bien été ajouté à la liste"); 
 
                     window.setTimeout(function(){
-                        $('#formADD')[0].reset();
                         $inputs.prop("disabled", false);
                         $(function () {
                             $('#myModal2').modal('toggle');
                         });
                         $("#getChangeSuccess2").text("");
                         $('#type').append(response.split("-")[1]);
+                        $('#typeDelete').append(response.split("-")[1]);
                     }, 1150);
-
-                    $("#formADD").reload();
                 }
                 else
                 {
@@ -209,9 +207,6 @@ $(document).on("click", ".parameters", function(){
     $(".buttonDelete").prop('id', $(this).attr('id'));
 });
 
-
-
-
 $(document).on("click", ".buttonEdit", function(){
     var $form = $("#formEdit");
     var $inputs = $form.find("input");
@@ -260,7 +255,7 @@ $(document).on("click", ".buttonEdit", function(){
     });
 });
 
-//DELETING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//DELETING EQUIPMENT///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $(document).on("click", ".buttonDelete", function(){
     $id = $(this).attr('id');
@@ -284,5 +279,42 @@ $(document).on("click", ".buttonDelete", function(){
             }
         });
         $(".buttonEdit").prop('id', $id);
+    });
+});
+
+//DELETING TYPE///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$(document).on("click", "#buttonDeleteType", function(){
+    var $form = $("#formDeleteType");
+    var $inputs = $form.find("input");
+    var serializedData = $form.serializeArray();
+    $inputs.prop("disabled", true);
+
+    $.ajax({
+        url: "deleteType.php",
+        type: "POST",
+        data: serializedData,
+
+        success:function(response){
+            if (response.indexOf("success") >= 0)
+            {
+                $("#getChangeType").text("Le type à bien été supprimé"); 
+
+                window.setTimeout(function(){
+                    $inputs.prop("disabled", false);
+                    $("#getChangeType").text("");
+                    $(function () {
+                        $('#myModalDeleteType').modal('toggle');
+                    });
+                    $('#type #'+response.split("-")[1]).remove();
+                    $('#typeDelete #'+response.split("-")[1]).remove();
+                }, 1150);
+            }
+        },
+
+        error:function (resultat, statut, erreur){
+
+            console.log(resultat, statut, erreur );
+        }
     });
 });

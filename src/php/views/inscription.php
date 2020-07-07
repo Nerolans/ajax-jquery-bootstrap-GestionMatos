@@ -54,20 +54,20 @@
                 <form name="formInscription" method="post" action="../controllers/mainController.php?view=checkInscription">
                     <div class="container col p-0">
                         <div class="container col-12 p-0" style="height:50px;">
-                            <label class="col-6 float-left text-right p-0 pt-1 pr-4">Nom</label>
+                            <label class="col-5 float-left text-right p-0 pt-1 pr-4">Nom</label>
                             <input class="col-3 float-left" type="text" name="inputInscriptionNickname">
                         </div>
                         <div class="container col-12 p-0" style="height:50px;">
-                            <label class="col-6 float-left text-right p-0 pt-1 pr-4">E-Mail</label>
-                            <input class="col-2 float-left" type="text" name="inputInscriptionEmail">
+                            <label class="col-5 float-left text-right p-0 pt-1 pr-4">E-Mail</label>
+                            <input class="col-3 float-left" type="text" name="inputInscriptionEmail">
                         </div>
                         <div class="container col-12 p-0" style="height:50px;">
-                            <label class="col-6 float-left text-right p-0 pt-1 pr-4">Mot de passe</label>
-                            <input class="col-2 float-left" type="password" name="inputInscriptionPassword">
+                            <label class="col-5 float-left text-right p-0 pt-1 pr-4">Mot de passe</label>
+                            <input class="col-3 float-left" type="password" name="inputInscriptionPassword">
                         </div>
                         <div class="container col-12 p-0" style="height:50px;">
-                            <label class="col-6 float-left text-right p-0 pt-1 pr-4">Confirmer</label>
-                            <input class="col-2 float-left" type="password" name="inputInscriptionPassword2">
+                            <label class="col-5 float-left text-right p-0 pt-1 pr-4">Confirmer</label>
+                            <input class="col-3 float-left" type="password" name="inputInscriptionPassword2">
                         </div>
                         <div class="container col-12 p-0 pt-3">
                             <input type="submit" class="btn btn-primary" value="Inscription">

@@ -52,6 +52,10 @@ switch ($view)
         include 'checkSettings.php';
         break;
     
+    case "forgotPassword":
+        include '../views/forgotPassword.php';
+        break;
+    
     case "Destroy":
         session_destroy();
         header("location:mainController.php?view=Accueil");

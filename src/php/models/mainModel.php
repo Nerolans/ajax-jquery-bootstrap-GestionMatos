@@ -43,6 +43,12 @@ class mainModel
         $result = $this->executeGetRequestSQL($query);
         return $result;
     }
+    public function getPersoCategories()
+    {
+        $query ='SELECT t_persocategory.catName FROM `t_persocategory` WHERE t_persocategory.idUser = "'.$_SESSION["idUser"][0]["idUser"].'"';
+        $result = $this->executeGetRequestSQL($query);
+        return $result;
+    }
 
     public function getMainInfos()
     {
@@ -135,16 +141,7 @@ class mainModel
         $query = 'UPDATE t_matos SET matcatName="'.$matType.'", matModal="'.$matModal.'", matNumber="'.$matNumber.'", matPrice="'.$matprice.'", matSerialNumber="'.$matSerialNumber.'", matSerialPerso="'.$matSerialPerso.'", matFabricationDate="'.$matFabricationDate.'", matBoughtDate="'.$matBoughtDate.'", matUseDate="'.$matUseDate.'", matEndLifeDate="'.$matEndLifeDate.'", matEPI="'.$matEPI.'", matRebus="'.$matRebus.'", matLost="'.$matLost.'", matMore="'.$matMore.'" WHERE idMatos= "'.$idMatos.'" AND idUser="'.$idUser.'"';
         $this->executeRequestSQL($query);
     }
-
-
-
-
-
-
-
-
-
-
+    
     public function getIdCat($toSearch)
     {
         $query = 'SELECT `idCategory` FROM `t_category` WHERE `catName` = "'.$toSearch.'"';
@@ -181,6 +178,12 @@ class mainModel
     public function deleteEquipment($idUser, $idMatos)
     {
         $query = 'DELETE FROM t_matos WHERE `idUser` = "'.$idUser.'" AND `idMatos` = "'.$idMatos.'"';
+        $this->executeRequestSQL($query);
+    }
+
+    public function deleteType($idUser, $typeName)
+    {
+        $query = 'DELETE FROM t_persocategory WHERE `idUser` = "'.$idUser.'" AND `catName` = "'.$typeName.'"';
         $this->executeRequestSQL($query);
     }
 }

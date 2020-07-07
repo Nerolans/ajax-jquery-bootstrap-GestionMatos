@@ -146,12 +146,13 @@
                                             <?php
                                                 $categories= $MainModel->getAllCategories();
                                                 foreach ($categories as $element){
-                                                    ?><option value="<?php echo $element['catName']?>" id="BD" name="BD"><?php echo $element['catName']?></option><?php
+                                                    ?><option value="<?php echo $element['catName']?>" id="<?php echo $element['catName']?>" name="BD"><?php echo $element['catName']?></option><?php
                                                 }
                                             ?>
                                         </div>
                                     </select>
                                     <img id ="addType" class="pt-1 pl-2" src="../../../ressources/images/addPlus.png">
+                                    <img id ="deleteTypeADD" class="pt-1 pl-2" src="../../../ressources/images/cross.png">
                                 </div>
 
                                 <div class="container col-12 p-0" style="height:36px;">
@@ -260,13 +261,58 @@
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" id="buttonADD2">Ajouter</button>      
-                        <button type="button" id="dismissType" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
                     </div>
 
                     </div>
                 </div>
             </div>
 
+            <!--========================================MODAL DELETE TYPE=====================================-->
+
+            <div class="modal" id="myModalDeleteType">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Supprimer un Type de matériel</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="container col-10 mx-auto p-0" style="height:100%;">
+                            <form method="post" id="formDeleteType" enctype="multipart/form-data">
+                                <select id="typeDelete" name="type" class="col-12 browser-default custom-select" required>
+                                    <option value="void" id="void" name="void"></option>
+                                    <div id="refresh">
+                                        <?php
+                                            $categoriesPerso = $MainModel->getPersoCategories();
+                                            foreach ($categoriesPerso as $element){
+                                                ?><option value=<?php echo $element['catName']?> id="BD" name="BD"><?php echo $element['catName']?></option><?php
+                                            }
+                                        ?>
+                                    </div>
+                                </select>
+                            </form>
+                            <div class="container text-center col-10 float-center p-0 mt-4" style="height:100%">
+                                <label class="text-success p-0" id="getChangeType"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <div class="w-100">
+                            <button type="button" id="buttonDeleteType" class="btn btn-danger float-left">Supprimer</button>
+                            <button type="button" class="btn btn-dark float-right" data-dismiss="modal">Fermer</button>    
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
             <!--========================================MODAL EDIT=====================================-->
 
             <div class="modal" id="myModalEdit">
@@ -301,19 +347,19 @@
                 <div class="modal-dialog modal-s">
                     <div class="modal-content">
 
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Voulez-vous vraiment supprimer cet equipement?</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <div class="w-100">
-                            <button type="button" class="btn btn-danger float-left buttonConfirmation" data-dismiss="modal">Confirmer</button>
-                            <button type="button" class="btn btn-dark float-right" data-dismiss="modal">Fermer</button>    
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Voulez-vous vraiment supprimer cet equipement?</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                    </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <div class="w-100">
+                                <button type="button" class="btn btn-success float-left buttonConfirmation" data-dismiss="modal">Confirmer</button>
+                                <button type="button" class="btn btn-dark float-right" data-dismiss="modal">Annuler</button>    
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -340,10 +386,10 @@
                     $('#myModal').modal('toggle')
                     $('#myModal2').modal('toggle')
                 });
-            
-                $("#dismissType").click(function(){
+
+                $("#deleteTypeADD").click(function(){  
                     $('#myModal').modal('toggle')
-                    $('#myModal').css('overflow-y', 'auto');
+                    $('#myModalDeleteType').modal('toggle')
                 });
 
                 jQuery('#indique').css("overflow-y", "scroll");
@@ -356,6 +402,11 @@
             $(document).on("click", "#addTypeEdit", function (){
                 $('#myModalEdit').modal('toggle')
                 $('#myModal2').modal('toggle')
+            });
+
+            $(document).on("click", "#deleteTypeADDEdit", function (){
+                $('#myModalEdit').modal('toggle')
+                $('#myModalDeleteType').modal('toggle')
             });
     </script>
 </html>
