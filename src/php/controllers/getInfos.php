@@ -31,7 +31,7 @@ $response .=
                     </div>
                 </select>
                 <img id ="addTypeEdit" class="pt-1 pl-2" src="../../../ressources/images/addPlus.png">
-                <img id ="deleteTypeADDEdit" class="pt-1 pl-2" src="../../../ressources/images/cross.png">
+                <img id ="deleteTypeADDEdit" class="pt-1" src="../../../ressources/images/cross.png">
             </div>
 
             <div class="container col-12 p-0" style="height:36px;">
@@ -93,7 +93,7 @@ $response .=
                 $response.='
                 >Rebus</label>
                 <label class="checkbox-inline p-0 pt-1"><input type="checkbox" name="Perdu" value="1"';
-                if($infos["matRebus"]=="1"){$response.="checked";}
+                if($infos["matLost"]=="1"){$response.="checked";}
                 $response.='
                 >Perdu</label>
                 </div>

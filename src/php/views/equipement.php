@@ -152,7 +152,7 @@
                                         </div>
                                     </select>
                                     <img id ="addType" class="pt-1 pl-2" src="../../../ressources/images/addPlus.png">
-                                    <img id ="deleteTypeADD" class="pt-1 pl-2" src="../../../ressources/images/cross.png">
+                                    <img id ="deleteTypeADD" class="pt-1" src="../../../ressources/images/cross.png">
                                 </div>
 
                                 <div class="container col-12 p-0" style="height:36px;">
@@ -285,7 +285,7 @@
                         <div class="container col-10 mx-auto p-0" style="height:100%;">
                             <form method="post" id="formDeleteType" enctype="multipart/form-data">
                                 <select id="typeDelete" name="type" class="col-12 browser-default custom-select" required>
-                                    <option value="void" id="void" name="void"></option>
+                                    <option value="" id="void" name=""></option>
                                     <div id="refresh">
                                         <?php
                                             $categoriesPerso = $MainModel->getPersoCategories();
@@ -298,6 +298,7 @@
                             </form>
                             <div class="container text-center col-10 float-center p-0 mt-4" style="height:100%">
                                 <label class="text-success p-0" id="getChangeType"></label>
+                                <label class="text-danger p-0" id="getErrorType"></label>
                             </div>
                         </div>
                     </div>
@@ -357,7 +358,7 @@
                         <div class="modal-footer">
                             <div class="w-100">
                                 <button type="button" class="btn btn-success float-left buttonConfirmation" data-dismiss="modal">Confirmer</button>
-                                <button type="button" class="btn btn-dark float-right" data-dismiss="modal">Annuler</button>    
+                                <button type="button" id="fckGoBack" class="btn btn-dark float-right">Annuler</button>    
                             </div>
                         </div>
 
@@ -407,6 +408,11 @@
             $(document).on("click", "#deleteTypeADDEdit", function (){
                 $('#myModalEdit').modal('toggle')
                 $('#myModalDeleteType').modal('toggle')
+            });
+
+            $(document).on("click", "#fckGoBack", function (){
+                $('#myModalConfirmation').modal('toggle')
+                $('#myModalEdit').modal('toggle')
             });
     </script>
 </html>

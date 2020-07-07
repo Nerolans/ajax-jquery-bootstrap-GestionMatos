@@ -145,6 +145,17 @@ function changeType(typeName)
         if($('#'+typeName).hasClass("active"))
         {
             $('#'+typeName).removeClass("active")
+            $count = 0;
+            $("#ddMenu a").each(function( index ) {
+                if($(this).hasClass("active"))
+                {
+                    $count +=1;
+                }
+            });
+            if($count==0)
+            {
+                location.reload(true);
+            }
         }
         else
         {
@@ -164,15 +175,8 @@ function changeType(typeName)
             data: {info:toSearchFor},
 
             success:function(response){
-                if(response.length == 0)
-                {
-                    location.reload(true);
-                }
-                else
-                {
-                    $('table tbody tr').remove();
-                    $('table tbody').append(response);
-                }
+                $('table tbody tr').remove();
+                $('table tbody').append(response);
                 makeTotal();
             },
             error:function (resultat, statut, erreur){
@@ -298,8 +302,8 @@ $(document).on("click", "#buttonDeleteType", function(){
         success:function(response){
             if (response.indexOf("success") >= 0)
             {
+                $("#getErrorType").text("");
                 $("#getChangeType").text("Le type à bien été supprimé"); 
-
                 window.setTimeout(function(){
                     $inputs.prop("disabled", false);
                     $("#getChangeType").text("");
@@ -309,6 +313,11 @@ $(document).on("click", "#buttonDeleteType", function(){
                     $('#type #'+response.split("-")[1]).remove();
                     $('#typeDelete #'+response.split("-")[1]).remove();
                 }, 1150);
+            }
+            else
+            {
+                $inputs.prop("disabled", false);
+                $("#getErrorType").text(response);
             }
         },
 
