@@ -261,7 +261,7 @@
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" id="buttonADD2">Ajouter</button>      
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-danger" id="#closePopADD">Fermer</button>
                     </div>
 
                     </div>
@@ -307,7 +307,7 @@
                     <div class="modal-footer">
                         <div class="w-100">
                             <button type="button" id="buttonDeleteType" class="btn btn-danger float-left">Supprimer</button>
-                            <button type="button" class="btn btn-dark float-right" data-dismiss="modal">Fermer</button>    
+                            <button type="button" class="btn btn-dark float-right" id="closePopDelete">Fermer</button>    
                         </div>
                     </div>
 
@@ -382,15 +382,21 @@
     </section>
 </body>
     <script>
+    $lastModal = "";
+    $lastID = "";
+
+            //open modals
             $(document).ready(function(){
                 $("#addType").click(function(){
                     $('#myModal').modal('toggle')
                     $('#myModal2').modal('toggle')
+                    $lastModal = "#myModal";
                 });
 
                 $("#deleteTypeADD").click(function(){  
                     $('#myModal').modal('toggle')
                     $('#myModalDeleteType').modal('toggle')
+                    $lastModal = "#myModal";
                 });
 
                 jQuery('#indique').css("overflow-y", "scroll");
@@ -400,14 +406,31 @@
                 })
             });
 
+
+
+            //go back when validated
             $(document).on("click", "#addTypeEdit", function (){
                 $('#myModalEdit').modal('toggle')
                 $('#myModal2').modal('toggle')
+                $lastModal = "#myModalEdit";
             });
 
             $(document).on("click", "#deleteTypeADDEdit", function (){
                 $('#myModalEdit').modal('toggle')
                 $('#myModalDeleteType').modal('toggle')
+                $lastModal = "#myModalEdit";
+            });
+
+            //go back when closed
+            $(document).on("click", "#closePopDelete", function(){
+                $('#myModalDeleteType').modal('toggle');
+                $($lastModal).modal('toggle');
+            });
+
+            $(document).on("click", "#closePopADD", function(){
+                alert("test");
+                $('#myModal2').modal('toggle');
+                $($lastModal).modal('toggle');
             });
 
             $(document).on("click", "#fckGoBack", function (){

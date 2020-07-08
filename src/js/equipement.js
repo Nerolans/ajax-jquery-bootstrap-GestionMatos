@@ -80,12 +80,18 @@ $(document).ready(function(){
 
                     window.setTimeout(function(){
                         $inputs.prop("disabled", false);
-                        $(function () {
-                            $('#myModal2').modal('toggle');
-                        });
+                        $('#myModal2').modal('toggle');
                         $("#getChangeSuccess2").text("");
                         $('#type').append(response.split("-")[1]);
                         $('#typeDelete').append(response.split("-")[1]);
+                        if($lastModal == "#myModal")
+                        {
+                            $($lastModal).modal('toggle');
+                        }
+                        else
+                        {
+                            edit($lastID);
+                        }
                     }, 1150);
                 }
                 else
@@ -190,12 +196,16 @@ function changeType(typeName)
 }
 
 //EDITING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 $(document).on("click", ".parameters", function(){
+    $lastID = $(this).attr('id');
+    edit($lastID)
+});
+function edit($id)
+{  
     $.ajax({
         url: "getInfos.php",
         type: "POST",
-        data: {info:$(this).attr('id')},
+        data: {info:$id},
 
         success:function(response){
             $('#bodyEdit').html(response);
@@ -207,17 +217,17 @@ $(document).on("click", ".parameters", function(){
             console.log(resultat, statut, erreur );
         }
     });
-    $(".buttonEdit").prop('id', $(this).attr('id'));
-    $(".buttonDelete").prop('id', $(this).attr('id'));
-});
+    $(".buttonEdit").prop('id', $id);
+    $(".buttonDelete").prop('id', $id); 
+}
 
 $(document).on("click", ".buttonEdit", function(){
     var $form = $("#formEdit");
     var $inputs = $form.find("input");
     var serializedData = $form.serializeArray();
-    var $idid = $(this).attr('id');
+    var $idid = $lastID;
     $inputs.prop("disabled", true);
-    serializedData.push({name:"info",value:$(this).attr('id')})
+    serializedData.push({name:"info",value:$lastID})
     $.ajax({
         url: "editInfos.php",
         type: "POST",
@@ -307,11 +317,10 @@ $(document).on("click", "#buttonDeleteType", function(){
                 window.setTimeout(function(){
                     $inputs.prop("disabled", false);
                     $("#getChangeType").text("");
-                    $(function () {
-                        $('#myModalDeleteType').modal('toggle');
-                    });
-                    $('#type #'+response.split("-")[1]).remove();
-                    $('#typeDelete #'+response.split("-")[1]).remove();
+                    $('#myModalDeleteType').modal('toggle');
+                    $($lastModal).modal('toggle');
+                    $('#type option[value='+response.split("-")[1]+']').remove();
+                    $('#typeDelete option[value='+response.split("-")[1]+']').remove();
                 }, 1150);
             }
             else
