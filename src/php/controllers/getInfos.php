@@ -12,7 +12,12 @@ $categories= $MainModel->getAllCategories();
 
 //get all the categories
 foreach ($categories as $element){
-    $responseOptions .= '<option value="'.$element["catName"].'" id="BD" name="BD">'.$element["catName"].'</option>';
+    if($element["catName"] == $infos["matCatName"])
+    {}
+    else
+    {
+        $responseOptions .= '<option value="'.$element["catName"].'" id="BD" name="BD">'.$element["catName"].'</option>';
+    }
 }
 
 //adding html to answer so i can append it with jquery

@@ -122,7 +122,6 @@ $(document).ready(function(){
     });
 }); 
 
-
 function makeTotal(){
     $(document).ready(function(){
         var $total = 0;
