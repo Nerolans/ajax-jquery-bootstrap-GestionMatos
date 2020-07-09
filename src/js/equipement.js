@@ -82,8 +82,10 @@ $(document).ready(function(){
                         $inputs.prop("disabled", false);
                         $('#myModal2').modal('toggle');
                         $("#getChangeSuccess2").text("");
-                        $('#type').append(response.split("-")[1]);
-                        $('#typeDelete').append(response.split("-")[1]);
+                        $('#type').append(response.split("|")[1]);
+                        $('#typeDelete').append(response.split("|")[1]);
+                        alert(response.split("|")[2]);
+                        $('#ddMenu').append(response.split("|")[2]);
                         if($lastModal == "#myModal")
                         {
                             $($lastModal).modal('toggle');

@@ -67,7 +67,7 @@
                     <button class="btn btn-secondary dropdown-toggle" style="width:170px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Catégories
                     </button>
-                    <div class="dropdown-menu ddMenu" id="ddMenu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu ddMenu overflow-auto" id="ddMenu" aria-labelledby="dropdownMenuButton">
                         <?php
                             foreach ($categories as $element)
                             {

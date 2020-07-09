@@ -33,7 +33,11 @@ nav
     background-color: rgb(255, 255, 255, 0.8)
 }
 
-
+#ddMenu
+{
+    height: 350px;
+    width:160px;
+}
 
 #add, .pointy
 {

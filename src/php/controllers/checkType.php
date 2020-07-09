@@ -11,7 +11,7 @@ session_start();
             include '../models/mainModel.php';
             $MainModel = new mainModel;
             $MainModel ->addPersoType($_POST['addType'], $_SESSION["idUser"][0]["idUser"]);
-            echo "Success-"."<option value='".$_POST['addType']."' id='".$_POST['addType']."' name='BD'>".$_POST['addType']."</option>";
+            echo "Success|"."<option value='".$_POST['addType']."' id='".$_POST['addType']."' name='BD'>".$_POST['addType']."</option>|<a id=".$_POST['addType']." class='dropdown-item pointy' onclick='changeType(this.id);'>".$_POST['addType']."</a>";
             exit();
         }
         else
