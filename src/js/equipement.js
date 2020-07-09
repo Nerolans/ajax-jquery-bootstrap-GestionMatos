@@ -84,7 +84,6 @@ $(document).ready(function(){
                         $("#getChangeSuccess2").text("");
                         $('#type').append(response.split("|")[1]);
                         $('#typeDelete').append(response.split("|")[1]);
-                        alert(response.split("|")[2]);
                         $('#ddMenu').append(response.split("|")[2]);
                         if($lastModal == "#myModal")
                         {
@@ -322,6 +321,7 @@ $(document).on("click", "#buttonDeleteType", function(){
                     $($lastModal).modal('toggle');
                     $('#type option[value='+response.split("-")[1]+']').remove();
                     $('#typeDelete option[value='+response.split("-")[1]+']').remove();
+                    $('#ddMenu #'+response.split("-")[1]).remove();
                 }, 1150);
             }
             else
