@@ -71,7 +71,7 @@
                         <?php
                             foreach ($categories as $element)
                             {
-                                ?><a id="<?php echo $element['catName']?>" class="dropdown-item" onclick="changeType(this.id);"><?php echo $element['catName']?></a><?php
+                                ?><a id="<?php echo $element['catName']?>" class="dropdown-item pointy" onclick="changeType(this.id);"><?php echo $element['catName']?></a><?php
                             }
                         ?>
                     </div>
@@ -436,6 +436,11 @@
             $(document).on("click", "#fckGoBack", function (){
                 $('#myModalConfirmation').modal('toggle')
                 $('#myModalEdit').modal('toggle')
+            });
+
+            //other
+            $('#ddMenu a').on('click', function (e) {
+                e.stopPropagation();
             });
     </script>
 </html>

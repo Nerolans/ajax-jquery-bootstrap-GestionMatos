@@ -43,7 +43,20 @@
 
     <!--Content of the page-->
     <section>
-                    
+        <?php
+            if(isset($_SESSION['connected']))
+            { 
+            }
+            else
+            {
+                ?>
+                    <div class="container text-center pt-5 col-8 float-center">
+                        <p class="display-4">Vous devez vous connecter pour envoyer un message à l'administrateur</p>
+                        <input type="submit" class="btn-lg mt-5 btn-secondary btn-block" value="Connexion" onclick="window.location = '../controllers/mainController.php?view=Inscription'">
+                    </div>
+                <?php
+            } 
+            ?>    
     </section>
 
     <!--Footer (include) founf in the "includes" folder-->
