@@ -337,3 +337,39 @@ $(document).on("click", "#buttonDeleteType", function(){
         }
     });
 });
+
+//RESET PASSWORD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$(document).ready(function(){
+    $("#buttonSearch").click(function(){
+        var $form = $("#formReset");
+        var $inputs = $form.find("input");
+        var serializedData = $form.serialize();
+
+        $.ajax({
+            url: "checkEmailName.php",
+            type: "POST",
+            data: serializedData,
+
+            success:function (response){
+
+                if(response == "Success")
+                {
+                    $("#errorReset").text("");
+                    $("#successReset").text("Veuillez rentrer le code qui vous à été envoyé par Mail"); 
+                }
+                else
+                {
+                    $inputs.prop("disabled", false);
+                    $("#errorReset").text(response);
+                }
+
+            },
+
+            error:function (resultat, statut, erreur){
+
+                console.log(resultat, statut, erreur );
+            }
+            
+        });
+    });
+});
