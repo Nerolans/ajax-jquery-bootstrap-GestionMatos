@@ -186,4 +186,23 @@ class mainModel
         $query = 'DELETE FROM t_persocategory WHERE `idUser` = "'.$idUser.'" AND `catName` = "'.$typeName.'"';
         $this->executeRequestSQL($query);
     }
+
+    public function setTokenInfos($selector,$hashedToken, $expires, $idUser)
+    {
+        $query = 'UPDATE t_user SET useResetSelector = "'.$selector.'", useResetToken = "'.$hashedToken.'", useResetExpires = "'.$expires.'" WHERE idUser = "'.$idUser[0]["idUser"].'"';
+        $this->executeRequestSQL($query);
+    }
+
+    public function getToken($selector, $date)
+    {    
+        $query = 'SELECT * FROM `t_user` WHERE `useResetSelector` = "'.$selector.'" AND `useResetExpires` >= "'.$date.'"';
+        $result = $this->executeGetRequestSQL($query);
+        return $result;
+    }
+
+    public function changePassword($validator, $password)
+    {    
+        $query = 'UPDATE t_user SET UsePassword = "'.$password.'" WHERE useResetSelector = "'.$validator.'"';
+        $result = $this->executeRequestSQL($query);
+    }
 }

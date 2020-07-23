@@ -251,8 +251,8 @@ $(document).on("click", ".buttonEdit", function(){
                         $("#getChangeSuccessEdit").text("");
                         //HEREHEREHEREHERE
                         $("tr#tr"+$idid).replaceWith(response.split("-")[1]);
-                        makeTotal();
                     }, 1500);
+                    makeTotal();
                 }
                 //if the text received is different from "Success" = an error
                 else
@@ -341,35 +341,38 @@ $(document).on("click", "#buttonDeleteType", function(){
 //RESET PASSWORD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $(document).ready(function(){
     $("#buttonSearch").click(function(){
-        var $form = $("#formReset");
-        var $inputs = $form.find("input");
-        var serializedData = $form.serialize();
+        if(!$("#buttonSearch").hasClass("disabled"))
+        {
+            var $form = $("#formReset");
+            var $inputs = $form.find("input");
+            var serializedData = $form.serialize();
 
-        $.ajax({
-            url: "checkEmailName.php",
-            type: "POST",
-            data: serializedData,
+            $.ajax({
+                url: "checkEmailName.php",
+                type: "POST",
+                data: serializedData,
 
-            success:function (response){
+                success:function (response){
 
-                if(response == "Success")
-                {
-                    $("#errorReset").text("");
-                    $("#successReset").text("Veuillez rentrer le code qui vous à été envoyé par Mail"); 
+                    if(response == "Success")
+                    {
+                        $("#messageReset").text("Un mail vous a été envoyé"); 
+                        $('#buttonSearch').prop('disabled',true);
+                    }
+                    else
+                    {
+                        $inputs.prop("disabled", false);
+                        $("#messageReset").text(response);
+                    }
+
+                },
+
+                error:function (resultat, statut, erreur){
+
+                    console.log(resultat, statut, erreur );
                 }
-                else
-                {
-                    $inputs.prop("disabled", false);
-                    $("#errorReset").text(response);
-                }
-
-            },
-
-            error:function (resultat, statut, erreur){
-
-                console.log(resultat, statut, erreur );
-            }
-            
-        });
+                
+            });
+        }
     });
 });

@@ -7,20 +7,32 @@ session_start();
     {
         include '../models/mainModel.php';
         $MainModel = new mainModel;
-        $toValidName = $MainModel->getIdByUsername($_POST["name"]);
         $toValidMail = $MainModel->getIdByMail($_POST["name"]);
-        if(!empty($toValidMail)||!empty($toValidName))
+        if(!empty($toValidMail))
         {
+            $selector = bin2hex(random_bytes(8));
+            $token = random_bytes(32);
+            $link = explode("/controllers",$_SERVER["PHP_SELF"])[0].'/views/newPassword.php?selector='.$selector.'&validator='.bin2hex($token);
+            $expires = date("U") + 1200;
+            
+            $MainModel->setTokenInfos($selector,password_hash($token, PASSWORD_DEFAULT),$expires,$toValidMail);
+            
+            // the message
+            $msg = "Cliquez sur ce lien pour changer votre mot de passe:\n".explode("/controllers",$_SERVER["PHP_SELF"])[0].'/views/newPassword.php?selector='.$selector.'&validator='.bin2hex($token);
+            // use wordwrap() if lines are longer than 70 characters
+            $msg = wordwrap($msg,70);
+            // send email
+            mail($_POST["name"],"Changement de mot de passe",$msg);
+     
             echo "Success";
-            exit();
         }
         else
         {
-            echo 'Ce nom / Email ne correspond à aucun compte existant - Utilisez la page "Contact" en cas de problèmes';
+            echo 'Cet Email ne correspond à aucun compte existant - Utilisez la page "Contact" en cas de problèmes';
         }
     }
     else
     {
-        echo "Vous devez rentrer votre nom ou Email";
+        echo "Vous devez rentrer l'Email lié à votre compte myEPI";
     }
 ?>

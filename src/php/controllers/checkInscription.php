@@ -39,7 +39,7 @@ if (!empty($_POST['inputInscriptionNickname']) && !empty($_POST['inputInscriptio
                     $_SESSION['idUser'] = $MainModel->getIdByUsername($_POST["inputInscriptionNickname"]);
                     $_SESSION['connected'] = true;
 
-                    $_SESSION["error"] = "";
+                    $_SESSION['error'] = "";
 
                     // going back to the main page
                     header('Location:../controllers/mainController.php?view=Accueil');
