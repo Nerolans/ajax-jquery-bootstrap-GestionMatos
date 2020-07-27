@@ -250,7 +250,7 @@ $(document).on("click", ".buttonEdit", function(){
                         });
                         $("#getChangeSuccessEdit").text("");
                         //HEREHEREHEREHERE
-                        $("tr#tr"+$idid).replaceWith(response.split("-")[1]);
+                        $("tr#tr"+$idid).replaceWith(response.split("|")[1]);
                     }, 1500);
                     makeTotal();
                 }

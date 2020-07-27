@@ -44,7 +44,14 @@ if($_POST['type'] != "void")
                         // editing (with iduser and idmatos checked)
                         $MainModel ->modifEquipment($_POST['type'], $_POST['modele'], $_POST['number'], $_POST['prix'], $_POST['serieFabriquant'], $_POST['seriePerso'], $_POST['dateFabrication'], $_POST['dateAchat'], $_POST['dateUtilisation'], $_POST['dateFinVie'], $EPI, $Rebus, $Perdu, $_POST['description'], $_POST['info'], $_SESSION["idUser"][0]["idUser"]);
                         // returning the success and the line to add to the Equipment page (with edit available because id available too)
-                        echo "Success-"."<tr id='tr".$_POST['info']."'><td>".$_POST['type']."</td><td>".$_POST['modele']."</td><td>".$_POST['seriePerso']."</td><td id=\"price\">".$_POST['prix']." CHF"."</td><td id=\"number\">x".$_POST['number']."</td><td><img class='parameters' id = ".$_POST['info']." src='../../../ressources/images/edit.png'></td></tr>";
+                        if($Rebus != 0)
+                        {
+                            echo "Success|"."<tr style='background-color: rgba(255,0,0,0.2);' id='tr".$_POST['info']."'><td>".$_POST['type']."</td><td>".$_POST['modele']."</td><td>".$_POST['seriePerso']."</td><td id=\"price\">".$_POST['prix']." CHF"."</td><td id=\"number\">x".$_POST['number']."</td><td><img class='parameters' id = ".$_POST['info']." src='../../../ressources/images/edit.png'></td></tr>";
+                        }
+                        else
+                        {
+                            echo "Success|"."<tr id='tr".$_POST['info']."'><td>".$_POST['type']."</td><td>".$_POST['modele']."</td><td>".$_POST['seriePerso']."</td><td id=\"price\">".$_POST['prix']." CHF"."</td><td id=\"number\">x".$_POST['number']."</td><td><img class='parameters' id = ".$_POST['info']." src='../../../ressources/images/edit.png'></td></tr>";
+                        }
                         exit();
                     }
                     else

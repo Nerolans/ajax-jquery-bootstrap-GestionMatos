@@ -99,8 +99,20 @@
 
                             foreach ($infos as $element)
                             {
+                                if($element["matRebus"] == 1)
+                                {
+                                    ?>
+                                    <tr style="background-color: rgba(255,0,0,0.2);" id='tr<?php echo $element["idMatos"]?>'>
+                                    <?php
+                                }
+                                else
+                                {
+                                    ?>
+                                    <tr id='tr<?php echo $element["idMatos"]?>'>
+                                    <?php
+                                }
                                 ?>
-                                <tr id='tr<?php echo $element["idMatos"]?>'>
+                                
                                     <td><?php echo $element["matCatName"]?></td>
                                     <td><?php echo $element["matModal"]?></td>
                                     <td><?php echo $element["matSerialPerso"]?></td>
