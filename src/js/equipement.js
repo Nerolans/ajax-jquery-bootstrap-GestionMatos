@@ -376,3 +376,41 @@ $(document).ready(function(){
         }
     });
 });
+
+//SEND MAIL///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$(document).ready(function(){
+    $("#buttonContact").click(function(){
+            var $form = $("#contactForm");
+            var $inputs = $form.find("input");
+            var serializedData = $form.serialize();
+
+            $.ajax({
+                url: "checkContact.php",
+                type: "POST",
+                data: serializedData,
+
+                success:function (response){
+
+                    if(response == "Success")
+                    {
+                        $("#contactError").text("");
+                        $("#contactSuccess").text("Un mail vous a été envoyé"); 
+                        $('#buttonContact').prop('disabled',true);
+                    }
+                    else
+                    {
+                        $inputs.prop("disabled", false);
+                        $("#contactError").text(response);
+                    }
+
+                },
+
+                error:function (resultat, statut, erreur){
+
+                    console.log(resultat, statut, erreur );
+                }
+                
+            });
+    });
+});

@@ -92,6 +92,13 @@ class mainModel
         $result = $this->executeGetRequestSQL($query);
         return $result;
     }
+
+    public function GetMailbyID($toSearch)
+    {
+        $query = 'SELECT `useMail` FROM `t_user` WHERE `idUser` = "'.$toSearch.'"';
+        $result = $this->executeGetRequestSQL($query);
+        return $result;
+    } 
     
     public function GetUserInfo($toSearch)
     {

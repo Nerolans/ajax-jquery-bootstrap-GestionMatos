@@ -10,11 +10,15 @@
 
     <meta charset="UTF-8">
     <link href="../../../ressources/css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="icon" href="../../../ressources/images/favicon.png" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title>Contact</title>
+    <script src="../../js/equipement.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.5/jspdf.plugin.autotable.min.js"></script>
+    <title>Equipement</title>
 
 </head>
 <body>
@@ -53,7 +57,7 @@
                     <!--Section description-->
                     <p class="text-center w-responsive mx-auto mb-5">Vous avez une question ou un problème à signaler? Une suggestion pour le site? N'hésitez pas à nous contacter directement via ce formulaire ou via l'adresse: epiadmin@myepi.cloud</p>
 
-                    <form action="/action_page.php">
+                    <form id="contactForm">
                         <div class="form-group col-6 float-center container">
                             <input type="text" class="form-control" id="contactName" placeholder="Votre nom" name="contactName">
                         </div>
@@ -67,6 +71,10 @@
                             <button type="button" class="btn btn-success float-center" id="buttonContact">Envoyer</button>
                         </div>
                         </form>
+                        <div class="container text-center col-5 float-center p-0 mt-3" style="height:100%">
+                            <label class="text-danger p-0" id="contactError"></label>
+                            <label class="text-success p-0" id="contactSuccess"></label>
+                        </div>
                 </div>
             <?php
             }
