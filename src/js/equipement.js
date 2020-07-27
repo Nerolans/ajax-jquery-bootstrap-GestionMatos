@@ -36,7 +36,7 @@ $(document).ready(function(){
                             $('#myModal').modal('toggle');
                         });
                         $("#getChangeSuccess").text("");
-                        $('#tableMain').append(response.split("-")[1]);
+                        $('#tableMain').append(response.split("|")[1]);
                         makeTotal();
                     }, 1500);
                 }
@@ -240,7 +240,7 @@ $(document).on("click", ".buttonEdit", function(){
                     $("#getChangeErrorEdit").text("");
                     //validation for the user
                     $("#getChangeSuccessEdit").text("L'équipement a bien été modifié"); 
-
+                    
                     //adding the equipment to the main table 
                     window.setTimeout(function(){
                         $('#formEdit')[0].reset();
@@ -251,8 +251,8 @@ $(document).on("click", ".buttonEdit", function(){
                         $("#getChangeSuccessEdit").text("");
                         //HEREHEREHEREHERE
                         $("tr#tr"+$idid).replaceWith(response.split("|")[1]);
+                        makeTotal();
                     }, 1500);
-                    makeTotal();
                 }
                 //if the text received is different from "Success" = an error
                 else
