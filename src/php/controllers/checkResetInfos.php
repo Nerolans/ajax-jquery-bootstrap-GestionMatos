@@ -16,22 +16,32 @@
         }
         else
         {
-            include '../models/mainModel.php';
-
-            $MainModel = new mainModel;
-            $currentDate = date("U");
-            $tokenAccurate = hex2bin($validator);
-            $token = $MainModel->getToken($selector, $currentDate);
-
-            if(password_verify($tokenAccurate, $token[0]['useResetToken']))
+            if (preg_match("@^[A-Za-z.$!?'éè:;^£<>*#%&()=~0123456789-]{8,40}$@",$password))
             {
-                $MainModel->changePassword($selector, password_hash($password, PASSWORD_DEFAULT));
-                $_SESSION['errorSuccess'] = "Votre mot de passe a bien été modifié - Vous pouvez vous connecter";
+                include '../models/mainModel.php';
+
+                $MainModel = new mainModel;
+                $currentDate = date("U");
+                $tokenAccurate = hex2bin($validator);
+                $token = $MainModel->getToken($selector, $currentDate);
+
+                if(password_verify($tokenAccurate, $token[0]['useResetToken']))
+                {
+                    $MainModel->changePassword($selector, password_hash($password, PASSWORD_DEFAULT));
+                    $_SESSION['errorReset'] = "";
+                    $_SESSION['errorSuccess'] = "Votre mot de passe a bien été modifié - Vous pouvez vous connecter";
+                }
+                else
+                {
+                    $_SESSION['errorReset'] = "une erreur est survenue";
+                }
             }
             else
             {
-                $_SESSION['errorReset'] = "une erreur est survenue";
+                $_SESSION['errorSuccess'] = "";
+                $_SESSION["errorReset"] = "Le MDP entré n'est pas valide (8-40 caractères, carctères admis: . $ ! ? ' é è : ; ^ £ < > * # % & ( ) = ~ 0 1 2 3 4 5 6 7 8 9 - )";
             }
+            
         }
     }
     else
@@ -92,7 +102,7 @@
         <div class="col-12" style="height: 60px"></div>
         <div class="container rounded col-8 float-center pt-3 bg-light p-0" style="opacity:75%;height:250px">
             <h4 class="pl-5 pt-2 text-danger float-center">'.$_SESSION['errorReset'].'</h4>
-            <h4 class="pl-5 pt-2 text-success float-center">'.$_SESSION['errorSuccess'].'</h4>
+            <h4 class="pl-5 pt-2 text-success float-center">'.$_SESSION['errorSuccess'].' <a href="mainController.php?view=Connexion">ICI</a></h4>
         </div>
         </section>
 

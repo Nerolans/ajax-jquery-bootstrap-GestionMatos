@@ -45,7 +45,30 @@
     <section>
         <?php
             if(isset($_SESSION['connected']))
-            { 
+            {
+            ?>
+                <div class="col-12" style="height: 60px"></div>
+                    <div class="container rounded col-8 float-center pt-3 bg-light responsiveInscription p-0" style="opacity:75%;height:550px;">
+                    <h2 class="h1-responsive font-weight-bold text-center my-4">Contactez-nous</h2>
+                    <!--Section description-->
+                    <p class="text-center w-responsive mx-auto mb-5">Vous avez une question ou un problème à signaler? Une suggestion pour le site? N'hésitez pas à nous contacter directement via ce formulaire ou via l'adresse: epiadmin@myepi.cloud</p>
+
+                    <form action="/action_page.php">
+                        <div class="form-group col-6 float-center container">
+                            <input type="text" class="form-control" id="contactName" placeholder="Votre nom" name="contactName">
+                        </div>
+                        <div class="form-group col-6 float-center container">
+                            <input type="text" class="form-control" id="contactObject" placeholder="Objet" name="contactObject">
+                        </div>
+                        <div class="container col-6 p-0" style="">
+                            <textarea class="form-control mx-auto" name="contactDescription" placeholder="Votre message" rows="3"></textarea>
+                        </div>
+                        <div class="container col-1 mt-3 p-0" style="">
+                            <button type="button" class="btn btn-success float-center" id="buttonContact">Envoyer</button>
+                        </div>
+                        </form>
+                </div>
+            <?php
             }
             else
             {
