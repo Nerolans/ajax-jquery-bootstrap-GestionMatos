@@ -23,7 +23,7 @@
             $tokenAccurate = hex2bin($validator);
             $token = $MainModel->getToken($selector, $currentDate);
 
-            if(password_verify($token['useResetToken'],$tokenAccurate))
+            if(password_verify($tokenAccurate, $token[0]['useResetToken']))
             {
                 $MainModel->changePassword($selector, password_hash($password, PASSWORD_DEFAULT));
                 $_SESSION['errorSuccess'] = "Votre mot de passe a bien été modifié - Vous pouvez vous connecter";
@@ -32,8 +32,6 @@
             {
                 $_SESSION['errorReset'] = "une erreur est survenue";
             }
-
-
         }
     }
     else

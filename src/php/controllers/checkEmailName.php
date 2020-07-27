@@ -18,7 +18,7 @@ session_start();
             $MainModel->setTokenInfos($selector,password_hash($token, PASSWORD_DEFAULT),$expires,$toValidMail);
             
             // the message
-            $msg = "Cliquez sur ce lien pour changer votre mot de passe:\n".explode("/controllers",$_SERVER["PHP_SELF"])[0].'/views/newPassword.php?selector='.$selector.'&validator='.bin2hex($token);
+            $msg = "Cliquez sur ce lien pour changer votre mot de passe:\n"."https://myepi.cloud".explode("/controllers",$_SERVER["PHP_SELF"])[0].'/views/newPassword.php?selector='.$selector.'&validator='.bin2hex($token);
             // use wordwrap() if lines are longer than 70 characters
             $msg = wordwrap($msg,70);
             // send email

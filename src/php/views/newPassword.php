@@ -64,7 +64,7 @@
                     <div class="container col-12 float-center text-center mt-3 p-0">
                         <form id="formResetValidate" method="post" action="../controllers/mainController.php?view=checkResetInfos">
                             <input type="hidden" name="selector" value=<?php echo ("'".$selector."'");?>>
-                            <input type="hidden" name="validator" value=<?php echo ("'".$selector)."'";?>>
+                            <input type="hidden" name="validator" value=<?php echo ("'".$validator)."'";?>>
                             <div class="container col p-0">
                                 <div class="container col-12 p-0" style="height:50px;">
                                     <label class="col-5 float-left text-right p-0 pt-1 pr-4">Nouveau mot de passe</label>
