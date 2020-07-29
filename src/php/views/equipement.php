@@ -97,14 +97,14 @@
             <div class="container px-0 mt-4 opacityGrid">            
                 <table id="tableMain" class="mb-0 table table-striped">
                     <thead>
-                    <tr>
-                        <th>Catégorie</th>
-                        <th>Modèle</th>
-                        <th>N° Série Perso</th>
-                        <th>Prix (unité)</th>
-                        <th>Nombre</th>
-                        <th><img class="settingsTH float-right" style="cursor:pointer;" src="../../../ressources/images/settings.png"></th>
-                    </tr>
+                        <tr id="trTitle">
+                            <th>Catégorie</th>
+                            <th>Modèle</th>
+                            <th>N° Série Perso</th>
+                            <th>Prix (unité)</th>
+                            <th>Nombre</th>
+                            <th><img class="settingsTH float-right" style="cursor:pointer;" id="settingsTitle" src="../../../ressources/images/settings.png"></th>
+                        </tr>
                     </thead>
                     <tbody>
                         <?php 
@@ -125,7 +125,6 @@
                                     <?php
                                 }
                                 ?>
-                                
                                     <td><?php echo $element["matCatName"]?></td>
                                     <td><?php echo $element["matModal"]?></td>
                                     <td><?php echo $element["matSerialPerso"]?></td>
@@ -391,6 +390,90 @@
                 </div>
             </div>
 
+            <!--========================================MODAL SETTINGS TITLE=====================================-->
+
+            <div class="modal" id="myModalTitle">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Afficher</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    
+                    <!-- Modal body Edit-->
+                    <div class="modal-body" id="bodyTitle">
+                        <table class="ml-5 position-relative">
+                            <thead>
+                                <tr>
+                                    <th class="pb-2">Catégorie</th>
+                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                </tr>
+                                <tr>
+                                    <th class="pb-2">Modèle</th>
+                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                </tr>
+                                <tr>
+                                    <th class="pb-2">N° Série Perso</th>
+                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                </tr>
+                                <tr>
+                                    <th class="pb-2">Prix (unité)</th>
+                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                </tr>
+                                <tr>
+                                    <th class="pb-2">Nombre</th>
+                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                </tr>
+                                <tr>
+                                    <th class="pb-2">N° Série Pro</th>
+                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                </tr>
+                                <tr>
+                                    <th class="pb-2">Date de fabrication</th>
+                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                </tr>
+                                <tr>
+                                    <th class="pb-2">Date d'achat</th>
+                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                </tr>
+                                <tr>
+                                    <th class="pb-2">Date d'utilisation</th>
+                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                </tr>
+                                <tr>
+                                    <th class="pb-2">Date de fin de vie</th>
+                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                </tr>
+                                <tr>
+                                    <th class="pb-2">Rebus</th>
+                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                </tr>
+                                <tr>
+                                    <th class="pb-2">EPI</th>
+                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                </tr>
+                                <tr>
+                                    <th class="pb-2">Perdu</th>
+                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <div class="w-100">
+                            <button type="button" class="btn btn-dark float-right" data-dismiss="modal">Fermer</button>
+                            <button type="button" class="btn btn-success float-right mr-2 buttonTitle">Enregistrer</button>      
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+
             <?php
         }
         else
@@ -424,6 +507,10 @@
                     $lastModal = "#myModal";
                 });
 
+                $("#settingsTitle").click(function(){
+                    $('#myModalTitle').modal('toggle')
+                });
+                
                 jQuery('#indique').css("overflow-y", "scroll");
 
                 $(function () {
