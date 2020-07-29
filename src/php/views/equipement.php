@@ -61,7 +61,19 @@
                     <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
                 </div>
 
-                <a class="h3 ml-1 mb-0">Total: <label id = "totalText" class="h3 text-success">0 CHF</label></a>
+                <a class="h3 ml-1 mb-0 float-left">Total: <label id = "totalText" class="h3 text-success">0 CHF</label></a>
+
+                <div style="height:80px; width: 90px; top:-15px; position: relative;" class="float-left ml-5">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" checked value="">Matériel EPI
+                    </label>
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" checked value="">Rebus
+                    </label>
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" checked value="">Perdu
+                    </label>
+                </div>
 
                 <div class="dropdown float-right ml-4 position-sticky" style="width:200px;">
                     <button class="btn btn-secondary dropdown-toggle" style="width:170px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -91,6 +103,7 @@
                         <th>N° Série Perso</th>
                         <th>Prix (unité)</th>
                         <th>Nombre</th>
+                        <th><img class="settingsTH float-right" style="cursor:pointer;" src="../../../ressources/images/settings.png"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -118,7 +131,7 @@
                                     <td><?php echo $element["matSerialPerso"]?></td>
                                     <td id="price"><?php echo $element["matPrice"] . " CHF" ?></td>
                                     <td id="number"><?php echo  "x" . $element["matNumber"]?></td>
-                                    <td><img class="parameters" id = <?php echo $element["idMatos"]?> src="../../../ressources/images/edit.png"></td>
+                                    <td><img class="parameters" style="cursor:pointer;" id=<?php echo $element["idMatos"]?> src="../../../ressources/images/edit.png"></td>
                                 </tr>
                                 <?php
                             }
