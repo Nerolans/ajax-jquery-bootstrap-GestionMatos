@@ -185,9 +185,9 @@ function addColumns($id)
 function refreshLine($id)
 {
     $.each(columns, function(index, value){
-        console.log("#"+$id+' .'+index.split("$")[1]+"Content");
         if(value == true){
             $("#"+$id+' .'+index.split("$")[1]+"Content").removeClass("d-none");
+            console.log("#"+$id+' .'+index.split("$")[1]+"Content");
         }
         else
         {
