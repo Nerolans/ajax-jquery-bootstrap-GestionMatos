@@ -44,17 +44,47 @@ if($_POST['type'] != "void")
                         include '../models/mainModel.php';
                         $MainModel = new mainModel;
 
-                        // adding the quipment
+                        // adding the equipment
                         $equipmentID = $MainModel ->addEquipment($_POST['type'], $_POST['modele'], $_POST['number'], $_POST['prix'], $_POST['serieFabriquant'], $_POST['seriePerso'], $_POST['dateFabrication'], $_POST['dateAchat'], $_POST['dateUtilisation'], $_POST['dateFinVie'], $EPI, $Rebus, $Perdu, $_POST['description'], $_SESSION["idUser"][0]["idUser"]);
                         
                         if($Rebus != 0)
                         {
-                            echo "Success|"."<tr style='background-color: rgba(255,0,0,0.2);' id='tr".$equipmentID[0]['idMatos']."'><td>".$_POST['type']."</td><td>".$_POST['modele']."</td><td>".$_POST['seriePerso']."</td><td id=\"price\">".$_POST['prix']." CHF"."</td><td id=\"number\">x".$_POST['number']."</td><td><img class='parameters' id = ".$equipmentID[0]['idMatos']." src='../../../ressources/images/edit.png'></td></tr>";
+                            echo "Success|"."
+                            <tr style='background-color: rgba(255,0,0,0.2);' id='tr".$equipmentID[0]['idMatos']."'>
+                                <td>".$_POST['type']."</td>
+                                <td>".$_POST['modele']."</td>
+                                <td>".$_POST['seriePerso']."</td>
+                                <td class='serieProContent d-none'>".$_POST['serieFabriquant']."</td>
+                                <td class='dateFabricationContent d-none'>".$_POST['dateFabrication']."</td>
+                                <td class='dateAchatContent d-none'>".$_POST['dateAchat']."</td>
+                                <td class='dateUtilisationContent d-none'>".$_POST['dateUtilisation']."</td>
+                                <td class='dateFinVieContent d-none'>".$_POST['dateFinVie']."</td>
+                                <td id=\"price\">".$_POST['prix']." CHF"."</td>
+                                <td id=\"number\">x".$_POST['number']."</td>
+                                <td class='perduContent d-none'>".$Perdu."</td>
+                                <td class='EPIContent d-none'>".$EPI."</td>
+                                <td><img class='parameters' id = ".$equipmentID[0]['idMatos']." src='../../../ressources/images/edit.png'></td> 
+                            </tr>|tr".$equipmentID[0]['idMatos'];
                         }
                         else
                         {
                             // returning the success and the line to add to the Equipment page
-                            echo "Success|"."<tr id='tr".$equipmentID[0]['idMatos']."'><td>".$_POST['type']."</td><td>".$_POST['modele']."</td><td>".$_POST['seriePerso']."</td><td id=\"price\">".$_POST['prix']." CHF"."</td><td id=\"number\">x".$_POST['number']."</td><td><img class='parameters' id = ".$equipmentID[0]['idMatos']." src='../../../ressources/images/edit.png'></td></tr>";
+                            echo "Success|"."
+                            <tr id='tr".$equipmentID[0]['idMatos']."'>
+                                <td>".$_POST['type']."</td>
+                                <td>".$_POST['modele']."</td>
+                                <td>".$_POST['seriePerso']."</td>
+                                <td class='serieProContent d-none'>".$_POST['serieFabriquant']."</td>
+                                <td class='dateFabricationContent d-none'>".$_POST['dateFabrication']."</td>
+                                <td class='dateAchatContent d-none'>".$_POST['dateAchat']."</td>
+                                <td class='dateUtilisationContent d-none'>".$_POST['dateUtilisation']."</td>
+                                <td class='dateFinVieContent d-none'>".$_POST['dateFinVie']."</td>
+                                <td id=\"price\">".$_POST['prix']." CHF"."</td>
+                                <td id=\"number\">x".$_POST['number']."</td>
+                                <td class='perduContent d-none'>".$Perdu."</td>
+                                <td class='EPIContent d-none'>".$EPI."</td>
+                                <td><img class='parameters' id = ".$equipmentID[0]['idMatos']." src='../../../ressources/images/edit.png'></td> 
+                            </tr>|tr".$equipmentID[0]['idMatos'];
                         }
                         exit();
                     }

@@ -98,11 +98,18 @@
                 <table id="tableMain" class="mb-0 table table-striped">
                     <thead>
                         <tr id="trTitle">
-                            <th>Catégorie</th>
-                            <th>Modèle</th>
-                            <th>N° Série Perso</th>
-                            <th>Prix (unité)</th>
-                            <th>Nombre</th>
+                            <th id="categorieTitle" class="">Catégorie</th>
+                            <th id="modeleTitle" class="">Modèle</th>
+                            <th id="seriePersoTitle" class="">N° Série Perso</th>
+                            <th id="serieProTitle" class="d-none">N° Série Pro</th>
+                            <th id="dateFabricationTitle" class="d-none">Date Fabrication</th>
+                            <th id="dateAchatTitle" class="d-none">Date Achat</th>
+                            <th id="dateUtilisationTitle" class="d-none">Date Utilisation</th>
+                            <th id="dateFinVieTitle" class="d-none">Date Fin de vie</th>
+                            <th class="">Prix (unité)</th>
+                            <th class="">Nombre</th>
+                            <th id="perduTitle" class="d-none">Perdu</th>
+                            <th id="EPITitle" class="d-none">EPI</th>
                             <th><img class="settingsTH float-right" style="cursor:pointer;" id="settingsTitle" src="../../../ressources/images/settings.png"></th>
                         </tr>
                     </thead>
@@ -125,11 +132,18 @@
                                     <?php
                                 }
                                 ?>
-                                    <td><?php echo $element["matCatName"]?></td>
-                                    <td><?php echo $element["matModal"]?></td>
-                                    <td><?php echo $element["matSerialPerso"]?></td>
+                                    <td class="categorieContent"><?php echo $element["matCatName"]?></td>
+                                    <td class="modeleContent"><?php echo $element["matModal"]?></td>
+                                    <td class="seriePersoContent"><?php echo $element["matSerialPerso"]?></td>
+                                    <td class="serieProContent d-none"><?php echo $element["matSerialNumber"]?></td>
+                                    <td class="dateFabricationContent d-none"><?php echo $element["matFabricationDate"]?></td>
+                                    <td class="dateAchatContent d-none"><?php echo $element["matBoughtDate"]?></td>
+                                    <td class="dateUtilisationContent d-none"><?php echo $element["matUseDate"]?></td>
+                                    <td class="dateFinVieContent d-none"><?php echo $element["matEndLifeDate"]?></td>
                                     <td id="price"><?php echo $element["matPrice"] . " CHF" ?></td>
                                     <td id="number"><?php echo  "x" . $element["matNumber"]?></td>
+                                    <td class="perduContent d-none"><?php echo $element["matLost"]?></td>
+                                    <td class="EPIContent d-none"><?php echo $element["matEPI"]?></td>
                                     <td><img class="parameters" style="cursor:pointer;" id=<?php echo $element["idMatos"]?> src="../../../ressources/images/edit.png"></td>
                                 </tr>
                                 <?php
@@ -408,55 +422,43 @@
                             <thead>
                                 <tr>
                                     <th class="pb-2">Catégorie</th>
-                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                    <th><img class="categoryTitle float-left ml-2 pb-2" style="cursor:pointer;" id="categorie" onclick="changeImage($(this).attr('id'))" src="../../../ressources/images/eye.png"></th>
                                 </tr>
                                 <tr>
                                     <th class="pb-2">Modèle</th>
-                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                    <th><img class="categoryTitle float-left ml-2 pb-2" style="cursor:pointer;" id="modele" onclick="changeImage($(this).attr('id'))" src="../../../ressources/images/eye.png"></th>
                                 </tr>
                                 <tr>
                                     <th class="pb-2">N° Série Perso</th>
-                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
-                                </tr>
-                                <tr>
-                                    <th class="pb-2">Prix (unité)</th>
-                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
-                                </tr>
-                                <tr>
-                                    <th class="pb-2">Nombre</th>
-                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                    <th><img class="categoryTitle float-left ml-2 pb-2" style="cursor:pointer;" id="seriePerso" onclick="changeImage($(this).attr('id'))" src="../../../ressources/images/eye.png"></th>
                                 </tr>
                                 <tr>
                                     <th class="pb-2">N° Série Pro</th>
-                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                    <th><img class="categoryTitle float-left ml-2 pb-2" style="cursor:pointer;" id="seriePro" onclick="changeImage($(this).attr('id'))" src="../../../ressources/images/eyeclosed.png"></th>
                                 </tr>
                                 <tr>
                                     <th class="pb-2">Date de fabrication</th>
-                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                    <th><img class="categoryTitle float-left ml-2 pb-2" style="cursor:pointer;" id="dateFabrication" onclick="changeImage($(this).attr('id'))" src="../../../ressources/images/eyeclosed.png"></th>
                                 </tr>
                                 <tr>
                                     <th class="pb-2">Date d'achat</th>
-                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                    <th><img class="categoryTitle float-left ml-2 pb-2" style="cursor:pointer;" id="dateAchat" onclick="changeImage($(this).attr('id'))" src="../../../ressources/images/eyeclosed.png"></th>
                                 </tr>
                                 <tr>
                                     <th class="pb-2">Date d'utilisation</th>
-                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                    <th><img class="categoryTitle float-left ml-2 pb-2" style="cursor:pointer;" id="dateUtilisation" onclick="changeImage($(this).attr('id'))" src="../../../ressources/images/eyeclosed.png"></th>
                                 </tr>
                                 <tr>
                                     <th class="pb-2">Date de fin de vie</th>
-                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
-                                </tr>
-                                <tr>
-                                    <th class="pb-2">Rebus</th>
-                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                    <th><img class="categoryTitle float-left ml-2 pb-2" style="cursor:pointer;" id="dateFinVie" onclick="changeImage($(this).attr('id'))" src="../../../ressources/images/eyeclosed.png"></th>
                                 </tr>
                                 <tr>
                                     <th class="pb-2">EPI</th>
-                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                    <th><img class="categoryTitle float-left ml-2 pb-2" style="cursor:pointer;" id="EPI" onclick="changeImage($(this).attr('id'))" src="../../../ressources/images/eyeclosed.png"></th>
                                 </tr>
                                 <tr>
                                     <th class="pb-2">Perdu</th>
-                                    <th><img class="categoryTitle float-left pb-2" style="cursor:pointer;" id="see" src="../../../ressources/images/eye.png"></th>
+                                    <th><img class="categoryTitle float-left ml-2 pb-2" style="cursor:pointer;" id="perdu" onclick="changeImage($(this).attr('id'))" src="../../../ressources/images/eyeclosed.png"></th>
                                 </tr>
                             </thead>
                         </table>
@@ -465,8 +467,7 @@
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         <div class="w-100">
-                            <button type="button" class="btn btn-dark float-right" data-dismiss="modal">Fermer</button>
-                            <button type="button" class="btn btn-success float-right mr-2 buttonTitle">Enregistrer</button>      
+                            <button type="button" class="btn btn-dark float-right" data-dismiss="modal">Fermer</button>   
                         </div>
                     </div>
 
@@ -486,10 +487,21 @@
             <?php
         }
         ?>
-        
     </section>
 </body>
     <script>
+    var columns = {
+    $categorie:true,
+    $modele:true,
+    $seriePerso:true,
+    $seriePro:false,
+    $dateFabrication:false,
+    $dateAchat:false,
+    $dateUtilisation:false,
+    $dateFinVie:false,
+    $EPI:false,
+    $perdu:false};
+
     $lastModal = "";
     $lastID = "";
 

@@ -36,8 +36,9 @@ $(document).ready(function(){
                             $('#myModal').modal('toggle');
                         });
                         $("#getChangeSuccess").text("");
-                        $('#tableMain').append(response.split("|")[1]);
+                        $('#tableMain tbody').append(response.split("|")[1]);
                         makeTotal();
+                        refreshLine(response.split("|")[2]);
                     }, 1500);
                 }
                 //if the text received is different from "Success" = an error
@@ -141,11 +142,58 @@ function makeTotal(){
     }); 
 }
 
-
-function countColumns(){
+function changeImage($id){
     $(document).ready(function(){
-        //todo
+        if($('#'+$id).attr("src")=="../../../ressources/images/eye.png")
+        {
+            $('#'+$id).attr("src", "../../../ressources/images/eyeclosed.png");
+            deleteColumns($id);
+        }
+        else
+        {
+            $('#'+$id).attr("src", "../../../ressources/images/eye.png");
+            addColumns($id);
+            
+        }
     }); 
+}
+
+function deleteColumns($id)
+{
+    $.each(columns, function(index, value){
+        if("$"+$id ==index)
+        {
+            columns.index = false;
+            $('#'+$id+"Title").addClass("d-none");
+            $('.'+$id+"Content").addClass("d-none");
+        }
+    });
+}
+
+function addColumns($id)
+{
+    $.each(columns, function(index, value){
+        if("$"+$id == index)
+        {
+            columns.index = true;
+            $('#'+$id+"Title").removeClass("d-none");
+            $('.'+$id+"Content").removeClass("d-none");
+        }
+    });
+}
+
+function refreshLine($id)
+{
+    $.each(columns, function(index, value){
+        console.log("#"+$id+' .'+index.split("$")[1]+"Content");
+        if(value == true){
+            $("#"+$id+' .'+index.split("$")[1]+"Content").removeClass("d-none");
+        }
+        else
+        {
+            $("#"+$id+' .'+index.split("$")[1]+"Content").addClass("d-none");
+        }
+    });
 }
 //SORTING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
