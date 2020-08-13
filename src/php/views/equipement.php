@@ -55,14 +55,14 @@
             $MainModel = new mainModel();
             $categories= $MainModel->getAllCategories();
             ?>
-            <div style="height:90px; top:55px;" id="searchOptions" class="col-12 container px-0 border-bottom border-dark position-sticky">
+            <div style="height:90px; top:55px;" id="searchOptions" class="col-12 overflow-auto container px-0 border-bottom border-dark position-sticky">
                 <div style="height:25px" class="col-12"></div>
                 <div class="rounded bg-light p-0 float-left ml-4 mr-3 position-sticky" style="width:260px;">
                     <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
                 </div>
 
                 <a class="h3 ml-1 mb-0 float-left">Total: <label id = "totalText" class="h3 text-success">0 CHF</label></a>
-
+<!--
                 <div style="height:80px; width: 90px; top:-15px; position: relative;" class="float-left ml-5">
                     <label class="form-check-label">
                         <input type="checkbox" class="form-check-input" checked value="">Matériel EPI
@@ -74,7 +74,7 @@
                         <input type="checkbox" class="form-check-input" checked value="">Perdu
                     </label>
                 </div>
-
+-->
                 <div class="dropdown float-right ml-4 position-sticky" style="width:200px;">
                     <button class="btn btn-secondary dropdown-toggle" style="width:170px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Catégories
@@ -94,7 +94,7 @@
                 </button>
             </div>
 
-            <div class="container px-0 mt-4 opacityGrid">            
+            <div class="container px-0 mt-4 col-10 opacityGrid">            
                 <table id="tableMain" class="mb-0 table table-striped">
                     <thead>
                         <tr id="trTitle">

@@ -51,9 +51,9 @@ if($_POST['type'] != "void")
                         {
                             echo "Success|"."
                             <tr style='background-color: rgba(255,0,0,0.2);' id='tr".$equipmentID[0]['idMatos']."'>
-                                <td>".$_POST['type']."</td>
-                                <td>".$_POST['modele']."</td>
-                                <td>".$_POST['seriePerso']."</td>
+                                <td class='categorieContent'>".$_POST['type']."</td>
+                                <td class='modeleContent'>".$_POST['modele']."</td>
+                                <td class='seriePersoContent'>".$_POST['seriePerso']."</td>
                                 <td class='serieProContent d-none'>".$_POST['serieFabriquant']."</td>
                                 <td class='dateFabricationContent d-none'>".$_POST['dateFabrication']."</td>
                                 <td class='dateAchatContent d-none'>".$_POST['dateAchat']."</td>
@@ -71,9 +71,9 @@ if($_POST['type'] != "void")
                             // returning the success and the line to add to the Equipment page
                             echo "Success|"."
                             <tr id='tr".$equipmentID[0]['idMatos']."'>
-                                <td>".$_POST['type']."</td>
-                                <td>".$_POST['modele']."</td>
-                                <td>".$_POST['seriePerso']."</td>
+                                <td class='categorieContent'>".$_POST['type']."</td>
+                                <td class='modeleContent'>".$_POST['modele']."</td>
+                                <td class='seriePersoContent'>".$_POST['seriePerso']."</td>
                                 <td class='serieProContent d-none'>".$_POST['serieFabriquant']."</td>
                                 <td class='dateFabricationContent d-none'>".$_POST['dateFabrication']."</td>
                                 <td class='dateAchatContent d-none'>".$_POST['dateAchat']."</td>

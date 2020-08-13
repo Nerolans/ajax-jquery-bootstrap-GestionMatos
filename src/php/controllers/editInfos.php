@@ -46,12 +46,41 @@ if($_POST['type'] != "void")
                         // returning the success and the line to add to the Equipment page (with edit available because id available too)
                         if($Rebus != 0)
                         {
-                            echo "Success|"."<tr style='background-color: rgba(255,0,0,0.2);' id='tr".$_POST['info']."'><td>".$_POST['type']."</td><td>".$_POST['modele']."</td><td>".$_POST['seriePerso']."</td><td id=\"price\">".$_POST['prix']." CHF"."</td><td id=\"number\">x".$_POST['number']."</td><td><img class='parameters' id = ".$_POST['info']." src='../../../ressources/images/edit.png'></td></tr>";
+                            echo "Success|"."
+                            <tr style='background-color: rgba(255,0,0,0.2);' id='tr".$_POST['info']."'>
+                                <td class='categorieContent'>".$_POST['type']."</td>
+                                <td class='modeleContent'>".$_POST['modele']."</td>
+                                <td class='seriePersoContent'>".$_POST['seriePerso']."</td>
+                                <td class='serieProContent d-none'>".$_POST['serieFabriquant']."</td>
+                                <td class='dateFabricationContent d-none'>".$_POST['dateFabrication']."</td>
+                                <td class='dateAchatContent d-none'>".$_POST['dateAchat']."</td>
+                                <td class='dateUtilisationContent d-none'>".$_POST['dateUtilisation']."</td>
+                                <td class='dateFinVieContent d-none'>".$_POST['dateFinVie']."</td>
+                                <td id=\"price\">".$_POST['prix']." CHF"."</td>
+                                <td id=\"number\">x".$_POST['number']."</td>
+                                <td class='perduContent d-none'>".$Perdu."</td>
+                                <td class='EPIContent d-none'>".$EPI."</td>
+                                <td><img class='parameters' id = ".$_POST['info']." src='../../../ressources/images/edit.png'></td> 
+                            </tr>|tr".$_POST['info'];
                         }
                         else
                         {
-                            echo "Success|"."<tr id='tr".$_POST['info']."'><td>".$_POST['type']."</td><td>".$_POST['modele']."</td><td>".$_POST['seriePerso']."</td><td id=\"price\">".$_POST['prix']." CHF"."</td><td id=\"number\">x".$_POST['number']."</td><td><img class='parameters' id = ".$_POST['info']." src='../../../ressources/images/edit.png'></td></tr>";
-                        }
+                            echo "Success|"."
+                            <tr id='tr".$_POST['info']."'>
+                                <td class='categorieContent'>".$_POST['type']."</td>
+                                <td class='modeleContent'>".$_POST['modele']."</td>
+                                <td class='seriePersoContent'>".$_POST['seriePerso']."</td>
+                                <td class='serieProContent d-none'>".$_POST['serieFabriquant']."</td>
+                                <td class='dateFabricationContent d-none'>".$_POST['dateFabrication']."</td>
+                                <td class='dateAchatContent d-none'>".$_POST['dateAchat']."</td>
+                                <td class='dateUtilisationContent d-none'>".$_POST['dateUtilisation']."</td>
+                                <td class='dateFinVieContent d-none'>".$_POST['dateFinVie']."</td>
+                                <td id=\"price\">".$_POST['prix']." CHF"."</td>
+                                <td id=\"number\">x".$_POST['number']."</td>
+                                <td class='perduContent d-none'>".$Perdu."</td>
+                                <td class='EPIContent d-none'>".$EPI."</td>
+                                <td><img class='parameters' id = ".$_POST['info']." src='../../../ressources/images/edit.png'></td> 
+                            </tr>|tr".$_POST['info'];                        }
                         exit();
                     }
                     else
