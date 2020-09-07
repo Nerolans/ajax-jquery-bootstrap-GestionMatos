@@ -115,9 +115,9 @@ $(document).ready(function(){
 //SEARCH BAR // TOTAL // COUNT COLUMNS // DRAW ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //search bar
-    $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#tableMain tbody tr").filter(function() {
+$("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tableMain tbody tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
         makeTotal();
@@ -199,7 +199,55 @@ function refreshLine($id)
 
 //SORTING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
+
+//to check all check how .toggle works/////////////////////
 function changeType(typeName)
+{
+    $check = true;
+//coloring
+    if($('#'+typeName).hasClass("active"))
+    {
+        $('#'+typeName).removeClass("active")
+    }
+    else
+    {
+        $('#'+typeName).addClass("active");
+    }
+//sorting
+    $('.ddMenu a').each(function(){
+        if($(this).hasClass("active"))
+        {
+            $check = true;
+            $("#tableMain tbody tr:hidden").filter(function () {
+                $(this).toggle($(this).text().indexOf(typeName) > -1)
+            });
+        }
+        else
+        {
+            $check = false;
+        }
+    });
+    ////////
+    if($check == false)
+    {
+        $("#tableMain tbody tr").filter(function () {     
+            $(this).toggle($(this).text().indexOf(typeName) > -1)
+        });
+    }
+    else
+    {
+        $("#tableMain tbody tr:hidden").filter(function () {
+                
+            $(this).toggle($(this).text().indexOf(typeName) > -1)
+        });
+    }
+    makeTotal();
+}
+/*function changeType(typeName)
 {
     var toSearchFor = [];
 
@@ -249,7 +297,7 @@ function changeType(typeName)
 
 
     });
-}
+}*/
 
 //EDITING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $(document).on("click", ".parameters", function(){

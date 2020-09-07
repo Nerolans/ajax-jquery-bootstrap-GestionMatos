@@ -46,6 +46,14 @@ if($_POST['type'] != "void")
                         // returning the success and the line to add to the Equipment page (with edit available because id available too)
                         if($Rebus != 0)
                         {
+                            $ImgEPI = "";
+                            if($EPI == 0){$ImgEPI = "<img src='../../../ressources/images/no.png'>";}
+                            if($EPI == 1){$ImgEPI = "<img src='../../../ressources/images/yes.png'>";}
+
+                            $Lost = "";
+                            if($Perdu == 0){$Lost = "<img src='../../../ressources/images/no.png'>";}
+                            if($Perdu == 1){$Lost = "<img src='../../../ressources/images/yes.png'>";}
+
                             echo "Success|"."
                             <tr style='background-color: rgba(255,0,0,0.2);' id='tr".$_POST['info']."'>
                                 <td class='categorieContent'>".$_POST['type']."</td>
@@ -58,13 +66,21 @@ if($_POST['type'] != "void")
                                 <td class='dateFinVieContent d-none'>".$_POST['dateFinVie']."</td>
                                 <td id=\"price\">".$_POST['prix']." CHF"."</td>
                                 <td id=\"number\">x".$_POST['number']."</td>
-                                <td class='perduContent d-none'>".$Perdu."</td>
-                                <td class='EPIContent d-none'>".$EPI."</td>
+                                <td class='perduContent d-none'>".$Lost."</td>
+                                <td class='EPIContent d-none'>".$ImgEPI."</td>
                                 <td><img class='parameters' id = ".$_POST['info']." src='../../../ressources/images/edit.png'></td> 
                             </tr>|tr".$_POST['info'];
                         }
                         else
                         {
+                            $ImgEPI = "";
+                            if($EPI == 0){$ImgEPI = "<img src='../../../ressources/images/no.png'>";}
+                            if($EPI == 1){$ImgEPI = "<img src='../../../ressources/images/yes.png'>";}
+
+                            $Lost = "";
+                            if($Perdu == 0){$Lost = "<img src='../../../ressources/images/no.png'>";}
+                            if($Perdu == 1){$Lost = "<img src='../../../ressources/images/yes.png'>";}
+
                             echo "Success|"."
                             <tr id='tr".$_POST['info']."'>
                                 <td class='categorieContent'>".$_POST['type']."</td>
@@ -77,10 +93,10 @@ if($_POST['type'] != "void")
                                 <td class='dateFinVieContent d-none'>".$_POST['dateFinVie']."</td>
                                 <td id=\"price\">".$_POST['prix']." CHF"."</td>
                                 <td id=\"number\">x".$_POST['number']."</td>
-                                <td class='perduContent d-none'>".$Perdu."</td>
-                                <td class='EPIContent d-none'>".$EPI."</td>
+                                <td class='perduContent d-none'>".$Lost."</td>
+                                <td class='EPIContent d-none'>".$ImgEPI."</td>
                                 <td><img class='parameters' id = ".$_POST['info']." src='../../../ressources/images/edit.png'></td> 
-                            </tr>|tr".$_POST['info'];                        }
+                            </tr>|tr".$_POST['info'];}
                         exit();
                     }
                     else

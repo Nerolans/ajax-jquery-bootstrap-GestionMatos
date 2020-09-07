@@ -55,7 +55,7 @@
             $MainModel = new mainModel();
             $categories= $MainModel->getAllCategories();
             ?>
-            <div style="height:90px; top:55px;" id="searchOptions" class="col-12 overflow-auto container px-0 border-bottom border-dark position-sticky">
+            <div style="height:90px; top:55px;" id="searchOptions" class="col-12 px-0 border-bottom border-dark position-sticky">
                 <div style="height:25px" class="col-12"></div>
                 <div class="rounded bg-light p-0 float-left ml-4 mr-3 position-sticky" style="width:260px;">
                     <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
@@ -94,7 +94,7 @@
                 </button>
             </div>
 
-            <div class="container px-0 mt-4 col-10 opacityGrid">            
+            <div class="container-fluid px-0 mt-4 opacityGrid" style = "overflow-x: scroll; scrollbar-x-position: top; direction: ltr;">            
                 <table id="tableMain" class="mb-0 table table-striped">
                     <thead>
                         <tr id="trTitle">
@@ -142,8 +142,8 @@
                                     <td class="dateFinVieContent d-none"><?php echo $element["matEndLifeDate"]?></td>
                                     <td id="price"><?php echo $element["matPrice"] . " CHF" ?></td>
                                     <td id="number"><?php echo  "x" . $element["matNumber"]?></td>
-                                    <td class="perduContent d-none"><?php echo $element["matLost"]?></td>
-                                    <td class="EPIContent d-none"><?php echo $element["matEPI"]?></td>
+                                    <td class="perduContent d-none"><?php if($element["matLost"]== 0){echo '<img src="../../../ressources/images/no.png">';} else{echo'<img src="../../../ressources/images/yes.png">';}?></td>
+                                    <td class="EPIContent d-none"><?php if($element["matEPI"]== 0){echo '<img src="../../../ressources/images/no.png">';} else{echo'<img src="../../../ressources/images/yes.png">';}?></td>
                                     <td><img class="parameters" style="cursor:pointer;" id=<?php echo $element["idMatos"]?> src="../../../ressources/images/edit.png"></td>
                                 </tr>
                                 <?php
@@ -151,7 +151,7 @@
                         ?>
                     </tbody>
                 </table>
-                </div>
+            </div>
 
 
 
@@ -488,6 +488,12 @@
         }
         ?>
     </section>
+    
+    <footer class="container mw-100 footer" style="height:180px;">
+        <?php
+        include ('includes/footer.inc.php');
+        ?>
+    </footer>
 </body>
     <script>
     var columns = {
