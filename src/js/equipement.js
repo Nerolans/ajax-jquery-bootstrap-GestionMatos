@@ -113,11 +113,11 @@ $(document).ready(function(){
     });
 
 //SEARCH BAR // TOTAL // COUNT COLUMNS // DRAW ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     //search bar
 $("#myInput").on("keyup", function() {
+    showLines();
     var value = $(this).val().toLowerCase();
-    $("#tableMain tbody tr").filter(function() {
+    $("#tableMain tbody tr:visible").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
         makeTotal();
@@ -198,106 +198,50 @@ function refreshLine($id)
 }
 
 //SORTING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
+var toSearchFor = [];
 //to check all check how .toggle works/////////////////////
 function changeType(typeName)
 {
-    $check = true;
-//coloring
-    if($('#'+typeName).hasClass("active"))
-    {
-        $('#'+typeName).removeClass("active")
-    }
-    else
-    {
-        $('#'+typeName).addClass("active");
-    }
-//sorting
-    $('.ddMenu a').each(function(){
+    toSearchFor = [];
+    $( "#tableMain tbody tr" ).hide();
+
+    $("#ddMenu a").each(function( index ) {
         if($(this).hasClass("active"))
         {
-            $check = true;
-            $("#tableMain tbody tr:hidden").filter(function () {
-                $(this).toggle($(this).text().indexOf(typeName) > -1)
-            });
+            toSearchFor.push($(this).text());
+        }
+    });
+
+    if($("#"+typeName).hasClass("active"))
+    {
+        $('#'+typeName).removeClass("active")
+        const index = toSearchFor.indexOf($('#'+typeName).text());
+        toSearchFor.splice(index, 1);
+        if(toSearchFor.length == 0)
+        {
+            $( "#tableMain tbody tr" ).show();
         }
         else
         {
-            $check = false;
-        }
-    });
-    ////////
-    if($check == false)
-    {
-        $("#tableMain tbody tr").filter(function () {     
-            $(this).toggle($(this).text().indexOf(typeName) > -1)
-        });
+            showLines();
+        }  
     }
     else
     {
-        $("#tableMain tbody tr:hidden").filter(function () {
-                
-            $(this).toggle($(this).text().indexOf(typeName) > -1)
-        });
+        $('#'+typeName).addClass("active")
+        toSearchFor.push($('#'+typeName).text());
+        showLines();
     }
-    makeTotal();
 }
-/*function changeType(typeName)
-{
-    var toSearchFor = [];
-
-    $(document).ready(function(){
-        if($('#'+typeName).hasClass("active"))
-        {
-            $('#'+typeName).removeClass("active")
-            $count = 0;
-            $("#ddMenu a").each(function( index ) {
-                if($(this).hasClass("active"))
-                {
-                    $count +=1;
-                }
+function showLines()
+    {
+        $(toSearchFor).each(function( index, name ) {
+            $("#tableMain tbody tr:hidden").filter(function () {
+                $(this).toggle($(this).text().indexOf(name) > -1)
             });
-            if($count==0)
-            {
-                location.reload(true);
-            }
-        }
-        else
-        {
-            $('#'+typeName).addClass("active");
-        }
-
-        $('.ddMenu a').each(function(){
-            if($(this).hasClass("active"))
-            {
-                toSearchFor.push($(this).text());
-            }
         });
-
-        $.ajax({
-            url: "typeChange.php",
-            type: "POST",
-            data: {info:toSearchFor},
-
-            success:function(response){
-                $('table tbody tr').remove();
-                $('table tbody').append(response);
-                makeTotal();
-            },
-            error:function (resultat, statut, erreur){
-
-                console.log(resultat, statut, erreur );
-            }            
-        });
-
-
-    });
-}*/
+        makeTotal();
+    }  
 
 //EDITING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $(document).on("click", ".parameters", function(){

@@ -89,6 +89,10 @@ $response .=
 
             <div class="container col-12 p-0 mt-4" style="height:36px;">
                 <div class="container col-6 p-0 mx-auto text-center" style="height:36px;">
+                <label class="checkbox-inline p-0 pt-1"><input type="checkbox" name="Perdu" value="1"';
+                if($infos["matLost"]=="1"){$response.="checked";}
+                $response.='
+                >Perdu</label>
                 <label class="checkbox-inline p-0 pt-1"><input type="checkbox" name="EPI" value="1"';
                 if($infos["matEPI"]=="1"){$response.="checked";}
                 $response.='
@@ -97,10 +101,6 @@ $response .=
                 if($infos["matRebus"]=="1"){$response.="checked";}
                 $response.='
                 >Rebus</label>
-                <label class="checkbox-inline p-0 pt-1"><input type="checkbox" name="Perdu" value="1"';
-                if($infos["matLost"]=="1"){$response.="checked";}
-                $response.='
-                >Perdu</label>
                 </div>
             </div>
 
