@@ -113,16 +113,33 @@ $(document).ready(function(){
     });
 
 //SEARCH BAR // TOTAL // COUNT COLUMNS // DRAW ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //search bar
+//search bar
+
+
+
+
+//todo
 $("#myInput").on("keyup", function() {
     showLines();
     var value = $(this).val().toLowerCase();
-    $("#tableMain tbody tr:visible").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    if(value=="")
+    {
+        showLines(); 
+    }
+    else
+    {
+        $("#tableMain tbody tr:visible").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
         makeTotal();
+    }
     });
 }); 
+
+
+
+
+
 
 function makeTotal(){
     $(document).ready(function(){
@@ -198,6 +215,7 @@ function refreshLine($id)
 }
 
 //SORTING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 var toSearchFor = [];
 //to check all check how .toggle works/////////////////////
 function changeType(typeName)
@@ -233,17 +251,174 @@ function changeType(typeName)
         showLines();
     }
 }
+
 function showLines()
-    {
-        $(toSearchFor).each(function( index, name ) {
-            $("#tableMain tbody tr:hidden").filter(function () {
-                $(this).toggle($(this).text().indexOf(name) > -1)
-            });
+{
+    $(toSearchFor).each(function( index, name ) {
+        $("#tableMain tbody tr:hidden").filter(function () {
+            $(this).toggle($(this).text().indexOf(name) > -1)
         });
-        makeTotal();
-    }  
+    });
+    if(toSearchFor.length == 0)
+    {
+        $("#tableMain tbody tr:hidden").show();
+    }
+
+    makeTotal();
+}  
+
+function sortTable(asc, column, special) {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("tableMain");
+    switching = true;
+    /*Make a loop that will continue until
+    no switching has been done:*/
+    while (switching) {
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /*Loop through all table rows (except the
+        first, which contains table headers):*/
+        for (i = 1; i < (rows.length - 1); i++) {
+            //start by saying there should be no switching:
+            shouldSwitch = false;
+            /*Get the two elements you want to compare,
+            one from current row and one from the next:*/
+            x = rows[i].getElementsByTagName("TD")[column];
+            y = rows[i + 1].getElementsByTagName("TD")[column];
+            //check if the two rows should switch place:
+            if(special == '')
+            {
+                if(asc == true)
+                {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            else if(special == "price")
+            {
+                if(asc == true)
+                {
+                    if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (parseInt(x.innerHTML) > parseInt(y.innerHTML)) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            else if(special == "number")
+            {
+                if(asc == true)
+                {
+                    if (parseInt(x.innerHTML.split("x")[1]) < parseInt(y.innerHTML.split("x")[1])) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (parseInt(x.innerHTML.split("x")[1]) > parseInt(y.innerHTML.split("x")[1])) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+        }
+        if (shouldSwitch) {
+            /*If a switch has been marked, make the switch
+            and mark that a switch has been done:*/
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+        }
+    }
+}
+
+var lastUP = "";
+var lastDown = "";
+
+function changeMe($id, $className)
+{
+    if(lastUP != "")
+    {
+        if(lastUP == $className){}
+        else{
+            $("."+lastUP).attr("src", "../../../ressources/images/up-arrow-empty.png")
+            $("."+lastUP).attr("id","upEmpty");
+        }
+    }
+    if(lastDown != "")
+    {
+        if(lastDown == $className){}
+        else{
+            $("."+lastDown).attr("src", "../../../ressources/images/down-arrow-empty.png")
+            $("."+lastDown).attr("id","downEmpty");
+        }
+    }
+    if($id == "upEmpty")
+    {
+        lastUP = $className;
+        lastDown = "";
+        $("."+$className).attr("src", "../../../ressources/images/up-arrow.png");
+        $("."+$className).attr("id","upFull");
+    }
+    if($id == "downEmpty")
+    {
+        lastDown = $className;
+        lastUP = "";
+        $("."+$className).attr("src", "../../../ressources/images/down-arrow.png");
+        $("."+$className).attr("id","downFull")
+    }
+    /*if (id == "upEmpty") {
+        if(lastUP == ""){
+            $("."+lastUP).attr("src", "../../../ressources/images/up-arrow-empty.png")
+            $("."+lastUP).attr("id","upEmpty");
+        }
+        else if (lastUP != ""){
+            lastUP = className;
+            lastDown = "";
+            alert(("."+lastUP));
+            $("."+className).attr("src", "../../../ressources/images/up-arrow.png");
+            $("."+className).attr("id","upFull");
+        }
+    }
+
+    if (id == "downEmpty") {
+        if(lastDown != ""){
+            $("."+lastDown).attr("src", "../../../ressources/images/down-arrow-empty.png")
+            $("."+lastDown).attr("id","downEmpty")
+        }
+        else{
+        lastDown = className;
+        lastUP = "";
+        $("#"+id).attr("src", "../../../ressources/images/down-arrow.png");
+        $("#"+id).attr("id","downFull")
+        }
+    }*/
+}
 
 //EDITING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 $(document).on("click", ".parameters", function(){
     $lastID = $(this).attr('id');
     edit($lastID)
@@ -388,6 +563,7 @@ $(document).on("click", "#buttonDeleteType", function(){
 });
 
 //RESET PASSWORD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 $(document).ready(function(){
     $("#buttonSearch").click(function(){
         if(!$("#buttonSearch").hasClass("disabled"))
@@ -444,7 +620,7 @@ $(document).ready(function(){
                     if(response == "Success")
                     {
                         $("#contactError").text("");
-                        $("#contactSuccess").text("Un mail vous a été envoyé"); 
+                        $("#contactSuccess").text("Votre mail a bien été envoyé"); 
                         $('#buttonContact').prop('disabled',true);
                     }
                     else

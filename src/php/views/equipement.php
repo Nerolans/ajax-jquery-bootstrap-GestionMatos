@@ -19,6 +19,7 @@
     <script src="../../js/equipement.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.5/jspdf.plugin.autotable.min.js"></script>
+
     <title>Equipement</title>
 
 </head>
@@ -62,19 +63,7 @@
                 </div>
 
                 <a class="h3 ml-1 mb-0 float-left">Total: <label id = "totalText" class="h3 text-success">0 CHF</label></a>
-<!--
-                <div style="height:80px; width: 90px; top:-15px; position: relative;" class="float-left ml-5">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" checked value="">Matériel EPI
-                    </label>
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" checked value="">Rebus
-                    </label>
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" checked value="">Perdu
-                    </label>
-                </div>
--->
+
                 <div class="dropdown float-right ml-4 position-sticky" style="width:200px;">
                     <button class="btn btn-secondary dropdown-toggle" style="width:170px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Catégories
@@ -98,16 +87,66 @@
                 <table id="tableMain" class="mb-0 table table-striped">
                     <thead>
                         <tr id="trTitle">
-                            <th id="categorieTitle" class="">Catégorie</th>
-                            <th id="modeleTitle" class="">Modèle</th>
-                            <th id="seriePersoTitle" class="">N° Série Perso</th>
-                            <th id="serieProTitle" class="d-none">N° Série Pro</th>
-                            <th id="dateFabricationTitle" class="d-none">Date Fabrication</th>
-                            <th id="dateAchatTitle" class="d-none">Date Achat</th>
-                            <th id="dateUtilisationTitle" class="d-none">Date Utilisation</th>
-                            <th id="dateFinVieTitle" class="d-none">Date Fin de vie</th>
-                            <th class="">Prix (unité)</th>
-                            <th class="">Nombre</th>
+                            <th id="categorieTitle" class="">Catégorie
+                                <div>
+                                    <img id = "upEmpty" class="up0" src="../../../ressources/images/up-arrow-empty.png" onclick="sortTable(true, 0, '');changeMe(this.id, $(this).attr('class'));">
+                                    <img id = "downEmpty" class="down0" src="../../../ressources/images/down-arrow-empty.png" onclick="sortTable(false, 0, '');changeMe(this.id, $(this).attr('class'));">
+                                </div>
+                            </th>
+                            <th id="modeleTitle" class="">Modèle
+                                <div>
+                                    <img id = "upEmpty" class="up1" src="../../../ressources/images/up-arrow-empty.png" onclick="sortTable(true, 1, '');changeMe(this.id, $(this).attr('class'));">
+                                    <img id = "downEmpty" class="down1" src="../../../ressources/images/down-arrow-empty.png" onclick="sortTable(false, 1, '');changeMe(this.id, $(this).attr('class'));">
+                                </div>
+                            </th>
+                            <th id="seriePersoTitle" class="">N° Série Perso
+                                <div>
+                                    <img id = "upEmpty" class="up2" src="../../../ressources/images/up-arrow-empty.png" onclick="sortTable(true, 2, '');changeMe(this.id, $(this).attr('class'));">
+                                    <img id = "downEmpty" class="down2" src="../../../ressources/images/down-arrow-empty.png" onclick="sortTable(false, 2, '');changeMe(this.id, $(this).attr('class'));">
+                                </div>
+                            </th>
+                            <th id="serieProTitle" class="d-none">N° Série Pro
+                                <div>
+                                    <img id = "upEmpty"  class="up3" src="../../../ressources/images/up-arrow-empty.png" onclick="sortTable(true, 3, '');changeMe(this.id, $(this).attr('class'));">
+                                    <img id = "downEmpty" class="down3" src="../../../ressources/images/down-arrow-empty.png" onclick="sortTable(false, 3, '');changeMe(this.id, $(this).attr('class'));">
+                                </div>
+                            </th>
+                            <th id="dateFabricationTitle" class="d-none">Date Fabrication
+                                <div>
+                                    <img id = "upEmpty" class="up4" src="../../../ressources/images/up-arrow-empty.png" onclick="sortTable(true, 4, '');changeMe(this.id, $(this).attr('class'));">
+                                    <img id = "downEmpty" class="down4" src="../../../ressources/images/down-arrow-empty.png" onclick="sortTable(false, 4, '');changeMe(this.id, $(this).attr('class'));">
+                                </div>
+                            </th>
+                            <th id="dateAchatTitle" class="d-none">Date Achat
+                                <div>
+                                    <img id = "upEmpty" class="up5" src="../../../ressources/images/up-arrow-empty.png" onclick="sortTable(true, 5, '');changeMe(this.id, $(this).attr('class'));">
+                                    <img id = "downEmpty" class="down5" src="../../../ressources/images/down-arrow-empty.png" onclick="sortTable(false, 5, '');changeMe(this.id, $(this).attr('class'));">
+                                </div>
+                            </th>
+                            <th id="dateUtilisationTitle" class="d-none">Date Utilisation
+                                <div>
+                                    <img id = "upEmpty" class="up6" src="../../../ressources/images/up-arrow-empty.png" onclick="sortTable(true, 6, '');changeMe(this.id, $(this).attr('class'));">
+                                    <img id = "downEmpty" class="down6" src="../../../ressources/images/down-arrow-empty.png" onclick="sortTable(false, 6, '');changeMe(this.id, $(this).attr('class'));">
+                                </div>
+                            </th>
+                            <th id="dateFinVieTitle" class="d-none">Date Fin de vie
+                                <div>
+                                    <img id = "upEmpty" class="up7" src="../../../ressources/images/up-arrow-empty.png" onclick="sortTable(true, 7, '');changeMe(this.id, $(this).attr('class'));">
+                                    <img id = "downEmpty" class="down7" src="../../../ressources/images/down-arrow-empty.png" onclick="sortTable(false, 7, '');changeMe(this.id, $(this).attr('class'));">
+                                </div>
+                            </th>
+                            <th class="">Prix (unité)
+                                <div>
+                                    <img id = "upEmpty" class="up8" src="../../../ressources/images/up-arrow-empty.png" onclick="sortTable(true, 8, 'price');changeMe(this.id, $(this).attr('class'));">
+                                    <img id = "downEmpty" class="down8" src="../../../ressources/images/down-arrow-empty.png" onclick="sortTable(false, 8, 'price');changeMe(this.id, $(this).attr('class'));">
+                                </div>
+                            </th>
+                            <th class="">Nombre
+                                <div>
+                                    <img id = "upEmpty" class="up9" src="../../../ressources/images/up-arrow-empty.png" onclick="sortTable(true, 9, 'number');changeMe(this.id, $(this).attr('class'));">
+                                    <img id = "downEmpty" class="down9" src="../../../ressources/images/down-arrow-empty.png" onclick="sortTable(false, 9, 'number');changeMe(this.id, $(this).attr('class'));">
+                                </div>
+                            </th>
                             <th id="perduTitle" class="d-none">Perdu</th>
                             <th id="EPITitle" class="d-none">EPI</th>
                             <th><img class="settingsTH float-right" style="cursor:pointer;" id="settingsTitle" src="../../../ressources/images/settings.png"></th>

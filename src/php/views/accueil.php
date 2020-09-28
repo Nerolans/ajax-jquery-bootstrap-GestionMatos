@@ -36,13 +36,13 @@
 
     <section>
         <div class="container col-8 float-center text-center pt-5">
-            <a class="pt-5 text-dark " style="font-size:30px;">Ce site est encore un prototype, si vous voulez nous faire part d'une amélioration, si vous trouvez un bug (même le plus petit) ou bien un moyen de passer les sécurités, veuillez, s'il vous plait, nous en faire part via la page <a href="../controllers/mainController.php?view=Contact" style="font-size:30px;" class="text-primary">Contact</a>.</a>
+            <a class="pt-5 text-dark " style="font-size:30px;">Ce site est encore un prototype, si vous voulez nous faire part d'une amélioration ou si vous trouvez un bug (même le plus petit), veuillez, s'il vous plait, nous en faire part via la page <a href="../controllers/mainController.php?view=Contact" style="font-size:30px;" class="text-primary">Contact</a>.</a>
         </div>
         <div class="container col-8 float-center text-center pt-5">
             <a class="pt-5 text-dark " style="font-size:34px;">Cet outil vous est proposé par l'association <a href="https://www.swisscaving.guide/" target="_blank" style="font-size:34px;" class="text-primary">SwissCaving</a></a>.
         </div>
         <div class="container col-6 float-center text-center pt-5">
-            <a class="pt-5 text-dark " style="font-size:30px;">Pour utiliser ce site, il vous faut tout d'abord créer un compte ou bien vous connecter à un compte existant en cliquant sur l'icône en haut à droite de l'écran. Rendez-vous ensuite dans l'onglet équipement, depuis lequel vous pourrez gérer vos équipements.</a>
+            <a class="pt-5 text-dark " style="font-size:30px;">Pour utiliser ce site, il vous faut tout d'abord créer un compte ou bien vous connecter à un compte existant en cliquant sur l'icône en haut à droite de l'écran. Rendez-vous ensuite dans l'onglet équipement, depuis lequel vous pourrez gérer ces derniers.</a>
         </div>
     </section>
 
