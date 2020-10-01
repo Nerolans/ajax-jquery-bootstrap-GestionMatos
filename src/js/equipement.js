@@ -118,21 +118,9 @@ $(document).ready(function(){
 
 
 
-//todo
-$("#myInput").on("keyup", function() {
-    showLines();
-    var value = $(this).val().toLowerCase();
-    if(value=="")
-    {
-        showLines(); 
-    }
-    else
-    {
-        $("#tableMain tbody tr:visible").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-        makeTotal();
-    }
+    //todo
+    $("#myInput").on("keyup", function() {
+        checkEverything();
     });
 }); 
 
@@ -215,13 +203,87 @@ function refreshLine($id)
 }
 
 //SORTING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 var toSearchFor = [];
+
+function checkEverything()
+{
+    typeBB();
+    searchBB();
+    checkbox();
+    function typeBB()
+    {
+        $("#tableMain tbody tr:visible").hide();
+        if(toSearchFor.length == 0)
+        {
+            $("#tableMain tbody tr:hidden").show();  
+            var value = $("#myInput").val().toLowerCase();
+            $("#tableMain tbody tr:visible").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        }
+        else
+        {
+            $(toSearchFor).each(function( index, name ) {
+                $("#tableMain tbody tr:hidden").filter(function () {
+                        $(this).toggle($(this).text().indexOf(name) > -1)
+                });
+                
+            });
+        }  
+    }
+
+    function searchBB()
+    {
+        typeBB();
+        var value = $("#myInput").val().toLowerCase();
+        $("#tableMain tbody tr:visible").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    }
+
+    function checkbox()
+    {
+        if(!$("#sortEpi").is(":checked"))
+        {
+            $("#tableMain tbody tr:visible").each(function() {
+                goodTDEPI = $(this).find("td")[11];
+                goodImageEPI = $(goodTDEPI).find("img");
+                if(goodImageEPI.attr("src")=="../../../ressources/images/yes.png")
+                {
+                    $(this).hide();
+                }
+            });
+        }
+        if(!$("#sortPerdu").is(":checked"))
+        {
+            $("#tableMain tbody tr:visible").each(function() {
+                goodTDPerdu = $(this).find("td")[10];
+                goodImagePerdu = $(goodTDPerdu).find("img");
+                if(goodImagePerdu.attr("src")=="../../../ressources/images/yes.png")
+                {
+                    $(this).hide();
+                }
+            });
+        }
+        if(!$("#sortRebus").is(":checked"))
+        {
+            $("#tableMain tbody tr:visible").each(function() {
+                if($(this).css("background-color")=="rgba(255, 0, 0, 0.2)")
+                {
+                    $(this).hide();
+                }
+            });
+        }
+    }
+
+    makeTotal();
+    
+}
+
 //to check all check how .toggle works/////////////////////
 function changeType(typeName)
 {
     toSearchFor = [];
-    $( "#tableMain tbody tr" ).hide();
 
     $("#ddMenu a").each(function( index ) {
         if($(this).hasClass("active"))
@@ -235,37 +297,15 @@ function changeType(typeName)
         $('#'+typeName).removeClass("active")
         const index = toSearchFor.indexOf($('#'+typeName).text());
         toSearchFor.splice(index, 1);
-        if(toSearchFor.length == 0)
-        {
-            $( "#tableMain tbody tr" ).show();
-        }
-        else
-        {
-            showLines();
-        }  
+        checkEverything(); 
     }
     else
     {
         $('#'+typeName).addClass("active")
         toSearchFor.push($('#'+typeName).text());
-        showLines();
+        checkEverything();
     }
 }
-
-function showLines()
-{
-    $(toSearchFor).each(function( index, name ) {
-        $("#tableMain tbody tr:hidden").filter(function () {
-            $(this).toggle($(this).text().indexOf(name) > -1)
-        });
-    });
-    if(toSearchFor.length == 0)
-    {
-        $("#tableMain tbody tr:hidden").show();
-    }
-
-    makeTotal();
-}  
 
 function sortTable(asc, column, special) {
     var table, rows, switching, i, x, y, shouldSwitch;
@@ -389,32 +429,6 @@ function changeMe($id, $className)
         $("."+$className).attr("src", "../../../ressources/images/down-arrow.png");
         $("."+$className).attr("id","downFull")
     }
-    /*if (id == "upEmpty") {
-        if(lastUP == ""){
-            $("."+lastUP).attr("src", "../../../ressources/images/up-arrow-empty.png")
-            $("."+lastUP).attr("id","upEmpty");
-        }
-        else if (lastUP != ""){
-            lastUP = className;
-            lastDown = "";
-            alert(("."+lastUP));
-            $("."+className).attr("src", "../../../ressources/images/up-arrow.png");
-            $("."+className).attr("id","upFull");
-        }
-    }
-
-    if (id == "downEmpty") {
-        if(lastDown != ""){
-            $("."+lastDown).attr("src", "../../../ressources/images/down-arrow-empty.png")
-            $("."+lastDown).attr("id","downEmpty")
-        }
-        else{
-        lastDown = className;
-        lastUP = "";
-        $("#"+id).attr("src", "../../../ressources/images/down-arrow.png");
-        $("#"+id).attr("id","downFull")
-        }
-    }*/
 }
 
 //EDITING///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

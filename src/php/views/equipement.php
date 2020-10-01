@@ -62,7 +62,7 @@
                     <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
                 </div>
 
-                <a class="h3 ml-1 mb-0 float-left">Total: <label id = "totalText" class="h3 text-success">0 CHF</label></a>
+                <a class="h3 ml-1 mb-0 float-left" style="width:300px;">Total: <label id = "totalText" class="h3 text-success">0 CHF</label></a>
 
                 <div class="dropdown float-right ml-4 position-sticky" style="width:200px;">
                     <button class="btn btn-secondary dropdown-toggle" style="width:170px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -78,11 +78,21 @@
                     </div>
                 </div>
 
+                <div class="form-group form-check float-left ml-4 mt-1" style="width:120px;">
+                    <input type="checkbox" class="form-check-input" id="sortEpi" style="width:20px;height:20px;" checked onclick="checkEverything();"><label class="form-check-label mt-1 ml-1" for="sortEpi">Matériel EPI</label>
+                </div>
+                <div class="form-group form-check float-left ml-4 mt-1" style="width:135px;">
+                    <input type="checkbox" class="form-check-input" id="sortPerdu" style="width:20px;height:20px;" checked onclick="checkEverything();"><label class="form-check-label mt-1 ml-1" for="sortPerdu">Matériel Perdu</label>
+                </div>
+                <div class="form-group form-check float-left ml-4 mt-1" style="width:160px;">
+                    <input type="checkbox" class="form-check-input" id="sortRebus" style="width:20px;height:20px;" checked onclick="checkEverything();"><label class="form-check-label mt-1 ml-1" for="sortRebus">Matériel au rebus</label>
+                </div>
+
                 <button type="button" class="btn btn-success float-right" data-toggle="tooltip" data-placement="top" title="Ce bouton va télécharger le tableau ci-dessous comme il est affiché (pdf), ou bien toutes les données (csv)">
                     Télécharger
                 </button>
             </div>
-
+        
             <div class="container-fluid px-0 mt-4 opacityGrid" style = "overflow-x: scroll; scrollbar-x-position: top; direction: ltr;">            
                 <table id="tableMain" class="mb-0 table table-striped">
                     <thead>
