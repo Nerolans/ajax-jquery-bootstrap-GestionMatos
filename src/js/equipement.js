@@ -140,6 +140,21 @@ function HidePrice($id){
     });
 }
 
+function HideRebus($id){
+    $(document).ready(function(){
+        if($("#"+$id).attr("src")=="../../../ressources/images/eye.png")
+        {
+            $("#"+$id).attr("src", "../../../ressources/images/eyeclosed.png");
+        }
+        else
+        {
+            $("#"+$id).attr("src", "../../../ressources/images/eye.png"); 
+        }
+
+        checkEverything();
+    });
+}
+
 
 
 function makeTotal(){
@@ -256,7 +271,7 @@ function checkEverything()
 
     function checkbox()
     {
-        if(!$("#sortEpi").is(":checked"))
+        if(!$("#ddEPI").hasClass("active") && !$("#ddLost").hasClass("active"))
         {
             $("#tableMain tbody tr:visible").each(function() {
                 goodTDEPI = $(this).find("td")[11];
@@ -265,30 +280,50 @@ function checkEverything()
                 {
                     $(this).hide();
                 }
-            });
-        }
-        if(!$("#sortPerdu").is(":checked"))
-        {
-            $("#tableMain tbody tr:visible").each(function() {
-                goodTDPerdu = $(this).find("td")[10];
-                goodImagePerdu = $(goodTDPerdu).find("img");
-                if(goodImagePerdu.attr("src")=="../../../ressources/images/yes.png")
-                {
-                    $(this).hide();
-                }
-            });
-        }
-        if(!$("#sortRebus").is(":checked"))
-        {
-            $("#tableMain tbody tr:visible").each(function() {
-                if($(this).css("background-color")=="rgba(255, 0, 0, 0.2)")
+
+                goodTDEPI = $(this).find("td")[10];
+                goodImageEPI = $(goodTDEPI).find("img");
+                if(goodImageEPI.attr("src")=="../../../ressources/images/yes.png")
                 {
                     $(this).hide();
                 }
             });
         }
 
-        if(!$("#sortOther").is(":checked"))
+        if(!$("#ddEPI").hasClass("active") && $("#ddLost").hasClass("active"))
+        {
+            $("#tableMain tbody tr:visible").each(function() {
+                goodTDEPI = $(this).find("td")[11];
+                goodImageEPI = $(goodTDEPI).find("img");
+
+                goodTDLost = $(this).find("td")[10];
+                goodImageLost = $(goodTDLost).find("img");
+
+                if(goodImageEPI.attr("src")=="../../../ressources/images/yes.png" && goodImageLost.attr("src")=="../../../ressources/images/no.png")
+                {
+                    $(this).hide();
+                }
+            });
+        }
+
+        if($("#ddEPI").hasClass("active") && !$("#ddLost").hasClass("active"))
+        {
+            $("#tableMain tbody tr:visible").each(function() {
+                goodTDEPI = $(this).find("td")[11];
+                goodImageEPI = $(goodTDEPI).find("img");
+
+                goodTDLost = $(this).find("td")[10];
+                goodImageLost = $(goodTDLost).find("img");
+
+                if(goodImageEPI.attr("src")=="../../../ressources/images/no.png" && goodImageLost.attr("src")=="../../../ressources/images/yes.png")
+                {
+                    $(this).hide();
+                }
+            });
+        }
+        
+
+        if(!$("#ddOther").hasClass("active"))
         {
             $("#tableMain tbody tr:visible").each(function() {
                 goodTDOther = $(this).find("td")[10];
@@ -299,11 +334,20 @@ function checkEverything()
                     goodImageOther = $(goodTDOther).find("img");
                     if(goodImageOther.attr("src")=="../../../ressources/images/no.png")
                     {
-                        if($(this).css("background-color")!="rgba(255, 0, 0, 0.2)")
-                        {
-                            $(this).hide();
-                        }
+                        
+                        $(this).hide();
+
                     }
+                }
+            });
+        }
+
+        if($("#imgRebus").attr("src")!="../../../ressources/images/eye.png")
+        {
+            $("#tableMain tbody tr:visible").each(function() {
+                if($(this).css("background-color")=="rgba(255, 0, 0, 0.2)")
+                {
+                    $(this).hide();
                 }
             });
         }
@@ -336,6 +380,20 @@ function changeType(typeName)
     {
         $('#'+typeName).addClass("active")
         toSearchFor.push($('#'+typeName).text());
+        checkEverything();
+    }
+}
+
+function changeTypeT(typeName)
+{
+    if($("#"+typeName).hasClass("active"))
+    {
+        $('#'+typeName).removeClass("active")
+        checkEverything(); 
+    }
+    else
+    {
+        $('#'+typeName).addClass("active")
         checkEverything();
     }
 }
