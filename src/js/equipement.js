@@ -125,7 +125,20 @@ $(document).ready(function(){
 }); 
 
 
+function HidePrice($id){
+    $(document).ready(function(){
+        if($("#"+$id).attr("src")=="../../../ressources/images/eye.png")
+        {
+            $("#"+$id).attr("src", "../../../ressources/images/eyeclosed.png");
+        }
+        else
+        {
+            $("#"+$id).attr("src", "../../../ressources/images/eye.png"); 
+        }
 
+        $("#totalText").toggle();
+    });
+}
 
 
 
@@ -271,6 +284,26 @@ function checkEverything()
                 if($(this).css("background-color")=="rgba(255, 0, 0, 0.2)")
                 {
                     $(this).hide();
+                }
+            });
+        }
+
+        if(!$("#sortOther").is(":checked"))
+        {
+            $("#tableMain tbody tr:visible").each(function() {
+                goodTDOther = $(this).find("td")[10];
+                goodImageOther = $(goodTDOther).find("img");
+                if(goodImageOther.attr("src")=="../../../ressources/images/no.png")
+                {
+                    goodTDOther = $(this).find("td")[11];
+                    goodImageOther = $(goodTDOther).find("img");
+                    if(goodImageOther.attr("src")=="../../../ressources/images/no.png")
+                    {
+                        if($(this).css("background-color")!="rgba(255, 0, 0, 0.2)")
+                        {
+                            $(this).hide();
+                        }
+                    }
                 }
             });
         }
