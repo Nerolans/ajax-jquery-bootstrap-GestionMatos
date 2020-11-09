@@ -249,6 +249,7 @@ function checkEverything()
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         }
+
         else
         {
             $(toSearchFor).each(function( index, name ) {
@@ -342,6 +343,13 @@ function checkEverything()
             });
         }
 
+        if(!$("#ddEPI").hasClass("active") && !$("#ddLost").hasClass("active") && !$("#ddOther").hasClass("active"))
+        {
+            $("#tableMain tbody tr").show();
+            typeBB();
+            searchBB();
+        }
+
         if($("#imgRebus").attr("src")!="../../../ressources/images/eye.png")
         {
             $("#tableMain tbody tr:visible").each(function() {
@@ -351,6 +359,8 @@ function checkEverything()
                 }
             });
         }
+
+        makeTotal();
     }
 
     makeTotal();

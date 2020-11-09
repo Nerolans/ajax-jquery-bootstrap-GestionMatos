@@ -42,7 +42,7 @@
             <a class="pt-5 text-dark " style="font-size:34px;">Cet outil vous est proposé par l'association <a href="https://www.swisscaving.guide/" target="_blank" style="font-size:34px;" class="text-primary">SwissCaving</a></a>.
         </div>
         <div class="container col-6 float-center text-center pt-5">
-            <a class="pt-5 text-dark " style="font-size:30px;">Pour utiliser ce site, il vous faut tout d'abord créer un compte ou bien vous connecter à un compte existant en cliquant sur l'icône en haut à droite de l'écran. Rendez-vous ensuite dans l'onglet équipement, depuis lequel vous pourrez gérer ces derniers.</a>
+            <a class="pt-5 text-dark " style="font-size:30px;">Pour utiliser ce site, il vous faut tout d'abord créer un compte ou bien vous connecter à un compte existant en cliquant sur l'icône en haut à droite de l'écran. Rendez-vous ensuite dans l'onglet équipement, depuis lequel vous pouvez les gérer.</a>
         </div>
     </section>
 
