@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <link href="../../../ressources/css/style.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../../js/tableHTMLExport.js"></script>
+    <script src="../../js/jquery.table2excel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -65,7 +65,7 @@
                 <img class="categoryTitle float-left ml-4 pb-2 pt-2" style="cursor:pointer;" id="price" onclick="HidePrice($(this).attr('id'))" src="../../../ressources/images/eyeclosed.png">
                 <a class="h3 ml-1 mb-0 float-left" style="width:300px;">Total: <label id = "totalText" style="display: none;" class="h3 text-success">0 CHF</label></a>
                 
-                <button type="button" class="btn btn-success float-right ml-4 mr-3" style = "width:50px;height:38px;" data-toggle="tooltip" data-placement="top" title="Téléchargement des données comme elles sont affichées en PDF ou CSV">
+                <button onclick="ExportCSV();"type="button" class="btn btn-success float-right ml-4 mr-3" style = "width:50px;height:38px;" data-toggle="tooltip" data-placement="top" title="Téléchargement des données comme elles sont affichées en PDF ou CSV">
                     <img class="float-left" id="download" onclick="" src="../../../ressources/images/download.png">
                 </button>
 

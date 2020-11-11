@@ -57,7 +57,6 @@ $(document).ready(function(){
             
         });
     });
-
 //ADD TYPE///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////CHECKED
 
     //same than above but for adding a new type
@@ -754,3 +753,17 @@ $(document).ready(function(){
             });
     });
 });
+
+//////////////
+function ExportCSV()
+{
+    alert("test");
+    $("#tableMain:visible").table2excel({
+        // exclude CSS class
+        exclude: ".noExl",
+        name: "EPI Export",
+        filename: "EPI_Export", //do not include extension
+        fileext: ".xls", // file extension
+        exclude_img: true
+    }); 
+}
