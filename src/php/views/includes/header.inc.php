@@ -17,7 +17,7 @@
     <?php }?>
     </div>
 </div>
-<form action="https://www.paypal.com/donate" class="col-md-1 mx-auto pb-2" method="post" target="_top" data-toggle="tooltip" data-placement="bottom" title="Si vous aimez utiliser ce site, supportez-le en faisant un don !">
+<form action="https://www.paypal.com/donate" style="width:108px;" class="mx-auto pb-2" method="post" target="_top" data-toggle="tooltip" data-placement="bottom" title="Si vous aimez utiliser ce site, supportez-le en faisant un don !">
     <input type="hidden" name="hosted_button_id" value="TCH5WXNGMXE42" />
     <input type="image" src="https://www.paypalobjects.com/fr_FR/CH/i/btn/btn_donate_SM.gif" target="_blank" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
     <img alt="" border="0" src="https://www.paypal.com/fr_CH/i/scr/pixel.gif" width="1" height="1" />
