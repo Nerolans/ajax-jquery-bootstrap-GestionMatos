@@ -52,7 +52,7 @@ $response .=
 
             <div class="container col-12 p-0" style="height:36px;">
             <label class="col-6 float-left text-right p-0 pt-1 pr-4">Prix d\'achat</label>
-            <input class="col-3 float-left" type="number" name="prix" value="'.$infos["matPrice"].'" max="100000" min="0" required>
+            <input class="col-3 float-left" type="number" step="0.01" name="prix" value="'.$infos["matPrice"].'" max="100000" min="0" required>
             </div>
 
 

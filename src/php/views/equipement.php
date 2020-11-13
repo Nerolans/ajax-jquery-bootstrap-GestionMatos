@@ -12,6 +12,8 @@
     <link href="../../../ressources/css/style.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../../js/jquery.table2excel.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -65,7 +67,7 @@
                 <img class="categoryTitle float-left ml-4 pb-2 pt-2" style="cursor:pointer;" id="price" onclick="HidePrice($(this).attr('id'))" src="../../../ressources/images/eyeclosed.png">
                 <a class="h3 ml-1 mb-0 float-left" style="width:300px;">Total: <label id = "totalText" style="display: none;" class="h3 text-success">0 CHF</label></a>
                 
-                <button onclick="ExportCSV();"type="button" class="btn btn-success float-right ml-4 mr-3" style = "width:50px;height:38px;" data-toggle="tooltip" data-placement="top" title="Téléchargement des données comme elles sont affichées en PDF ou CSV">
+                <button onclick="ExportCSV();"type="button" class="btn btn-success float-right ml-4 mr-3" style = "width:50px;height:38px;" data-toggle="tooltip" data-placement="top" title="Ce bouton va télécharger seulemnt les lignes affichées et toutes les colonnes. (le fichier peut être ouvert via Excel ou n'importe quel Navigateur)">
                     <img class="float-left" id="download" onclick="" src="../../../ressources/images/download.png">
                 </button>
 
@@ -265,7 +267,7 @@
 
                                 <div class="container col-12 p-0" style="height:36px;">
                                 <label class="col-6 float-left text-right p-0 pt-1 pr-4">Prix d'achat</label>
-                                <input class="col-3 float-left" type="number" name="prix" value="0" max='100000' min="0" required>
+                                <input class="col-3 float-left" type="number" name="prix" step="0.01" value="0" max='100000' min="0" required>
                                 </div>
 
 
@@ -431,6 +433,9 @@
                     <div class="modal-footer">
                         <div class="w-100">
                             <button type="button" class="btn btn-danger float-left buttonDelete" data-dismiss="modal">Supprimer</button>
+                            <button onclick="ExportPDF();"type="button" class="btn btn-success float-right ml-4 mr-3" style = "width:50px;height:38px;" data-toggle="tooltip" data-placement="top" title="Ce bouton va télécharger cette fiche d'équipement en PDF">
+                                <img class="float-left" id="download" onclick="" src="../../../ressources/images/download.png">
+                            </button>
                             <button type="button" class="btn btn-dark float-right" data-dismiss="modal">Fermer</button>
                             <button type="button" class="btn btn-success float-right mr-2 buttonEdit">Enregistrer</button>      
                         </div>

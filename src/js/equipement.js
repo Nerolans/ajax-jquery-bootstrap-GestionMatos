@@ -165,12 +165,12 @@ function makeTotal(){
                 $(this).find('td').each (function() {
                     if($(this).attr("id") == "price"){
                         $number = ($trHere).find('#number').html().split("x")[1];
-                        $total += (parseInt($(this).html()) * parseInt($number));
-                        $("#totalText").html($total+" CHF");
+                        $total += (parseFloat($(this).html()) * parseFloat($number));
                     }
                 }); 
             }
         });
+        $("#totalText").html($total.toFixed(2)+" CHF");
     }); 
 }
 
@@ -757,13 +757,86 @@ $(document).ready(function(){
 //////////////
 function ExportCSV()
 {
-    alert("test");
+    $('#categorieTitle'+'Title').removeClass("d-none");
+    $('.categorieTitle'+'Content').removeClass("d-none");
+
+    $('#modele'+'Title').removeClass("d-none");
+    $('.modele'+'Content').removeClass("d-none");
+
+    $('#seriePerso'+'Title').removeClass("d-none");
+    $('.seriePerso'+'Content').removeClass("d-none");
+
+    $('#seriePro'+'Title').removeClass("d-none");
+    $('.seriePro'+'Content').removeClass("d-none");
+
+    $('#dateFabrication'+'Title').removeClass("d-none");
+    $('.dateFabrication'+'Content').removeClass("d-none");
+
+    $('#dateAchat'+'Title').removeClass("d-none");
+    $('.dateAchat'+'Content').removeClass("d-none");
+
+    $('#dateUtilisation'+'Title').removeClass("d-none");
+    $('.dateUtilisation'+'Content').removeClass("d-none");
+
+    $('#dateFinVie'+'Title').removeClass("d-none");
+    $('.dateFinVie'+'Content').removeClass("d-none");
+
+    $('#EPI'+'Title').removeClass("d-none");
+    $('.EPI'+'Content').removeClass("d-none");
+
+    $('#perdu'+'Title').removeClass("d-none");
+    $('.perdu'+'Content').removeClass("d-none");
+
+    $("#tableMain tbody tr:visible").each(function() {
+        goodTDEPI = $(this).find("td")[10];
+        goodImageEPI = $(goodTDEPI).find("img");
+        if(goodImageEPI.attr("src")=="../../../ressources/images/yes.png")
+        {
+            $(goodTDEPI).html("1");
+        }
+        else
+        {
+            $(goodTDEPI).html("0");
+        }
+
+        goodTDEPI = $(this).find("td")[11];
+        goodImageEPI = $(goodTDEPI).find("img");
+        if(goodImageEPI.attr("src")=="../../../ressources/images/yes.png")
+        {
+            $(goodTDEPI).html("1");
+        }
+        else
+        {
+            $(goodTDEPI).html("0");
+        }
+    });
+
+
+
     $("#tableMain:visible").table2excel({
         // exclude CSS class
-        exclude: ".noExl",
-        name: "EPI Export",
+        //exclude: ".noExl",
+        //name: "EPI Export",
         filename: "EPI_Export", //do not include extension
-        fileext: ".xls", // file extension
-        exclude_img: true
-    }); 
+        exclude: ":hidden",
+    });
+
+    location.reload();
+}
+
+function ExportPDF()
+{
+    html2canvas($('#bodyEdit')[0], {
+        onrendered: function (canvas) {
+            var data = canvas.toDataURL();
+            var docDefinition = {
+                content: [{
+                    image: data,
+                    width: 500
+                }]
+            };
+            pdfMake.createPdf(docDefinition).download("EPI_Export.pdf");
+        },
+    letterRendering:true
+    });
 }
