@@ -11,7 +11,7 @@ class mainModel
     //connect to DB
     private function dbConnect()
     {
-        $this->connector = new PDO('mysql:host=localhost:8889;dbname=p_matos','root','root');
+        $this->connector = new PDO('mysql:host=localhost:3306;dbname=y0400_myepi','root','root');
     }
 
     //execute the query and getting the result

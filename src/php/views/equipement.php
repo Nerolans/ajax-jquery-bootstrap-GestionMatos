@@ -67,7 +67,7 @@
                 <img class="categoryTitle float-left ml-4 pb-2 pt-2" style="cursor:pointer;" id="price" onclick="HidePrice($(this).attr('id'))" src="../../../ressources/images/eyeclosed.png">
                 <a class="h3 ml-1 mb-0 float-left" style="width:300px;">Total: <label id = "totalText" style="display: none;" class="h3 text-success">0 CHF</label></a>
                 
-                <button onclick="ExportCSV();"type="button" class="btn btn-success float-right ml-4 mr-3" style = "width:50px;height:38px;" data-toggle="tooltip" data-placement="top" title="Ce bouton va télécharger seulemnt les lignes affichées et toutes les colonnes. (le fichier peut être ouvert via Excel ou n'importe quel Navigateur)">
+                <button onclick="ExportCSV();"type="button" class="btn btn-success float-right ml-4 mr-3" style = "width:50px;height:38px;" data-toggle="tooltip" data-placement="top" title="Ce bouton va télécharger seulement les lignes affichées et toutes les colonnes. (le fichier peut être ouvert via Excel ou n'importe quel Navigateur)">
                     <img class="float-left" id="download" onclick="" src="../../../ressources/images/download.png">
                 </button>
 
@@ -85,7 +85,7 @@
                     </div>
                 </div>
 
-                <div class="dropdown float-right ml-4" style="width:200px;">
+                <div class="dropdown float-right ml-1" style="width:200px;">
                     <button class="btn btn-secondary dropdown-toggle" style="width:170px;" type="button" id="dropdownType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Types d'éléments
                     </button>
@@ -93,6 +93,17 @@
                         <a id="ddLost" class="dropdown-item pointy" onclick="changeTypeT(this.id)">Perdu</a>
                         <a id="ddEPI" class="dropdown-item pointy" onclick="changeTypeT(this.id)">EPI</a>
                         <a id="ddOther" class="dropdown-item pointy" onclick="changeTypeT(this.id)">Autres</a>
+                    </div>
+                </div>
+
+                <div class="dropdown float-right ml-4" style="width:200px;">
+                    <button class="btn btn-secondary dropdown-toggle" style="width:170px;" type="button" id="dropdownType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Date de fin de vie
+                    </button>
+                    <div class="dropdown-menu ddMenu3 overflow-auto" id="ddMenu3" style="height:115px;width:170px;" aria-labelledby="dropdownType">
+                        <a id="2000" class="dropdown-item pointy" onclick="changeTypeT(this.id)">2000</a>
+                        <a id="2001" class="dropdown-item pointy" onclick="changeTypeT(this.id)">2001</a>
+                        <a id="2002" class="dropdown-item pointy" onclick="changeTypeT(this.id)">2002</a>
                     </div>
                 </div>
 
